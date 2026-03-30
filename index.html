@@ -1,0 +1,1930 @@
+<!DOCTYPE html>
+<html lang="tr" dir="ltr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Uykucu — Uyku &amp; Huzur | Doğal Seslerle Rahatlatıcı Uyku Deneyimi</title>
+
+<!-- SEO Meta Tags -->
+<meta name="description" content="Uykucu ile doğanın seslerini dinleyerek huzurlu bir uyku deneyimi yaşayın. Yağmur, deniz dalgaları, orman sesleri, beyaz gürültü ve bebek uyku sesleri. Ücretsiz çevrimiçi uyku uygulaması.">
+<meta name="keywords" content="uyku sesleri, beyaz gürültü, doğa sesleri, bebek uyku müziği, meditasyon, rahatlama, yağmur sesi, deniz dalgası, ASMR, binaural beats, uyku zamanlayıcı">
+<meta name="author" content="Uykucu">
+<meta name="robots" content="index, follow">
+<meta name="theme-color" content="#07090f">
+<link rel="canonical" href="https://uykucu.app/">
+
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://uykucu.app/">
+<meta property="og:title" content="Uykucu — Doğal Seslerle Huzurlu Uyku">
+<meta property="og:description" content="26+ doğal ses, AI öneri motoru, mix stüdyo ve uyku zamanlayıcısı ile en iyi uyku deneyimini yaşayın.">
+<meta property="og:image" content="https://uykucu.app/og-image.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:locale" content="tr_TR">
+<meta property="og:site_name" content="Uykucu">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:url" content="https://uykucu.app/">
+<meta name="twitter:title" content="Uykucu — Doğal Seslerle Huzurlu Uyku">
+<meta name="twitter:description" content="26+ doğal ses, AI öneri motoru, mix stüdyo ve uyku zamanlayıcısı ile en iyi uyku deneyimini yaşayın.">
+<meta name="twitter:image" content="https://uykucu.app/og-image.jpg">
+
+<!-- PWA Manifest -->
+<link rel="manifest" href="manifest.json">
+<link rel="apple-touch-icon" sizes="180x180" href="icons/icon-180.png">
+<link rel="icon" type="image/png" sizes="32x32" href="icons/icon-32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="icons/icon-16.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Uykucu">
+
+<!-- Schema.org Structured Data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "Uykucu",
+  "description": "Doğanın seslerini dinleyerek huzurlu bir uyku deneyimi yaşayın. 26+ doğal ses, AI öneri motoru ve mix stüdyo.",
+  "url": "https://uykucu.app",
+  "applicationCategory": "HealthApplication",
+  "operatingSystem": "Web",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "TRY"
+  },
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "4.8",
+    "ratingCount": "1250"
+  },
+  "inLanguage": "tr",
+  "author": {
+    "@type": "Organization",
+    "name": "Uykucu"
+  }
+}
+</script>
+
+<!-- Google Analytics 4 — Rıza sonrası yüklenir -->
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+
+  // Analytics helper — rıza verilmeden çağrılırsa sessizce atlar
+  function trackEvent(eventName, params) {
+    if (getCookieConsent() === 'accepted') {
+      try { gtag('event', eventName, params); } catch(e) {}
+    }
+  }
+
+  // Çerez rızası yönetimi
+  function getCookieConsent() {
+    return localStorage.getItem('uykucu_cookie_consent');
+  }
+
+  function loadGA4() {
+    if (document.getElementById('ga4-script')) return;
+    var s = document.createElement('script');
+    s.id = 'ga4-script';
+    s.async = true;
+    s.src = 'https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX';
+    document.head.appendChild(s);
+    gtag('js', new Date());
+    gtag('config', 'G-XXXXXXXXXX', {
+      page_title: 'Uykucu Ana Sayfa',
+      anonymize_ip: true,
+      custom_map: {
+        dimension1: 'sound_name',
+        dimension2: 'sound_category',
+        dimension3: 'session_duration'
+      }
+    });
+  }
+
+  function acceptCookies() {
+    localStorage.setItem('uykucu_cookie_consent', 'accepted');
+    document.getElementById('cookie-banner').classList.remove('cb-on');
+    loadGA4();
+    trackEvent('cookie_consent', { action: 'accepted' });
+  }
+
+  function rejectCookies() {
+    localStorage.setItem('uykucu_cookie_consent', 'rejected');
+    document.getElementById('cookie-banner').classList.remove('cb-on');
+  }
+
+  function openCookieSettings() {
+    var b = document.getElementById('cookie-banner');
+    b.classList.add('cb-on');
+  }
+
+  // Sayfa yüklendiğinde: daha önce kabul edildiyse GA4'ü yükle, yoksa banner göster
+  document.addEventListener('DOMContentLoaded', function() {
+    var consent = getCookieConsent();
+    if (consent === 'accepted') {
+      loadGA4();
+    } else if (consent !== 'rejected') {
+      setTimeout(function() {
+        document.getElementById('cookie-banner').classList.add('cb-on');
+      }, 1200);
+    }
+  });
+</script>
+
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@200;300;400;500&family=Playfair+Display:ital,wght@0,300;0,400;1,300;1,400&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#07090f;--bg1:#0b0f1a;--surf:rgba(255,255,255,.045);--surf2:rgba(255,255,255,.08);--bdr:rgba(255,255,255,.07);--bdr2:rgba(255,255,255,.13);--txt:#dde6f5;--txt2:rgba(221,230,245,.52);--txt3:rgba(221,230,245,.26);--acc:#6aacf0;--acc2:#9b87f5;--acc3:#5ef0d4;--ar:106,172,240;--rc:18px;--rp:100px}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Nunito',sans-serif;font-weight:300;background:var(--bg);color:var(--txt);min-height:100vh;overflow-x:hidden;line-height:1.6}
+button,input{font-family:inherit;cursor:pointer;border:none;background:none}
+body::after{content:'';position:fixed;inset:0;z-index:1;pointer-events:none;opacity:.5;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23g)' opacity='.03'/%3E%3C/svg%3E")}
+.blob{position:fixed;border-radius:50%;filter:blur(140px);pointer-events:none;z-index:0}
+.ba{width:700px;height:700px;top:-220px;right:-180px;background:rgba(106,172,240,.04);animation:bf 18s ease-in-out infinite}
+.bb{width:480px;height:480px;bottom:-80px;left:-160px;background:rgba(155,135,245,.04);animation:bf 24s ease-in-out infinite reverse}
+@keyframes bf{0%,100%{transform:translate(0,0)}33%{transform:translate(28px,-18px)}66%{transform:translate(-18px,26px)}}
+#cvs{position:fixed;inset:0;z-index:0;pointer-events:none;opacity:0;transition:opacity 2s}
+#cvs.on{opacity:1}
+#app{position:relative;z-index:2}
+
+/* TOPBAR */
+.topbar{position:sticky;top:0;z-index:90;display:flex;align-items:center;justify-content:space-between;padding:16px 36px;background:rgba(7,9,15,.8);backdrop-filter:blur(24px);border-bottom:1px solid var(--bdr)}
+.logo{display:flex;align-items:center;gap:10px;font-family:'Playfair Display',serif;font-size:1.45rem;font-weight:300;color:var(--txt);text-decoration:none}
+.logo-orb{width:26px;height:26px;border-radius:50%;background:conic-gradient(from 0deg,var(--acc),var(--acc2),var(--acc3),var(--acc));animation:spin 8s linear infinite;box-shadow:0 0 16px rgba(var(--ar),.4)}
+@keyframes spin{to{transform:rotate(360deg)}}
+.tnav{display:flex;gap:4px}
+.tb{padding:7px 15px;border-radius:var(--rp);font-size:.77rem;color:var(--txt2);border:1px solid transparent;transition:.3s}
+.tb:hover{color:var(--txt);background:var(--surf)}
+.tb.on{color:var(--acc);border-color:rgba(var(--ar),.3);background:rgba(var(--ar),.07)}
+.sleep-btn{display:flex;align-items:center;gap:7px;padding:9px 20px;border-radius:var(--rp);background:linear-gradient(135deg,var(--acc),var(--acc2));color:#fff;font-size:.77rem;font-weight:500;box-shadow:0 0 22px rgba(var(--ar),.25);transition:.3s}
+.sleep-btn:hover{transform:translateY(-2px);box-shadow:0 6px 28px rgba(var(--ar),.42)}
+
+/* VIEWS */
+.view{display:none}.view.on{display:block}
+
+/* HERO */
+.hero{padding:68px 36px 52px;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 80% 55% at 50% -15%,rgba(var(--ar),.07),transparent)}
+.eyebrow{display:inline-flex;align-items:center;gap:7px;padding:5px 14px;border-radius:var(--rp);background:var(--surf);border:1px solid var(--bdr2);font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;color:var(--txt2);margin-bottom:24px}
+.eyebrow-dot{width:6px;height:6px;border-radius:50%;background:var(--acc);animation:pulse 2.5s ease-in-out infinite}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.4;transform:scale(1.5)}}
+.hero h1{font-family:'Playfair Display',serif;font-size:clamp(2.8rem,8vw,6rem);font-weight:300;line-height:1.06;letter-spacing:-.02em;margin-bottom:20px;position:relative}
+.hero h1 em{font-style:italic;color:var(--acc)}
+.hero p{max-width:480px;font-size:.98rem;color:var(--txt2);line-height:1.75;font-weight:200;margin-bottom:38px;position:relative}
+.actions{display:flex;gap:11px;flex-wrap:wrap;position:relative}
+.btn-p{display:inline-flex;align-items:center;gap:7px;padding:12px 26px;border-radius:var(--rp);background:linear-gradient(135deg,var(--acc),var(--acc2));color:#fff;font-size:.86rem;font-weight:500;box-shadow:0 0 28px rgba(var(--ar),.28);transition:.4s}
+.btn-p:hover{transform:translateY(-3px);box-shadow:0 8px 36px rgba(var(--ar),.44)}
+.btn-g{display:inline-flex;align-items:center;gap:7px;padding:12px 26px;border-radius:var(--rp);border:1px solid var(--bdr2);background:var(--surf);color:var(--txt2);font-size:.86rem;transition:.3s}
+.btn-g:hover{border-color:rgba(var(--ar),.4);color:var(--txt)}
+
+/* STATS */
+.stats{display:flex;margin:0 36px 48px;border:1px solid var(--bdr);border-radius:var(--rc);overflow:hidden;background:var(--surf)}
+.stat{flex:1;padding:18px 22px;border-right:1px solid var(--bdr);transition:.3s}.stat:last-child{border-right:none}.stat:hover{background:var(--surf2)}
+.sn{font-family:'Playfair Display',serif;font-size:1.9rem;color:var(--acc);line-height:1;margin-bottom:4px}
+.sl{font-size:.68rem;color:var(--txt3);letter-spacing:.1em;text-transform:uppercase}
+
+/* FEATURED */
+.featured{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:11px;margin:0 36px 52px}
+.fc{border-radius:var(--rc);border:1px solid var(--bdr);padding:26px 22px;background:var(--surf);position:relative;overflow:hidden;cursor:pointer;transition:.3s;display:flex;flex-direction:column;justify-content:flex-end;min-height:190px}
+.fc::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,var(--fc1,transparent),var(--fc2,transparent))}
+.fc:hover{transform:translateY(-4px);border-color:var(--bdr2)}
+.fc-em{position:absolute;top:18px;right:18px;font-size:2.8rem;opacity:.6}
+.fc-cat{font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;color:var(--txt3);margin-bottom:7px;position:relative}
+.fc-title{font-family:'Playfair Display',serif;font-size:1.25rem;font-weight:300;position:relative}
+.fc-sub{font-size:.72rem;color:var(--txt2);margin-top:5px;position:relative}
+
+/* CATS */
+.cats{display:flex;gap:8px;overflow-x:auto;padding:0 36px 36px;scrollbar-width:none}.cats::-webkit-scrollbar{display:none}
+.cp{flex-shrink:0;display:flex;align-items:center;gap:6px;padding:8px 16px;border-radius:var(--rp);border:1px solid var(--bdr);background:var(--surf);color:var(--txt2);font-size:.77rem;transition:.3s}
+.cp:hover{border-color:rgba(var(--ar),.35);color:var(--txt)}.cp.on{border-color:rgba(var(--ar),.5);color:var(--acc);background:rgba(var(--ar),.08)}
+
+/* SECTION */
+.sec{padding:0 36px 52px}
+.sec-h{display:flex;align-items:baseline;justify-content:space-between;margin-bottom:20px}
+.sec-t{font-family:'Playfair Display',serif;font-size:1.6rem;font-weight:300}
+
+/* SOUND GRID */
+.sgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(185px,1fr));gap:11px}
+.sc{background:var(--surf);border:1px solid var(--bdr);border-radius:var(--rc);padding:21px 17px 17px;cursor:pointer;position:relative;overflow:hidden;transition:transform .3s,box-shadow .3s,border-color .3s;display:flex;flex-direction:column;gap:11px}
+.sc::before{content:'';position:absolute;inset:0;background:radial-gradient(circle at 40% 0%,var(--cg,rgba(106,172,240,.1)),transparent 65%);opacity:0;transition:opacity .4s}
+.sc:hover{transform:translateY(-4px);box-shadow:0 12px 38px rgba(0,0,0,.38)}.sc:hover::before,.sc.on::before{opacity:1}
+.sc.on{border-color:var(--ca);box-shadow:0 0 0 1px var(--ca),0 8px 36px rgba(0,0,0,.4)}
+.sc-badge{position:absolute;top:11px;right:11px;width:8px;height:8px;border-radius:50%;background:var(--ca);box-shadow:0 0 9px var(--ca);opacity:0;transition:opacity .3s}
+.sc.on .sc-badge{opacity:1;animation:bp 1.5s ease-in-out infinite}
+@keyframes bp{0%,100%{transform:scale(1)}50%{transform:scale(1.8);opacity:.4}}
+.sc-em{font-size:2.3rem;display:block;transition:transform .4s;line-height:1}.sc:hover .sc-em{transform:scale(1.12) rotate(-3deg)}
+.sc-name{font-size:.9rem;font-weight:500}.sc-desc{font-size:.7rem;color:var(--txt2);line-height:1.5}
+.sc-foot{display:flex;align-items:center;justify-content:space-between;margin-top:auto}
+.sc-tag{font-size:.6rem;letter-spacing:.09em;text-transform:uppercase;padding:3px 8px;border-radius:var(--rp);background:var(--surf2);color:var(--txt3)}
+.sc-fav{width:25px;height:25px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.7rem;color:var(--txt3);border:1px solid var(--bdr);background:var(--surf);transition:.3s}
+.sc-fav:hover,.sc-fav.on{color:#f87171;border-color:rgba(248,113,113,.4);background:rgba(248,113,113,.08)}
+
+/* AI */
+.ai-wrap{padding:0 36px 52px}
+.ai-card{background:linear-gradient(135deg,rgba(var(--ar),.06),rgba(155,135,245,.06));border:1px solid rgba(var(--ar),.14);border-radius:22px;padding:26px}
+.ai-hd{display:flex;align-items:center;gap:11px;margin-bottom:18px}
+.ai-ic{width:38px;height:38px;border-radius:11px;background:linear-gradient(135deg,var(--acc),var(--acc2));display:flex;align-items:center;justify-content:center;font-size:1rem}
+.ai-tit{font-size:.95rem;font-weight:500;margin-bottom:2px}.ai-sub{font-size:.7rem;color:var(--txt2)}
+.ai-chips{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:18px}
+.ac{padding:7px 15px;border-radius:var(--rp);border:1px solid var(--bdr);background:var(--surf);color:var(--txt2);font-size:.76rem;transition:.3s}
+.ac:hover,.ac.on{border-color:rgba(var(--ar),.45);color:var(--acc);background:rgba(var(--ar),.08)}
+.ai-res{display:grid;grid-template-columns:repeat(auto-fill,minmax(155px,1fr));gap:9px}
+.arc{padding:12px 11px;border-radius:14px;border:1px solid var(--bdr);background:var(--surf);cursor:pointer;transition:.3s;display:flex;align-items:center;gap:9px}
+.arc:hover{border-color:rgba(var(--ar),.35);background:var(--surf2)}
+
+/* NOW PLAYING BAR */
+.npb{position:fixed;bottom:18px;left:50%;transform:translateX(-50%) translateY(140px);z-index:80;display:flex;flex-direction:column;background:rgba(10,14,24,.94);backdrop-filter:blur(32px);border:1px solid var(--bdr2);border-radius:20px;min-width:340px;max-width:700px;width:93vw;box-shadow:0 20px 65px rgba(0,0,0,.68);transition:transform .44s cubic-bezier(.34,1.56,.64,1),opacity .3s;opacity:0;overflow:hidden}
+.npb.on{transform:translateX(-50%) translateY(0);opacity:1}
+.np-top{display:flex;align-items:center;gap:13px;padding:13px 15px 9px}
+.np-thumb{width:40px;height:40px;border-radius:11px;flex-shrink:0;background:linear-gradient(135deg,var(--acc),var(--acc2));display:flex;align-items:center;justify-content:center;font-size:1.25rem}
+.np-info{flex:1;min-width:0}
+.np-name{font-size:.85rem;font-weight:500;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.np-meta{font-size:.67rem;color:var(--txt2)}
+.np-wave{display:flex;align-items:center;gap:2px;height:18px;flex-shrink:0}
+.nwb{width:2.5px;border-radius:2px;background:var(--acc);animation:wa 1.1s ease-in-out infinite}
+.nwb:nth-child(1){height:5px;animation-delay:0s}.nwb:nth-child(2){height:13px;animation-delay:.12s}.nwb:nth-child(3){height:18px;animation-delay:.24s}.nwb:nth-child(4){height:10px;animation-delay:.36s}.nwb:nth-child(5){height:6px;animation-delay:.48s}
+@keyframes wa{0%,100%{transform:scaleY(1)}50%{transform:scaleY(.28)}}
+.np-wave.paused .nwb{animation-play-state:paused}
+.np-ctrls{display:flex;align-items:center;gap:7px;flex-shrink:0}
+.npc{width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.78rem;color:var(--txt2);border:1px solid var(--bdr);background:var(--surf);transition:.3s}
+.npc:hover{border-color:rgba(var(--ar),.4);color:var(--acc)}
+.npc.pp{width:40px;height:40px;font-size:.9rem;background:var(--acc);border-color:transparent;color:#fff}
+.npc.pp:hover{transform:scale(1.09)}
+.np-timer-chip{font-size:.68rem;color:var(--acc);background:rgba(var(--ar),.1);border:1px solid rgba(var(--ar),.2);border-radius:var(--rp);padding:3px 9px;font-family:'Playfair Display',serif;white-space:nowrap;flex-shrink:0}
+
+/* CHIP ROW — per-sound volume cards */
+.np-chips{display:flex;align-items:stretch;gap:8px;padding:0 15px 10px;overflow-x:auto;scrollbar-width:none}
+.np-chips::-webkit-scrollbar{display:none}
+.nsc{display:flex;flex-direction:column;gap:5px;padding:8px 10px;border-radius:12px;border:1px solid var(--bdr2);background:var(--surf2);min-width:110px;flex-shrink:0;animation:cpop .2s ease}
+@keyframes cpop{from{transform:scale(.7);opacity:0}to{transform:scale(1);opacity:1}}
+.nsc-top{display:flex;align-items:center;justify-content:space-between;gap:6px}
+.nsc-label{display:flex;align-items:center;gap:5px;font-size:.72rem;min-width:0}
+.nsc-label span:first-child{font-size:.95rem}
+.nsc-label span:last-child{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:70px}
+.nsc-x{width:14px;height:14px;border-radius:50%;background:rgba(248,113,113,.14);color:#f87171;display:flex;align-items:center;justify-content:center;font-size:.52rem;border:1px solid rgba(248,113,113,.28);transition:.2s;flex-shrink:0}
+.nsc-x:hover{background:rgba(248,113,113,.32)}
+.nsc-vol-row{display:flex;align-items:center;gap:5px}
+.nsc-vol-icon{font-size:.65rem;color:var(--txt3);flex-shrink:0}
+.nsc-vol{flex:1;-webkit-appearance:none;height:3px;border-radius:2px;outline:none;cursor:pointer;background:linear-gradient(to right,var(--acc) var(--svp,80%),rgba(255,255,255,.12) var(--svp,80%))}
+.nsc-vol::-webkit-slider-thumb{-webkit-appearance:none;width:10px;height:10px;border-radius:50%;background:var(--acc);cursor:pointer}
+.nsc-vol-val{font-size:.6rem;color:var(--txt3);min-width:22px;text-align:right}
+
+/* VOLUME ROW */
+.np-vol{display:flex;align-items:center;gap:10px;padding:8px 17px 13px;border-top:1px solid var(--bdr)}
+.vol-icon{font-size:.88rem;color:var(--txt3);user-select:none;transition:.3s}.vol-icon:hover{color:var(--acc)}
+.vol-slider{flex:1;-webkit-appearance:none;height:3px;border-radius:2px;outline:none;cursor:pointer;background:linear-gradient(to right,var(--acc) var(--vp,70%),rgba(255,255,255,.1) var(--vp,70%))}
+.vol-slider::-webkit-slider-thumb{-webkit-appearance:none;width:13px;height:13px;border-radius:50%;background:var(--acc);cursor:pointer;box-shadow:0 0 7px rgba(var(--ar),.5)}
+.vol-val{font-size:.68rem;color:var(--txt3);min-width:28px;text-align:right}
+
+/* PLAYER VIEW */
+.pv{display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:calc(100vh - 62px);padding:40px 36px;text-align:center}
+.porb{width:185px;height:185px;border-radius:50%;margin-bottom:32px;position:relative;display:flex;align-items:center;justify-content:center}
+.porb::before{content:'';position:absolute;inset:-3px;border-radius:50%;background:conic-gradient(var(--acc),var(--acc2),var(--acc3),var(--acc));animation:spin 4s linear infinite;opacity:.5}
+.porb::after{content:'';position:absolute;inset:2px;border-radius:50%;background:var(--bg1)}
+.porb-i{position:relative;z-index:1;font-size:4.5rem}
+.pv h2{font-family:'Playfair Display',serif;font-size:2.3rem;font-weight:300;margin-bottom:7px}
+.pv .psub{color:var(--txt2);margin-bottom:44px}
+.pctrls{display:flex;align-items:center;gap:14px;margin-bottom:36px}
+.pb{width:48px;height:48px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1rem;border:1px solid var(--bdr);background:var(--surf);color:var(--txt2);transition:.3s}
+.pb:hover{border-color:rgba(var(--ar),.4);color:var(--acc)}
+.pb.play{width:64px;height:64px;font-size:1.4rem;background:linear-gradient(135deg,var(--acc),var(--acc2));border-color:transparent;color:#fff;box-shadow:0 0 36px rgba(var(--ar),.48)}
+.pb.play:hover{transform:scale(1.08)}
+.pprog{width:100%;max-width:380px;margin-bottom:28px}
+.ptrack{width:100%;height:3px;background:var(--surf2);border-radius:2px;margin-bottom:7px;cursor:pointer}
+.pfill{height:100%;border-radius:2px;background:linear-gradient(90deg,var(--acc),var(--acc2));transition:width .5s}
+.ptimes{display:flex;justify-content:space-between;font-size:.66rem;color:var(--txt3)}
+.tsel{display:flex;align-items:center;gap:8px;flex-wrap:wrap;justify-content:center}
+.tch{padding:6px 14px;border-radius:var(--rp);border:1px solid var(--bdr);background:var(--surf);color:var(--txt2);font-size:.74rem;transition:.3s}
+.tch:hover{border-color:rgba(var(--ar),.4);color:var(--acc)}.tch.on{border-color:rgba(var(--ar),.5);color:var(--acc);background:rgba(var(--ar),.08)}
+
+/* MIX VIEW */
+.mv{padding:38px 36px}.mv h2{font-family:'Playfair Display',serif;font-size:2.1rem;font-weight:300;margin-bottom:8px}
+.mv .msub{color:var(--txt2);max-width:500px;margin-bottom:32px}
+.mix-stage{background:var(--surf);border:1px solid var(--bdr);border-radius:22px;padding:26px;margin-bottom:28px;min-height:96px}
+.mix-lbl{font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;color:var(--txt3);margin-bottom:14px}
+.mix-chips{display:flex;gap:9px;flex-wrap:wrap;align-items:center;min-height:42px}
+.mchip{display:flex;align-items:center;gap:7px;padding:7px 13px;border-radius:var(--rp);background:var(--surf2);border:1px solid var(--bdr2);font-size:.78rem;animation:cpop .2s ease}
+.mch-x{width:15px;height:15px;border-radius:50%;background:var(--surf2);color:var(--txt3);display:flex;align-items:center;justify-content:center;font-size:.58rem;transition:.2s}
+.mch-x:hover{background:rgba(248,113,113,.2);color:#f87171}
+.mix-empty{color:var(--txt3);font-size:.8rem;font-style:italic}
+.mix-vrow{display:flex;align-items:center;gap:14px;margin-bottom:24px}
+.mix-vlbl{min-width:110px;font-size:.76rem;color:var(--txt2)}
+.mix-sl{flex:1;-webkit-appearance:none;height:3px;background:var(--surf2);border-radius:2px;outline:none;cursor:pointer}
+.mix-sl::-webkit-slider-thumb{-webkit-appearance:none;width:13px;height:13px;border-radius:50%;background:var(--acc)}
+.mix-sv{min-width:34px;font-size:.73rem;color:var(--txt3);text-align:right}
+.mix-btns{display:flex;gap:9px;margin-bottom:38px}
+.mix-play{display:flex;align-items:center;gap:7px;padding:11px 26px;border-radius:var(--rp);background:linear-gradient(135deg,var(--acc),var(--acc2));color:#fff;font-size:.83rem;font-weight:500;transition:.3s}
+.mix-play:hover{transform:translateY(-2px)}
+
+/* FAVS */
+.fv{padding:38px 36px}.fv h2{font-family:'Playfair Display',serif;font-size:1.9rem;font-weight:300;margin-bottom:7px}
+.fv .fsub{color:var(--txt2);margin-bottom:28px}
+
+/* MODAL */
+.modal{position:fixed;inset:0;z-index:200;background:rgba(0,0,0,.76);backdrop-filter:blur(10px);display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity .3s}
+.modal.on{opacity:1;pointer-events:all}
+.mbox{background:var(--bg1);border:1px solid var(--bdr2);border-radius:22px;padding:34px;width:365px;max-width:92vw;transform:scale(.92) translateY(18px);transition:transform .33s,opacity .3s;opacity:0}
+.modal.on .mbox{transform:scale(1) translateY(0);opacity:1}
+.mbox h3{font-family:'Playfair Display',serif;font-size:1.45rem;font-weight:300;margin-bottom:7px}
+.mbox p{font-size:.78rem;color:var(--txt2);margin-bottom:26px}
+.mgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:22px}
+.mo{padding:13px 8px;border-radius:14px;border:1px solid var(--bdr);background:var(--surf);color:var(--txt2);font-size:.8rem;transition:.3s;text-align:center}
+.mo:hover{border-color:rgba(var(--ar),.4);color:var(--acc)}.mo.on{border-color:rgba(var(--ar),.6);color:var(--acc);background:rgba(var(--ar),.08)}
+.macts{display:flex;gap:9px}
+.mcan{flex:1;padding:11px;border-radius:var(--rp);border:1px solid var(--bdr);color:var(--txt2);font-size:.82rem;transition:.3s}.mcan:hover{color:var(--txt)}
+.mok{flex:1;padding:11px;border-radius:var(--rp);background:linear-gradient(135deg,var(--acc),var(--acc2));color:#fff;font-size:.82rem;font-weight:500;transition:.3s}.mok:hover{transform:translateY(-2px)}
+
+/* SLEEP OVERLAY */
+.sov{position:fixed;inset:0;z-index:300;background:rgba(3,5,10,.96);backdrop-filter:blur(20px);display:flex;flex-direction:column;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity .8s}
+.sov.on{opacity:1;pointer-events:all}
+.sov-moon{font-size:5.5rem;animation:mf 4s ease-in-out infinite;margin-bottom:24px}
+@keyframes mf{0%,100%{transform:translateY(0)}50%{transform:translateY(-13px)}}
+.sov h2{font-family:'Playfair Display',serif;font-size:2.3rem;font-weight:300;margin-bottom:10px;text-align:center}
+.sov .sovp{color:var(--txt2);margin-bottom:36px;text-align:center}
+.sov-t{font-family:'Playfair Display',serif;font-size:4.8rem;font-weight:300;color:var(--acc);letter-spacing:-.02em;text-shadow:0 0 36px rgba(var(--ar),.42);margin-bottom:38px}
+.sov-exit{padding:10px 26px;border-radius:var(--rp);border:1px solid var(--bdr2);background:var(--surf);color:var(--txt2);font-size:.8rem;transition:.3s}.sov-exit:hover{color:var(--txt)}
+
+/* FOOTER */
+footer{border-top:1px solid var(--bdr);padding:26px 36px;display:flex;align-items:center;justify-content:space-between;color:var(--txt3);font-size:.7rem}
+
+/* BABY */
+body.baby{--acc:#d5a6f7;--acc2:#f0abfc;--acc3:#fba8e8;--ar:213,166,247}
+
+/* SKIP LINK (a11y) */
+.skip-link{position:absolute;top:-100%;left:16px;padding:10px 20px;background:var(--acc);color:#fff;border-radius:0 0 var(--rc) var(--rc);z-index:999;font-size:.82rem;font-weight:500;transition:top .3s}
+.skip-link:focus{top:0}
+
+/* FOCUS STYLES (a11y) */
+*:focus-visible{outline:2px solid var(--acc);outline-offset:2px;border-radius:4px}
+button:focus-visible,a:focus-visible{outline:2px solid var(--acc);outline-offset:3px}
+.sc:focus-visible{outline:2px solid var(--acc);outline-offset:2px;transform:translateY(-4px)}
+
+/* SCREEN READER ONLY (a11y) */
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border-width:0}
+
+/* LIVE REGION (a11y) */
+.a11y-status{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0)}
+
+/* ONBOARDING OVERLAY (UX) */
+.onboard{position:fixed;inset:0;z-index:400;background:rgba(3,5,10,.97);backdrop-filter:blur(24px);display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity .6s}
+.onboard.on{opacity:1;pointer-events:all}
+.ob-box{max-width:440px;width:92vw;text-align:center;padding:48px 32px}
+.ob-icon{font-size:4.5rem;margin-bottom:24px;display:block;animation:mf 4s ease-in-out infinite}
+.ob-title{font-family:'Playfair Display',serif;font-size:2.2rem;font-weight:300;margin-bottom:12px}
+.ob-desc{color:var(--txt2);font-size:.92rem;line-height:1.7;margin-bottom:32px}
+.ob-steps{display:flex;gap:14px;justify-content:center;margin-bottom:32px;flex-wrap:wrap}
+.ob-step{display:flex;flex-direction:column;align-items:center;gap:8px;padding:16px 12px;border-radius:16px;background:var(--surf);border:1px solid var(--bdr);width:110px;transition:.3s}
+.ob-step:hover{border-color:rgba(var(--ar),.4);transform:translateY(-3px)}
+.ob-step-em{font-size:1.6rem}
+.ob-step-txt{font-size:.7rem;color:var(--txt2)}
+.ob-start{padding:14px 36px;border-radius:var(--rp);background:linear-gradient(135deg,var(--acc),var(--acc2));color:#fff;font-size:.92rem;font-weight:500;box-shadow:0 0 28px rgba(var(--ar),.28);transition:.4s;cursor:pointer;border:none}
+.ob-start:hover{transform:translateY(-3px);box-shadow:0 8px 36px rgba(var(--ar),.44)}
+.ob-skip{display:block;margin:14px auto 0;color:var(--txt3);font-size:.76rem;background:none;border:none;cursor:pointer;transition:.3s}
+.ob-skip:hover{color:var(--txt2)}
+.ob-dots{display:flex;gap:8px;justify-content:center;margin-bottom:28px}
+.ob-dot{width:8px;height:8px;border-radius:50%;background:var(--surf2);border:1px solid var(--bdr);transition:.3s}
+.ob-dot.on{background:var(--acc);border-color:var(--acc);box-shadow:0 0 8px rgba(var(--ar),.5)}
+
+/* BREATHING EXERCISE (UX) */
+.breath-modal{position:fixed;inset:0;z-index:350;background:rgba(3,5,10,.96);backdrop-filter:blur(24px);display:flex;flex-direction:column;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity .6s}
+.breath-modal.on{opacity:1;pointer-events:all}
+.breath-circle{width:180px;height:180px;border-radius:50%;border:2px solid rgba(var(--ar),.3);display:flex;align-items:center;justify-content:center;margin-bottom:28px;position:relative}
+.breath-ring{position:absolute;inset:-6px;border-radius:50%;border:2px solid var(--acc);opacity:0;transform:scale(.8);transition:transform 4s ease-in-out,opacity 1s}
+.breath-ring.inhale{transform:scale(1.15);opacity:1}
+.breath-ring.exhale{transform:scale(.8);opacity:.3}
+.breath-txt{font-family:'Playfair Display',serif;font-size:1.4rem;font-weight:300;color:var(--acc)}
+.breath-phase{font-family:'Playfair Display',serif;font-size:2rem;font-weight:300;margin-bottom:8px}
+.breath-count{font-size:3.5rem;font-family:'Playfair Display',serif;color:var(--acc);margin-bottom:32px}
+.breath-sub{color:var(--txt2);font-size:.82rem;margin-bottom:28px}
+.breath-close{padding:10px 26px;border-radius:var(--rp);border:1px solid var(--bdr2);background:var(--surf);color:var(--txt2);font-size:.8rem;transition:.3s;cursor:pointer}
+.breath-close:hover{color:var(--txt);border-color:rgba(var(--ar),.4)}
+
+/* SLEEP STATS (UX) */
+.sleep-stats-card{background:var(--surf);border:1px solid var(--bdr);border-radius:22px;padding:26px;margin:0 36px 42px}
+.ss-title{font-family:'Playfair Display',serif;font-size:1.25rem;font-weight:300;margin-bottom:16px;display:flex;align-items:center;gap:10px}
+.ss-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:12px}
+.ss-item{padding:16px;border-radius:14px;background:var(--surf2);border:1px solid var(--bdr);text-align:center;transition:.3s}
+.ss-item:hover{border-color:rgba(var(--ar),.3)}
+.ss-val{font-family:'Playfair Display',serif;font-size:1.6rem;color:var(--acc);line-height:1;margin-bottom:4px}
+.ss-lbl{font-size:.66rem;color:var(--txt3);letter-spacing:.08em;text-transform:uppercase}
+
+/* TOAST NOTIFICATION (UX) */
+.toast{position:fixed;top:80px;right:20px;z-index:500;padding:12px 20px;border-radius:14px;background:rgba(10,14,24,.94);backdrop-filter:blur(20px);border:1px solid var(--bdr2);color:var(--txt);font-size:.82rem;transform:translateX(120%);opacity:0;transition:transform .4s cubic-bezier(.34,1.56,.64,1),opacity .3s;max-width:320px;display:flex;align-items:center;gap:10px}
+.toast.on{transform:translateX(0);opacity:1}
+
+/* COOKIE CONSENT BANNER */
+.cb{position:fixed;bottom:0;left:0;right:0;z-index:600;background:rgba(10,14,24,.97);backdrop-filter:blur(28px);border-top:1px solid var(--bdr2);padding:22px 32px;transform:translateY(100%);opacity:0;transition:transform .5s cubic-bezier(.34,1.56,.64,1),opacity .3s;display:flex;align-items:center;gap:20px;flex-wrap:wrap}
+.cb.cb-on{transform:translateY(0);opacity:1}
+.cb-text{flex:1;min-width:240px}
+.cb-title{font-size:.9rem;font-weight:500;margin-bottom:4px}
+.cb-desc{font-size:.76rem;color:var(--txt2);line-height:1.6}
+.cb-desc a{color:var(--acc);text-decoration:underline}
+.cb-btns{display:flex;gap:9px;flex-shrink:0;flex-wrap:wrap}
+.cb-accept{padding:10px 24px;border-radius:var(--rp);background:linear-gradient(135deg,var(--acc),var(--acc2));color:#fff;font-size:.82rem;font-weight:500;border:none;cursor:pointer;transition:.3s}
+.cb-accept:hover{transform:translateY(-2px);box-shadow:0 6px 24px rgba(var(--ar),.4)}
+.cb-reject{padding:10px 24px;border-radius:var(--rp);border:1px solid var(--bdr2);background:var(--surf);color:var(--txt2);font-size:.82rem;cursor:pointer;transition:.3s}
+.cb-reject:hover{color:var(--txt);border-color:rgba(var(--ar),.3)}
+.cb-detail{padding:10px 16px;border-radius:var(--rp);background:none;border:none;color:var(--txt3);font-size:.74rem;cursor:pointer;text-decoration:underline;transition:.3s}
+.cb-detail:hover{color:var(--txt2)}
+@media(max-width:640px){.cb{padding:18px 17px;flex-direction:column;align-items:stretch;gap:14px}.cb-btns{justify-content:stretch}.cb-accept,.cb-reject{flex:1;text-align:center}}
+
+/* HAMBURGER MENU */
+.ham-btn{display:none;width:36px;height:36px;border-radius:50%;border:1px solid var(--bdr);background:var(--surf);align-items:center;justify-content:center;cursor:pointer;flex-shrink:0;transition:.3s;position:relative;z-index:102}
+.ham-btn:hover{border-color:rgba(var(--ar),.4)}
+.ham-bar{display:block;width:16px;height:1.5px;background:var(--txt2);border-radius:2px;transition:transform .3s,opacity .3s}
+.ham-bar+.ham-bar{margin-top:4px}
+.ham-btn.open .ham-bar:nth-child(1){transform:rotate(45deg) translate(3px,4px)}
+.ham-btn.open .ham-bar:nth-child(2){opacity:0}
+.ham-btn.open .ham-bar:nth-child(3){transform:rotate(-45deg) translate(3px,-4px)}
+
+.side-menu{position:fixed;top:0;right:0;width:280px;max-width:85vw;height:100vh;background:rgba(7,9,15,.98);backdrop-filter:blur(32px);border-left:1px solid var(--bdr2);z-index:101;transform:translateX(100%);transition:transform .35s cubic-bezier(.4,0,.2,1);display:flex;flex-direction:column;padding:80px 24px 32px;overflow-y:auto}
+.side-menu.open{transform:translateX(0)}
+.side-overlay{position:fixed;inset:0;background:rgba(0,0,0,.6);z-index:100;opacity:0;pointer-events:none;transition:opacity .3s}
+.side-overlay.open{opacity:1;pointer-events:all}
+
+.sm-section{margin-bottom:24px}
+.sm-label{font-size:.62rem;letter-spacing:.12em;text-transform:uppercase;color:var(--txt3);margin-bottom:10px;padding-left:12px}
+.sm-link{display:flex;align-items:center;gap:10px;padding:11px 12px;border-radius:12px;color:var(--txt2);font-size:.88rem;transition:.2s;text-decoration:none;cursor:pointer;border:none;background:none;width:100%;font-family:inherit}
+.sm-link:hover,.sm-link.active{background:var(--surf);color:var(--txt)}
+.sm-link:hover{text-decoration:none}
+.sm-icon{font-size:1rem;width:22px;text-align:center;flex-shrink:0}
+.sm-divider{height:1px;background:var(--bdr);margin:8px 0 16px}
+
+/* DESKTOP EXTRA NAV */
+.desk-links{display:flex;gap:4px}
+.desk-links a{padding:7px 13px;border-radius:var(--rp);font-size:.77rem;color:var(--txt2);border:1px solid transparent;transition:.3s;text-decoration:none}
+.desk-links a:hover{color:var(--txt);background:var(--surf);text-decoration:none}
+
+/* RESPONSIVE */
+@media(max-width:900px){.featured{grid-template-columns:1fr 1fr}.featured .fc:first-child{grid-column:1/-1}.ss-grid{grid-template-columns:repeat(auto-fit,minmax(100px,1fr))}}
+@media(max-width:640px){.topbar{padding:13px 17px}.tnav{display:none}.desk-links{display:none}.ham-btn{display:flex}.hero,.sec,.ai-wrap,.mv,.fv,.pv{padding-left:17px;padding-right:17px}.cats,.stats,.featured{margin-left:17px;margin-right:17px}.stats,.featured{display:none}.npb{width:calc(100vw - 20px);bottom:10px}footer{flex-direction:column;gap:7px;text-align:center}.sleep-stats-card{margin:0 17px 32px;padding:18px}.ss-grid{grid-template-columns:repeat(auto-fit,minmax(90px,1fr));gap:8px}.ss-val{font-size:1.25rem}.ss-lbl{font-size:.58rem}.ss-title{font-size:1.05rem}.mob-hide{display:none}.ob-steps{gap:8px}.ob-step{width:88px;padding:12px 8px}.toast{left:10px;right:10px;max-width:none;top:auto;bottom:80px}}
+
+@keyframes ein{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+.ein{opacity:0;animation:ein .45s ease forwards}
+.ein:nth-child(1){animation-delay:.04s}.ein:nth-child(2){animation-delay:.09s}.ein:nth-child(3){animation-delay:.14s}.ein:nth-child(4){animation-delay:.19s}.ein:nth-child(5){animation-delay:.24s}.ein:nth-child(6){animation-delay:.29s}
+</style>
+</head>
+<body>
+<!-- Skip Link (a11y) -->
+<a href="#main-content" class="skip-link">İçeriğe Atla</a>
+
+<!-- Screen Reader Status (a11y) -->
+<div class="a11y-status" id="a11y-status" role="status" aria-live="polite" aria-atomic="true"></div>
+
+<!-- Toast Notification (UX) -->
+<div class="toast" id="toast" role="alert" aria-live="assertive"><span id="toast-icon">✓</span><span id="toast-msg"></span></div>
+
+<div class="blob ba" aria-hidden="true"></div><div class="blob bb" aria-hidden="true"></div>
+<canvas id="cvs" width="1920" height="911" aria-hidden="true"></canvas>
+<div id="app">
+
+<header class="topbar" role="banner">
+  <a class="logo" href="#" onclick="return false" aria-label="Uykucu - Ana Sayfa"><div class="logo-orb" aria-hidden="true"></div>UYKUCU</a>
+  <nav class="tnav" role="navigation" aria-label="Ana navigasyon">
+    <button class="tb on" onclick="goView('home',this)" aria-label="Ana Sayfa" aria-current="page" tabindex="0">Ana Sayfa</button>
+    <button class="tb" onclick="goView('player',this)" aria-label="Oynatıcı" tabindex="0">Oynatıcı</button>
+    <button class="tb" onclick="goView('mix',this)" aria-label="Mix Stüdyo" tabindex="0">Mix Stüdyo</button>
+    <button class="tb" onclick="goView('favs',this)" aria-label="Favoriler" tabindex="0">Favoriler</button>
+  </nav>
+  <div style="display:flex;gap:8px;align-items:center">
+    <nav class="desk-links" aria-label="Bilgi sayfaları">
+      <a href="hakkimizda.html">Hakkımızda</a>
+      <a href="iletisim.html">İletişim</a>
+    </nav>
+    <button class="sleep-btn" onclick="openBreathing()" aria-label="Nefes egzersizi başlat" title="Nefes Egzersizi" style="background:var(--surf);border:1px solid var(--bdr);box-shadow:none;color:var(--txt2);padding:9px 14px">
+      <span aria-hidden="true">🫁</span> <span class="mob-hide">Nefes</span>
+    </button>
+    <button class="sleep-btn" onclick="launchSleep()" aria-label="Uyku modunu başlat">
+      <span aria-hidden="true">🌙</span> Uyku Modu
+    </button>
+    <button class="ham-btn" id="ham-btn" onclick="toggleSideMenu()" aria-label="Menüyü aç" aria-expanded="false">
+      <span class="ham-bar"></span><span class="ham-bar"></span><span class="ham-bar"></span>
+    </button>
+  </div>
+</header>
+
+<!-- SIDE MENU (mobile + hamburger) -->
+<div class="side-overlay" id="side-overlay" onclick="closeSideMenu()"></div>
+<nav class="side-menu" id="side-menu" role="navigation" aria-label="Mobil menü">
+  <div class="sm-section">
+    <div class="sm-label">Uygulama</div>
+    <button class="sm-link active" onclick="goViewMobile('home')"><span class="sm-icon">🏠</span>Ana Sayfa</button>
+    <button class="sm-link" onclick="goViewMobile('player')"><span class="sm-icon">▶</span>Oynatıcı</button>
+    <button class="sm-link" onclick="goViewMobile('mix')"><span class="sm-icon">🎛</span>Mix Stüdyo</button>
+    <button class="sm-link" onclick="goViewMobile('favs')"><span class="sm-icon">♥</span>Favoriler</button>
+  </div>
+  <div class="sm-divider"></div>
+  <div class="sm-section">
+    <div class="sm-label">Özellikler</div>
+    <button class="sm-link" onclick="closeSideMenu();launchSleep()"><span class="sm-icon">🌙</span>Uyku Modu</button>
+    <button class="sm-link" onclick="closeSideMenu();openBreathing()"><span class="sm-icon">🫁</span>Nefes Egzersizi</button>
+  </div>
+  <div class="sm-divider"></div>
+  <div class="sm-section">
+    <div class="sm-label">Bilgi</div>
+    <a class="sm-link" href="hakkimizda.html"><span class="sm-icon">ℹ</span>Hakkımızda</a>
+    <a class="sm-link" href="iletisim.html"><span class="sm-icon">📧</span>İletişim</a>
+  </div>
+  <div class="sm-divider"></div>
+  <div class="sm-section">
+    <div class="sm-label">Yasal</div>
+    <a class="sm-link" href="gizlilik.html"><span class="sm-icon">🔒</span>Gizlilik Politikası</a>
+    <a class="sm-link" href="kosullar.html"><span class="sm-icon">📋</span>Kullanım Koşulları</a>
+    <a class="sm-link" href="cerez-politikasi.html"><span class="sm-icon">🍪</span>Çerez Politikası</a>
+    <button class="sm-link" onclick="closeSideMenu();openCookieSettings()"><span class="sm-icon">⚙</span>Çerez Ayarları</button>
+  </div>
+</nav>
+
+<!-- HOME -->
+<div class="view on" id="v-home" id="main-content">
+  <div class="hero" role="banner">
+    <div class="eyebrow" aria-label="Uygulama durumu"><div class="eyebrow-dot" aria-hidden="true"></div>Huzurlu Uyku Deneyimi</div>
+    <h1>Gecenin <em>sessizliğini</em><br>içine al</h1>
+    <p>Doğanın ritmiyle nefes al. Beyin dalgalarını yavaşlat, zihnini boşalt.</p>
+    <div class="actions" role="group" aria-label="Hızlı başlangıç">
+      <button class="btn-p" onclick="launchSleep()" aria-label="Hemen uyku moduna başla">🌙 Hemen Başla</button>
+      <button class="btn-g" onclick="goView(&#39;mix&#39;,document.querySelector(&#39;.tb:nth-child(3)&#39;))" aria-label="Mix Stüdyo'ya git">🎛 Mix Oluştur</button>
+    </div>
+  </div>
+
+  <!-- Sleep Stats Card (UX) -->
+  <div class="sleep-stats-card" role="region" aria-label="Uyku istatistikleri">
+    <div class="ss-title"><span aria-hidden="true">📊</span> Uyku Raporun</div>
+    <div class="ss-grid">
+      <div class="ss-item"><div class="ss-val" id="ss-today">0</div><div class="ss-lbl">Bugünkü Dakika</div></div>
+      <div class="ss-item"><div class="ss-val" id="ss-total">0</div><div class="ss-lbl">Toplam Saat</div></div>
+      <div class="ss-item"><div class="ss-val" id="ss-streak">1</div><div class="ss-lbl">Gün Serisi</div></div>
+      <div class="ss-item"><div class="ss-val" id="ss-fav-sound">—</div><div class="ss-lbl">En Çok Dinlenen</div></div>
+      <div class="ss-item"><div class="ss-val" id="ss-sessions">0</div><div class="ss-lbl">Toplam Oturum</div></div>
+    </div>
+  </div>
+
+  <div class="stats" role="region" aria-label="Kısa istatistikler">
+    <div class="stat"><div class="sn" id="st-min">0</div><div class="sl">Bugünkü Dakika</div></div>
+    <div class="stat"><div class="sn" id="st-plays">51</div><div class="sl">Toplam Oynatma</div></div>
+    <div class="stat"><div class="sn" id="st-favs">0</div><div class="sl">Favoriler</div></div>
+    <div class="stat"><div class="sn">1</div><div class="sl">Gün Serisi</div></div>
+  </div>
+  <div class="featured" role="region" aria-label="Öne çıkan sesler">
+    <div class="fc" style="--fc1:#6aacf022;--fc2:#5ef0d414" onclick="playSound(&#39;rain&#39;)" role="button" tabindex="0" aria-label="Yağmur Dinleti - Çatıya yavaş damlayan yağmur" onkeydown="if(event.key==='Enter')this.click()"><div class="fc-em" aria-hidden="true">🌧</div><div class="fc-cat">Popüler · Doğa</div><div class="fc-title">Yağmur Dinleti</div><div class="fc-sub">Çatıya yavaş damlayan yağmur</div></div>
+    <div class="fc" style="--fc1:#f0abfc22;--fc2:#d5a6f714" onclick="playSound(&#39;womb&#39;)" role="button" tabindex="0" aria-label="Anne Karnı - Sıcak ve güvenli" onkeydown="if(event.key==='Enter')this.click()"><div class="fc-em" aria-hidden="true">💞</div><div class="fc-cat">Bebek · Önerilen</div><div class="fc-title">Anne Karnı</div><div class="fc-sub">Sıcak ve güvenli</div></div>
+    <div class="fc" style="--fc1:#fb923c1e;--fc2:#fcd34d12" onclick="playSound(&#39;fire&#39;)" role="button" tabindex="0" aria-label="Şömine - Odun ateşinin sıcaklığı" onkeydown="if(event.key==='Enter')this.click()"><div class="fc-em" aria-hidden="true">🔥</div><div class="fc-cat">Ambient · Kış</div><div class="fc-title">Şömine</div><div class="fc-sub">Odun ateşinin sıcaklığı</div></div>
+  </div>
+  <div class="cats" role="toolbar" aria-label="Kategori filtresi">
+    <button class="cp on" onclick="filterCat(&#39;all&#39;,this)">✦ Tümü</button>
+    <button class="cp" onclick="filterCat(&#39;doga&#39;,this)">🌿 Doğa</button>
+    <button class="cp" onclick="filterCat(&#39;bebek&#39;,this)">👶 Bebek</button>
+    <button class="cp" onclick="filterCat(&#39;ambient&#39;,this)">🌌 Ambient</button>
+    <button class="cp" onclick="filterCat(&#39;meditasyon&#39;,this)">🧘 Meditasyon</button>
+    <button class="cp" onclick="filterCat(&#39;uyku&#39;,this)">💤 Uyku</button>
+  </div>
+  <div class="sec">
+    <div class="sec-h"><div class="sec-t">Sesler</div></div>
+    <div class="sgrid" id="home-grid"><div class="sc ein " data-id="rain" style="--ca:#60a5fa;--cg:#60a5fa18" onclick="playSound(&#39;rain&#39;)"><div class="sc-badge"></div><span class="sc-em">🌧</span><div class="sc-name">Yağmur</div><div class="sc-desc">Çatıya hafifçe damlayan yağmur</div><div class="sc-foot"><span class="sc-tag">Doğa</span><button class="sc-fav " data-id="rain" onclick="event.stopPropagation();toggleFav(&#39;rain&#39;)">♥</button></div></div><div class="sc ein " data-id="heavyrain" style="--ca:#3b82f6;--cg:#3b82f618" onclick="playSound(&#39;heavyrain&#39;)"><div class="sc-badge"></div><span class="sc-em">🌧</span><div class="sc-name">Sağanak Yağmur</div><div class="sc-desc">Kuvvetli sürükleyici yağmur</div><div class="sc-foot"><span class="sc-tag">Doğa</span><button class="sc-fav " data-id="heavyrain" onclick="event.stopPropagation();toggleFav(&#39;heavyrain&#39;)">♥</button></div></div><div class="sc ein " data-id="ocean" style="--ca:#22d3ee;--cg:#22d3ee18" onclick="playSound(&#39;ocean&#39;)"><div class="sc-badge"></div><span class="sc-em">🌊</span><div class="sc-name">Deniz Dalgaları</div><div class="sc-desc">Kıyıya vuran yavaş derin dalgalar</div><div class="sc-foot"><span class="sc-tag">Doğa</span><button class="sc-fav " data-id="ocean" onclick="event.stopPropagation();toggleFav(&#39;ocean&#39;)">♥</button></div></div><div class="sc ein " data-id="forest" style="--ca:#86efac;--cg:#86efac18" onclick="playSound(&#39;forest&#39;)"><div class="sc-badge"></div><span class="sc-em">🌲</span><div class="sc-name">Orman</div><div class="sc-desc">Kuşlar, yapraklar ve huzur</div><div class="sc-foot"><span class="sc-tag">Doğa</span><button class="sc-fav " data-id="forest" onclick="event.stopPropagation();toggleFav(&#39;forest&#39;)">♥</button></div></div><div class="sc ein " data-id="wind" style="--ca:#a7f3d0;--cg:#a7f3d018" onclick="playSound(&#39;wind&#39;)"><div class="sc-badge"></div><span class="sc-em">🍃</span><div class="sc-name">Rüzgar</div><div class="sc-desc">Sakin esen serin rüzgar</div><div class="sc-foot"><span class="sc-tag">Doğa</span><button class="sc-fav " data-id="wind" onclick="event.stopPropagation();toggleFav(&#39;wind&#39;)">♥</button></div></div><div class="sc ein " data-id="thunder" style="--ca:#818cf8;--cg:#818cf818" onclick="playSound(&#39;thunder&#39;)"><div class="sc-badge"></div><span class="sc-em">⛈</span><div class="sc-name">Gök Gürültüsü</div><div class="sc-desc">Uzaktan gelen şimşek ve fırtına</div><div class="sc-foot"><span class="sc-tag">Doğa</span><button class="sc-fav " data-id="thunder" onclick="event.stopPropagation();toggleFav(&#39;thunder&#39;)">♥</button></div></div><div class="sc ein " data-id="creek" style="--ca:#67e8f9;--cg:#67e8f918" onclick="playSound(&#39;creek&#39;)"><div class="sc-badge"></div><span class="sc-em">🏞</span><div class="sc-name">Dere Sesi</div><div class="sc-desc">Akan serin tatlı su sesi</div><div class="sc-foot"><span class="sc-tag">Doğa</span><button class="sc-fav " data-id="creek" onclick="event.stopPropagation();toggleFav(&#39;creek&#39;)">♥</button></div></div><div class="sc ein " data-id="birds" style="--ca:#bbf7d0;--cg:#bbf7d018" onclick="playSound(&#39;birds&#39;)"><div class="sc-badge"></div><span class="sc-em">🐦</span><div class="sc-name">Sabah Kuşları</div><div class="sc-desc">Şafakta ötüşen kuşlar</div><div class="sc-foot"><span class="sc-tag">Doğa</span><button class="sc-fav " data-id="birds" onclick="event.stopPropagation();toggleFav(&#39;birds&#39;)">♥</button></div></div><div class="sc ein " data-id="snowfall" style="--ca:#bae6fd;--cg:#bae6fd18" onclick="playSound(&#39;snowfall&#39;)"><div class="sc-badge"></div><span class="sc-em">❄️</span><div class="sc-name">Kar Yağışı</div><div class="sc-desc">Sessiz ve sakin kar sesi</div><div class="sc-foot"><span class="sc-tag">Doğa</span><button class="sc-fav " data-id="snowfall" onclick="event.stopPropagation();toggleFav(&#39;snowfall&#39;)">♥</button></div></div><div class="sc ein " data-id="fire" style="--ca:#fb923c;--cg:#fb923c18" onclick="playSound(&#39;fire&#39;)"><div class="sc-badge"></div><span class="sc-em">🔥</span><div class="sc-name">Şömine</div><div class="sc-desc">Odun ateşinin çıtırtısı</div><div class="sc-foot"><span class="sc-tag">Ambient</span><button class="sc-fav " data-id="fire" onclick="event.stopPropagation();toggleFav(&#39;fire&#39;)">♥</button></div></div><div class="sc ein " data-id="white" style="--ca:#c4b5fd;--cg:#c4b5fd18" onclick="playSound(&#39;white&#39;)"><div class="sc-badge"></div><span class="sc-em">〰️</span><div class="sc-name">Beyaz Gürültü</div><div class="sc-desc">Odak ve derin uyku için</div><div class="sc-foot"><span class="sc-tag">Ambient</span><button class="sc-fav " data-id="white" onclick="event.stopPropagation();toggleFav(&#39;white&#39;)">♥</button></div></div><div class="sc ein " data-id="brown" style="--ca:#d97706;--cg:#d9770618" onclick="playSound(&#39;brown&#39;)"><div class="sc-badge"></div><span class="sc-em">🌫</span><div class="sc-name">Kahverengi Gürültü</div><div class="sc-desc">Derin sarmalayan geniş ses</div><div class="sc-foot"><span class="sc-tag">Ambient</span><button class="sc-fav " data-id="brown" onclick="event.stopPropagation();toggleFav(&#39;brown&#39;)">♥</button></div></div><div class="sc ein " data-id="cafe" style="--ca:#a78bfa;--cg:#a78bfa18" onclick="playSound(&#39;cafe&#39;)"><div class="sc-badge"></div><span class="sc-em">☕</span><div class="sc-name">Kafe Gürültüsü</div><div class="sc-desc">Hafif arka plan kalabalık sesi</div><div class="sc-foot"><span class="sc-tag">Ambient</span><button class="sc-fav " data-id="cafe" onclick="event.stopPropagation();toggleFav(&#39;cafe&#39;)">♥</button></div></div><div class="sc ein " data-id="fan" style="--ca:#94a3b8;--cg:#94a3b818" onclick="playSound(&#39;fan&#39;)"><div class="sc-badge"></div><span class="sc-em">🌀</span><div class="sc-name">Vantilatör</div><div class="sc-desc">Sabit ve sürekli fan sesi</div><div class="sc-foot"><span class="sc-tag">Ambient</span><button class="sc-fav " data-id="fan" onclick="event.stopPropagation();toggleFav(&#39;fan&#39;)">♥</button></div></div><div class="sc ein " data-id="space" style="--ca:#6366f1;--cg:#6366f118" onclick="playSound(&#39;space&#39;)"><div class="sc-badge"></div><span class="sc-em">🌌</span><div class="sc-name">Uzay Ambiyansı</div><div class="sc-desc">Derin kozmik hum sesi</div><div class="sc-foot"><span class="sc-tag">Ambient</span><button class="sc-fav " data-id="space" onclick="event.stopPropagation();toggleFav(&#39;space&#39;)">♥</button></div></div><div class="sc ein " data-id="womb" style="--ca:#f0abfc;--cg:#f0abfc18" onclick="playSound(&#39;womb&#39;)"><div class="sc-badge"></div><span class="sc-em">💞</span><div class="sc-name">Anne Karnı</div><div class="sc-desc">Bebekler için sıcak ve güvenli</div><div class="sc-foot"><span class="sc-tag">Bebek</span><button class="sc-fav " data-id="womb" onclick="event.stopPropagation();toggleFav(&#39;womb&#39;)">♥</button></div></div><div class="sc ein " data-id="heartbeat" style="--ca:#fb7185;--cg:#fb718518" onclick="playSound(&#39;heartbeat&#39;)"><div class="sc-badge"></div><span class="sc-em">💓</span><div class="sc-name">Kalp Atışı</div><div class="sc-desc">Düzenli sakinleştirici ritim</div><div class="sc-foot"><span class="sc-tag">Bebek</span><button class="sc-fav " data-id="heartbeat" onclick="event.stopPropagation();toggleFav(&#39;heartbeat&#39;)">♥</button></div></div><div class="sc ein " data-id="lullaby" style="--ca:#d8b4fe;--cg:#d8b4fe18" onclick="playSound(&#39;lullaby&#39;)"><div class="sc-badge"></div><span class="sc-em">🎵</span><div class="sc-name">Ninni</div><div class="sc-desc">Yumuşak melodi ve nefes sesleri</div><div class="sc-foot"><span class="sc-tag">Bebek</span><button class="sc-fav " data-id="lullaby" onclick="event.stopPropagation();toggleFav(&#39;lullaby&#39;)">♥</button></div></div><div class="sc ein " data-id="shush" style="--ca:#fca5a5;--cg:#fca5a518" onclick="playSound(&#39;shush&#39;)"><div class="sc-badge"></div><span class="sc-em">🤫</span><div class="sc-name">Shushing</div><div class="sc-desc">Bebeği sakinleştiren ses</div><div class="sc-foot"><span class="sc-tag">Bebek</span><button class="sc-fav " data-id="shush" onclick="event.stopPropagation();toggleFav(&#39;shush&#39;)">♥</button></div></div><div class="sc ein " data-id="cradle" style="--ca:#fde68a;--cg:#fde68a18" onclick="playSound(&#39;cradle&#39;)"><div class="sc-badge"></div><span class="sc-em">🍼</span><div class="sc-name">Beşik Sesi</div><div class="sc-desc">Hafif sallanan beşik gıcırtısı</div><div class="sc-foot"><span class="sc-tag">Bebek</span><button class="sc-fav " data-id="cradle" onclick="event.stopPropagation();toggleFav(&#39;cradle&#39;)">♥</button></div></div><div class="sc ein " data-id="tibetan" style="--ca:#fcd34d;--cg:#fcd34d18" onclick="playSound(&#39;tibetan&#39;)"><div class="sc-badge"></div><span class="sc-em">🔔</span><div class="sc-name">Tibet Kasesi</div><div class="sc-desc">Derin meditasyon titreşimleri</div><div class="sc-foot"><span class="sc-tag">Meditasyon</span><button class="sc-fav " data-id="tibetan" onclick="event.stopPropagation();toggleFav(&#39;tibetan&#39;)">♥</button></div></div><div class="sc ein " data-id="binaural" style="--ca:#818cf8;--cg:#818cf818" onclick="playSound(&#39;binaural&#39;)"><div class="sc-badge"></div><span class="sc-em">🧠</span><div class="sc-name">Binaural Beats</div><div class="sc-desc">Alfa dalgaları ile derin uyku</div><div class="sc-foot"><span class="sc-tag">Meditasyon</span><button class="sc-fav " data-id="binaural" onclick="event.stopPropagation();toggleFav(&#39;binaural&#39;)">♥</button></div></div><div class="sc ein " data-id="om" style="--ca:#fde68a;--cg:#fde68a18" onclick="playSound(&#39;om&#39;)"><div class="sc-badge"></div><span class="sc-em">🕉</span><div class="sc-name">Om Mantrası</div><div class="sc-desc">Sakinleştirici titreşim ve ses</div><div class="sc-foot"><span class="sc-tag">Meditasyon</span><button class="sc-fav " data-id="om" onclick="event.stopPropagation();toggleFav(&#39;om&#39;)">♥</button></div></div><div class="sc ein " data-id="drone" style="--ca:#a5b4fc;--cg:#a5b4fc18" onclick="playSound(&#39;drone&#39;)"><div class="sc-badge"></div><span class="sc-em">🎶</span><div class="sc-name">Drone Müzik</div><div class="sc-desc">Sürekli drone ve overtone sesi</div><div class="sc-foot"><span class="sc-tag">Meditasyon</span><button class="sc-fav " data-id="drone" onclick="event.stopPropagation();toggleFav(&#39;drone&#39;)">♥</button></div></div><div class="sc ein " data-id="sleep" style="--ca:#a5b4fc;--cg:#a5b4fc18" onclick="playSound(&#39;sleep&#39;)"><div class="sc-badge"></div><span class="sc-em">💤</span><div class="sc-name">Uyku Fısıltısı</div><div class="sc-desc">ASMR benzeri yumuşak fısıltı</div><div class="sc-foot"><span class="sc-tag">Uyku</span><button class="sc-fav " data-id="sleep" onclick="event.stopPropagation();toggleFav(&#39;sleep&#39;)">♥</button></div></div><div class="sc ein " data-id="deepfreq" style="--ca:#7c3aed;--cg:#7c3aed18" onclick="playSound(&#39;deepfreq&#39;)"><div class="sc-badge"></div><span class="sc-em">🌠</span><div class="sc-name">Derin Uyku 432Hz</div><div class="sc-desc">432Hz harmonik uyku frekansı</div><div class="sc-foot"><span class="sc-tag">Uyku</span><button class="sc-fav " data-id="deepfreq" onclick="event.stopPropagation();toggleFav(&#39;deepfreq&#39;)">♥</button></div></div></div>
+  </div>
+  <div class="ai-wrap">
+    <div class="ai-card" role="region" aria-label="AI ses önerisi">
+      <div class="ai-hd"><div class="ai-ic" aria-hidden="true">✦</div><div><div class="ai-tit">AI Öneri Motoru</div><div class="ai-sub">Ruh haline göre öneriler</div></div></div>
+      <p style="font-size:.8rem;color:var(--txt2);margin-bottom:14px">Şu an nasıl hissediyorsun?</p>
+      <div class="ai-chips" role="group" aria-label="Ruh hali seçenekleri">
+        <button class="ac" onclick="moodRec(&#39;stresli&#39;,this)">😰 Stresli</button>
+        <button class="ac" onclick="moodRec(&#39;uykusuz&#39;,this)">😴 Uykusuzluk</button>
+        <button class="ac" onclick="moodRec(&#39;bebek&#39;,this)">👶 Bebek İçin</button>
+        <button class="ac" onclick="moodRec(&#39;odak&#39;,this)">🎯 Odaklanma</button>
+        <button class="ac" onclick="moodRec(&#39;meditasyon&#39;,this)">🧘 Meditasyon</button>
+      </div>
+      <div class="ai-res" id="ai-res"></div>
+    </div>
+  </div>
+  <footer role="contentinfo">
+    <div>© 2025 Uykucu</div>
+    <div>
+      <a href="hakkimizda.html" style="color:var(--txt3);text-decoration:none">Hakkımızda</a> · 
+      <a href="iletisim.html" style="color:var(--txt3);text-decoration:none">İletişim</a>
+    </div>
+    <div>
+      <a href="gizlilik.html" style="color:var(--txt3);text-decoration:none">Gizlilik</a> · 
+      <a href="kosullar.html" style="color:var(--txt3);text-decoration:none">Koşullar</a> · 
+      <a href="cerez-politikasi.html" style="color:var(--txt3);text-decoration:none">Çerez Politikası</a> · 
+      <button onclick="openCookieSettings()" style="color:var(--txt3);font-size:.7rem;background:none;border:none;cursor:pointer;text-decoration:underline;font-family:inherit" aria-label="Çerez ayarlarını aç">Çerez Ayarları</button>
+    </div>
+  </footer>
+</div>
+
+<!-- PLAYER -->
+<div class="view" id="v-player">
+  <div class="pv">
+    <div class="porb"><span class="porb-i" id="p-em">🎵</span></div>
+    <h2 id="p-title">Ses Seçilmedi</h2>
+    <p class="psub" id="p-sub">Ana sayfadan bir ses seçin</p>
+    <div class="pctrls" role="toolbar" aria-label="Oynatıcı kontrolleri">
+      <button class="pb" onclick="favCurrent()" aria-label="Favorilere ekle" title="Favorilere ekle">♡</button>
+      <button class="pb" onclick="adjSound(-1)" aria-label="Önceki ses" title="Önceki ses">⏮</button>
+      <button class="pb play" id="p-playbtn" onclick="togglePlay()" aria-label="Oynat veya duraklat" title="Oynat/Duraklat">▶</button>
+      <button class="pb" onclick="adjSound(1)" aria-label="Sonraki ses" title="Sonraki ses">⏭</button>
+      <button class="pb" onclick="openTimer()" aria-label="Zamanlayıcı aç" title="Zamanlayıcı">⏱</button>
+    </div>
+    <div class="pprog">
+      <div class="ptrack" onclick="seekProg(event)"><div class="pfill" id="p-fill" style="width:0%"></div></div>
+      <div class="ptimes"><span id="p-cur">0:00</span><span>∞ Loop</span></div>
+    </div>
+    <div class="tsel">
+      <span style="font-size:.7rem;color:var(--txt3);margin-right:3px">Zamanlayıcı:</span>
+      <button class="tch" onclick="quickTimer(15,this)">15 dak</button>
+      <button class="tch" onclick="quickTimer(30,this)">30 dak</button>
+      <button class="tch" onclick="quickTimer(60,this)">1 saat</button>
+      <button class="tch" onclick="quickTimer(90,this)">1.5 saat</button>
+      <button class="tch" onclick="openTimer()">Özel ⏱</button>
+    </div>
+  </div>
+</div>
+
+<!-- MIX -->
+<div class="view" id="v-mix">
+  <div class="mv">
+    <h2>🎛 Mix Stüdyo</h2>
+    <p class="msub">Birden fazla sesi katmanlayarak kendi benzersiz ortamını yarat.</p>
+    <div class="mix-stage"><div class="mix-lbl">Aktif Sesler</div><div class="mix-chips" id="mix-chips"><span class="mix-empty">Aşağıdan ses ekle...</span></div></div>
+    <div class="mix-vrow"><span class="mix-vlbl">🔊 Genel Ses</span><input type="range" class="mix-sl" id="mix-vol" min="0" max="100" value="70" oninput="setVol(this.value)"><span class="mix-sv" id="mix-vval">70%</span></div>
+    <div class="mix-vrow"><span class="mix-vlbl">🌙 Fade Süresi</span><input type="range" class="mix-sl" min="0" max="60" value="10" oninput="this.nextElementSibling.textContent=this.value+&#39;s&#39;"><span class="mix-sv">10s</span></div>
+    <div class="mix-btns">
+      <button class="mix-play" id="mix-playbtn" onclick="playMix()">▶ Mix'i Oynat</button>
+      <button class="btn-g" onclick="clearMix()">🗑 Temizle</button>
+    </div>
+    <div class="sec-h" style="margin-bottom:16px"><div class="sec-t" style="font-size:1.15rem">Sesleri Ekle</div></div>
+    <div class="sgrid" id="mix-grid"></div>
+  </div>
+</div>
+
+<!-- FAVS -->
+<div class="view" id="v-favs">
+  <div class="fv"><h2>♡ Favorilerim</h2><p class="fsub">Sık dinlediğin sesler.</p><div class="sgrid" id="fav-grid"></div></div>
+</div>
+
+</div>
+
+<!-- NOW PLAYING BAR -->
+<div class="npb" id="npb" role="complementary" aria-label="Şu an çalıyor">
+  <div class="np-top">
+    <div class="np-thumb" id="np-thumb" aria-hidden="true">🎵</div>
+    <div class="np-info"><div class="np-name" id="np-name" aria-live="polite">—</div><div class="np-meta" id="np-meta">Çalmıyor</div></div>
+    <div class="np-wave" id="np-wave" aria-hidden="true"><div class="nwb"></div><div class="nwb"></div><div class="nwb"></div><div class="nwb"></div><div class="nwb"></div></div>
+    <div class="np-ctrls" role="toolbar" aria-label="Oynatma kontrolleri">
+      <button class="npc" id="np-fav" onclick="favCurrent()" aria-label="Favorilere ekle" title="Favorilere ekle">♡</button>
+      <button class="npc pp" id="np-pp" onclick="togglePlay()" aria-label="Oynat/Duraklat" title="Oynat/Duraklat">⏸</button>
+      <button class="npc" onclick="openTimer()" aria-label="Zamanlayıcı" title="Zamanlayıcı">⏱</button>
+      <button class="npc" onclick="stopAll()" aria-label="Tümünü durdur" title="Tümünü durdur">■</button>
+    </div>
+    <div class="np-timer-chip" id="np-timer" style="display:none">—</div>
+  </div>
+  <div class="np-chips" id="np-chips"></div>
+  <div class="np-vol">
+    <span class="vol-icon" id="vol-icon" onclick="toggleMute()">🔊</span>
+    <input type="range" class="vol-slider" id="vol-slider" min="0" max="100" value="70" style="--vp:70%" oninput="setVol(this.value)">
+    <span class="vol-val" id="vol-val">70%</span>
+  </div>
+</div>
+
+<!-- TIMER MODAL -->
+<div class="modal" id="modal-timer" role="dialog" aria-modal="true" aria-label="Uyku zamanlayıcısı">
+  <div class="mbox">
+    <h3>⏱ Uyku Zamanlayıcısı</h3>
+    <p>Seçilen süre sonunda ses yavaşça kapanır.</p>
+    <div class="mgrid" role="radiogroup" aria-label="Süre seçenekleri">
+      <button class="mo" onclick="selTimer(10,this)">10 dak</button>
+      <button class="mo" onclick="selTimer(20,this)">20 dak</button>
+      <button class="mo on" onclick="selTimer(30,this)">30 dak</button>
+      <button class="mo" onclick="selTimer(45,this)">45 dak</button>
+      <button class="mo" onclick="selTimer(60,this)">1 Saat</button>
+      <button class="mo" onclick="selTimer(90,this)">1.5 Saat</button>
+    </div>
+    <div class="macts"><button class="mcan" onclick="closeTimer()">İptal</button><button class="mok" onclick="startTimer()">Başlat</button></div>
+  </div>
+</div>
+
+<!-- SLEEP OVERLAY -->
+<div class="sov" id="sov" role="dialog" aria-modal="true" aria-label="Uyku modu">
+  <div class="sov-moon" aria-hidden="true">🌙</div>
+  <h2>İyi Geceler</h2>
+  <p class="sovp">Gözlerini kapat, nefes al, bırak...</p>
+  <div class="sov-t" id="sov-t" aria-live="polite" aria-label="Kalan süre">—</div>
+  <button class="sov-exit" onclick="exitSleep()" aria-label="Uyku modundan çık">Uyku Modundan Çık</button>
+</div>
+
+<!-- BREATHING EXERCISE (UX) -->
+<div class="breath-modal" id="breath-modal" role="dialog" aria-modal="true" aria-label="Nefes egzersizi">
+  <div class="breath-circle">
+    <div class="breath-ring" id="breath-ring"></div>
+    <span class="breath-txt" id="breath-txt" aria-hidden="true">🫁</span>
+  </div>
+  <div class="breath-phase" id="breath-phase" aria-live="polite">Hazır mısın?</div>
+  <div class="breath-count" id="breath-count" aria-live="polite">4-7-8</div>
+  <p class="breath-sub">4 saniye nefes al, 7 saniye tut, 8 saniye nefes ver.<br>Rahatlamak için 4 döngü yeterli.</p>
+  <div style="display:flex;gap:10px">
+    <button class="breath-close" onclick="startBreathing()" id="breath-start-btn" aria-label="Nefes egzersizini başlat" style="background:linear-gradient(135deg,var(--acc),var(--acc2));color:#fff;border-color:transparent">Başlat</button>
+    <button class="breath-close" onclick="closeBreathing()" aria-label="Kapat">Kapat</button>
+  </div>
+</div>
+
+<!-- ONBOARDING (UX) -->
+<div class="onboard" id="onboard" role="dialog" aria-modal="true" aria-label="Hoş geldiniz">
+  <div class="ob-box">
+    <span class="ob-icon" aria-hidden="true">🌙</span>
+    <h2 class="ob-title" id="ob-title">Uykucu'ya Hoş Geldin</h2>
+    <p class="ob-desc" id="ob-desc">Doğanın sesleriyle huzurlu bir uyku deneyimi seni bekliyor. İşte seni neler bekliyor:</p>
+    <div class="ob-dots" id="ob-dots" aria-hidden="true">
+      <div class="ob-dot on"></div><div class="ob-dot"></div><div class="ob-dot"></div>
+    </div>
+    <div class="ob-steps" id="ob-steps">
+      <div class="ob-step"><div class="ob-step-em" aria-hidden="true">🎵</div><div class="ob-step-txt">26+ Doğal Ses</div></div>
+      <div class="ob-step"><div class="ob-step-em" aria-hidden="true">🎛</div><div class="ob-step-txt">Mix Stüdyo</div></div>
+      <div class="ob-step"><div class="ob-step-em" aria-hidden="true">🧠</div><div class="ob-step-txt">AI Öneriler</div></div>
+    </div>
+    <button class="ob-start" id="ob-next" onclick="nextOnboard()" aria-label="Devam et">Devam Et</button>
+    <button class="ob-skip" onclick="closeOnboard()" aria-label="Turu atla">Turu Atla</button>
+  </div>
+</div>
+
+<!-- COOKIE CONSENT BANNER -->
+<div class="cb" id="cookie-banner" role="dialog" aria-modal="false" aria-label="Çerez bildirimi">
+  <div class="cb-text">
+    <div class="cb-title">🍪 Çerez Kullanımı</div>
+    <div class="cb-desc">
+      Deneyimini iyileştirmek için çerezleri kullanıyoruz. Analitik ve reklam çerezleri yalnızca senin onayınla etkinleştirilir.
+      <a href="cerez-politikasi.html" aria-label="Çerez politikası sayfasına git">Çerez Politikası</a> ·
+      <a href="gizlilik.html" aria-label="Gizlilik politikası sayfasına git">Gizlilik Politikası</a>
+    </div>
+  </div>
+  <div class="cb-btns">
+    <button class="cb-accept" onclick="acceptCookies()" aria-label="Tüm çerezleri kabul et">Kabul Et</button>
+    <button class="cb-reject" onclick="rejectCookies()" aria-label="Zorunlu olmayan çerezleri reddet">Reddet</button>
+    <button class="cb-detail" onclick="window.open('cerez-politikasi.html','_blank')" aria-label="Detaylı çerez bilgisi">Detaylar</button>
+  </div>
+</div>
+
+<script>
+// ─── DATA ───────────────────────────────────────────────
+var SOUNDS = [
+  {id:'rain',      em:'🌧', name:'Yağmur',            desc:'Çatıya hafifçe damlayan yağmur',    cat:'doga',      tag:'Doğa',      acc:'#60a5fa', bg:'rain'  },
+  {id:'heavyrain', em:'🌧', name:'Sağanak Yağmur',    desc:'Kuvvetli sürükleyici yağmur',       cat:'doga',      tag:'Doğa',      acc:'#3b82f6', bg:'rain'  },
+  {id:'ocean',     em:'🌊', name:'Deniz Dalgaları',   desc:'Kıyıya vuran yavaş derin dalgalar', cat:'doga',      tag:'Doğa',      acc:'#22d3ee', bg:'ocean' },
+  {id:'forest',    em:'🌲', name:'Orman',             desc:'Kuşlar, yapraklar ve huzur',         cat:'doga',      tag:'Doğa',      acc:'#86efac', bg:'forest'},
+  {id:'wind',      em:'🍃', name:'Rüzgar',            desc:'Sakin esen serin rüzgar',             cat:'doga',      tag:'Doğa',      acc:'#a7f3d0', bg:'none'  },
+  {id:'thunder',   em:'⛈', name:'Gök Gürültüsü',    desc:'Uzaktan gelen şimşek ve fırtına',    cat:'doga',      tag:'Doğa',      acc:'#818cf8', bg:'none'  },
+  {id:'creek',     em:'🏞', name:'Dere Sesi',         desc:'Akan serin tatlı su sesi',            cat:'doga',      tag:'Doğa',      acc:'#67e8f9', bg:'none'  },
+  {id:'birds',     em:'🐦', name:'Sabah Kuşları',     desc:'Şafakta ötüşen kuşlar',               cat:'doga',      tag:'Doğa',      acc:'#bbf7d0', bg:'forest'},
+  {id:'snowfall',  em:'❄️', name:'Kar Yağışı',        desc:'Sessiz ve sakin kar sesi',            cat:'doga',      tag:'Doğa',      acc:'#bae6fd', bg:'none'  },
+  {id:'fire',      em:'🔥', name:'Şömine',            desc:'Odun ateşinin çıtırtısı',             cat:'ambient',   tag:'Ambient',   acc:'#fb923c', bg:'fire'  },
+  {id:'white',     em:'〰️',name:'Beyaz Gürültü',     desc:'Odak ve derin uyku için',             cat:'ambient',   tag:'Ambient',   acc:'#c4b5fd', bg:'none'  },
+  {id:'brown',     em:'🌫', name:'Kahverengi Gürültü',desc:'Derin sarmalayan geniş ses',          cat:'ambient',   tag:'Ambient',   acc:'#d97706', bg:'none'  },
+  {id:'cafe',      em:'☕', name:'Kafe Gürültüsü',    desc:'Hafif arka plan kalabalık sesi',      cat:'ambient',   tag:'Ambient',   acc:'#a78bfa', bg:'none'  },
+  {id:'fan',       em:'🌀', name:'Vantilatör',        desc:'Sabit ve sürekli fan sesi',            cat:'ambient',   tag:'Ambient',   acc:'#94a3b8', bg:'none'  },
+  {id:'space',     em:'🌌', name:'Uzay Ambiyansı',    desc:'Derin kozmik hum sesi',               cat:'ambient',   tag:'Ambient',   acc:'#6366f1', bg:'none'  },
+  {id:'womb',      em:'💞', name:'Anne Karnı',        desc:'Bebekler için sıcak ve güvenli',      cat:'bebek',     tag:'Bebek',     acc:'#f0abfc', bg:'baby'  },
+  {id:'heartbeat', em:'💓', name:'Kalp Atışı',        desc:'Düzenli sakinleştirici ritim',        cat:'bebek',     tag:'Bebek',     acc:'#fb7185', bg:'baby'  },
+  {id:'lullaby',   em:'🎵', name:'Ninni',             desc:'Yumuşak melodi ve nefes sesleri',     cat:'bebek',     tag:'Bebek',     acc:'#d8b4fe', bg:'baby'  },
+  {id:'shush',     em:'🤫', name:'Shushing',          desc:'Bebeği sakinleştiren ses',             cat:'bebek',     tag:'Bebek',     acc:'#fca5a5', bg:'baby'  },
+  {id:'cradle',    em:'🍼', name:'Beşik Sesi',        desc:'Hafif sallanan beşik gıcırtısı',      cat:'bebek',     tag:'Bebek',     acc:'#fde68a', bg:'baby'  },
+  {id:'tibetan',   em:'🔔', name:'Tibet Kasesi',      desc:'Derin meditasyon titreşimleri',       cat:'meditasyon',tag:'Meditasyon',acc:'#fcd34d', bg:'none'  },
+  {id:'binaural',  em:'🧠', name:'Binaural Beats',    desc:'Alfa dalgaları ile derin uyku',       cat:'meditasyon',tag:'Meditasyon',acc:'#818cf8', bg:'none'  },
+  {id:'om',        em:'🕉', name:'Om Mantrası',       desc:'Sakinleştirici titreşim ve ses',      cat:'meditasyon',tag:'Meditasyon',acc:'#fde68a', bg:'none'  },
+  {id:'drone',     em:'🎶', name:'Drone Müzik',       desc:'Sürekli drone ve overtone sesi',      cat:'meditasyon',tag:'Meditasyon',acc:'#a5b4fc', bg:'none'  },
+  {id:'sleep',     em:'💤', name:'Uyku Fısıltısı',    desc:'ASMR benzeri yumuşak fısıltı',        cat:'uyku',      tag:'Uyku',      acc:'#a5b4fc', bg:'none'  },
+  {id:'deepfreq',  em:'🌠', name:'Derin Uyku 432Hz',  desc:'432Hz harmonik uyku frekansı',        cat:'uyku',      tag:'Uyku',      acc:'#7c3aed', bg:'none'  }
+];
+
+var MOODS = {
+  stresli:    ['rain','ocean','wind','fire','snowfall'],
+  uykusuz:   ['white','brown','binaural','sleep','deepfreq'],
+  bebek:     ['womb','heartbeat','lullaby','shush','cradle'],
+  odak:      ['forest','cafe','tibetan','creek','birds'],
+  meditasyon:['tibetan','om','ocean','drone','fire']
+};
+
+// ─── STATE ──────────────────────────────────────────────
+var active = {};        // id -> true
+var mixSet = {};        // id -> true for mix view
+var favSet = JSON.parse(localStorage.getItem('ds_favs') || '[]').reduce(function(o,k){o[k]=true;return o;},{});
+var plays  = parseInt(localStorage.getItem('ds_plays') || '0');
+var sessSecs = 0, timerSecs = 0, timerMins = 30;
+var isPlaying = false, lastId = null, progPct = 0;
+var masterVol = 0.7, muted = false;
+var soundVols = {}; // id -> 0..1 per-sound volume
+var sessInt = null, timerInt = null, progInt = null;
+
+// ─── CANVAS ─────────────────────────────────────────────
+var CVS = document.getElementById('cvs');
+var CX  = CVS.getContext('2d');
+var bgMode = 'none', parts = [], raf2 = null;
+
+function resizeCvs(){ CVS.width = innerWidth; CVS.height = innerHeight; }
+resizeCvs();
+window.addEventListener('resize', resizeCvs);
+
+function initParts(m) {
+  parts = [];
+  var W = CVS.width, H = CVS.height, i;
+  if (m === 'rain') {
+    for (i = 0; i < 150; i++) parts.push({x:Math.random()*W,y:Math.random()*H,l:Math.random()*16+6,s:Math.random()*9+5,o:Math.random()*.25+.08});
+  } else if (m === 'ocean') {
+    for (i = 0; i < 6; i++) parts.push({y:H*.55+i*34,ph:Math.random()*Math.PI*2,amp:18+i*12,sp:.018-i*.002});
+  } else if (m === 'forest') {
+    for (i = 0; i < 70; i++) parts.push({x:Math.random()*W,y:Math.random()*H,r:Math.random()*3.5+.5,vx:(Math.random()-.5)*.4,vy:-(Math.random()*.4+.1),o:Math.random()*.18+.04,lf:Math.random()});
+  } else if (m === 'fire') {
+    for (i = 0; i < 110; i++) parts.push({x:W/2+(Math.random()-.5)*300,y:H,sz:Math.random()*9+3,vy:-(Math.random()*4+2),vx:(Math.random()-.5)*2,lf:Math.random(),ml:Math.random()*.9+.2});
+  } else if (m === 'baby') {
+    for (i = 0; i < 45; i++) parts.push({x:Math.random()*W,y:Math.random()*H,r:Math.random()*5+2,o:Math.random()*.14+.04,sp:Math.random()*.008+.003,ph:Math.random()*Math.PI*2});
+  }
+}
+
+function drawBg() {
+  CX.clearRect(0, 0, CVS.width, CVS.height);
+  var t = Date.now(), i, p, w, lr;
+  if (bgMode === 'rain') {
+    for (i = 0; i < parts.length; i++) {
+      p = parts[i];
+      CX.strokeStyle = 'rgba(96,165,250,' + p.o + ')'; CX.lineWidth = .8;
+      CX.beginPath(); CX.moveTo(p.x, p.y); CX.lineTo(p.x - 2.5, p.y + p.l); CX.stroke();
+      p.y += p.s; if (p.y > CVS.height) { p.y = -p.l; p.x = Math.random() * CVS.width; }
+    }
+  } else if (bgMode === 'ocean') {
+    for (i = 0; i < parts.length; i++) {
+      w = parts[i];
+      CX.beginPath(); CX.moveTo(0, w.y);
+      for (var x = 0; x <= CVS.width; x += 6) CX.lineTo(x, w.y + Math.sin(x * .006 + w.ph) * w.amp);
+      CX.lineTo(CVS.width, CVS.height); CX.lineTo(0, CVS.height); CX.closePath();
+      CX.fillStyle = 'rgba(34,211,238,' + (.022 - i * .003) + ')'; CX.fill();
+      w.ph += w.sp;
+    }
+  } else if (bgMode === 'forest') {
+    for (i = 0; i < parts.length; i++) {
+      p = parts[i];
+      CX.beginPath(); CX.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+      CX.fillStyle = 'rgba(134,239,172,' + (p.o * (1 - p.lf)) + ')'; CX.fill();
+      p.x += p.vx; p.y += p.vy; p.lf += .004;
+      if (p.lf > 1) { p.lf = 0; p.x = Math.random() * CVS.width; p.y = CVS.height + 10; }
+    }
+  } else if (bgMode === 'fire') {
+    for (i = 0; i < parts.length; i++) {
+      p = parts[i]; lr = p.lf / p.ml;
+      CX.beginPath(); CX.arc(p.x, p.y, p.sz * (1 - lr * .4), 0, Math.PI * 2);
+      CX.fillStyle = 'rgba(' + Math.floor(251 - 80 * lr) + ',' + Math.floor(120 * (1 - lr)) + ',0,' + ((1 - lr) * .52) + ')'; CX.fill();
+      p.x += p.vx; p.y += p.vy; p.lf += .022; p.sz *= .995;
+      if (p.lf > p.ml) { p.x = CVS.width/2 + (Math.random()-.5)*300; p.y = CVS.height - 10; p.lf = 0; p.sz = Math.random()*9+3; }
+    }
+  } else if (bgMode === 'baby') {
+    for (i = 0; i < parts.length; i++) {
+      p = parts[i];
+      var s = Math.sin(t * p.sp + p.ph);
+      CX.beginPath(); CX.arc(p.x + s * 20, p.y + Math.cos(t * p.sp * .7 + p.ph) * 15, p.r + s * .5, 0, Math.PI * 2);
+      CX.fillStyle = 'rgba(240,171,252,' + (p.o * (0.5 + .5 * s)) + ')'; CX.fill();
+    }
+  }
+  raf2 = requestAnimationFrame(drawBg);
+}
+
+function setBg(m) {
+  if (raf2) cancelAnimationFrame(raf2);
+  bgMode = m || 'none';
+  var c = document.getElementById('cvs');
+  if (!m || m === 'none') { c.classList.remove('on'); return; }
+  c.classList.add('on'); initParts(m); drawBg();
+}
+
+// ─── AUDIO ENGINE ────────────────────────────────────────
+var AX = null, masterGain = null;
+var NODES = {}; // id -> {nodes:[], gain:GainNode, alive:true}
+
+function getAX() {
+  if (!AX) AX = new (window.AudioContext || window.webkitAudioContext)();
+  if (AX.state === 'suspended') AX.resume();
+  return AX;
+}
+function getMG() {
+  var ax = getAX();
+  if (!masterGain) { masterGain = ax.createGain(); masterGain.gain.value = masterVol; masterGain.connect(ax.destination); }
+  return masterGain;
+}
+function mkNoise(ax, secs) {
+  secs = secs || 4;
+  var sr = ax.sampleRate, len = sr * secs, b = ax.createBuffer(2, len, sr), i, c;
+  for (c = 0; c < 2; c++) { var d = b.getChannelData(c); for (i = 0; i < len; i++) d[i] = Math.random() * 2 - 1; }
+  return b;
+}
+function fadeIn(g, v, t) {
+  t = t || 1.5; v = v || 0.6;
+  g.gain.cancelScheduledValues(AX.currentTime);
+  g.gain.setValueAtTime(0, AX.currentTime);
+  g.gain.linearRampToValueAtTime(v, AX.currentTime + t);
+}
+
+function buildSynth(id) {
+  var ax = getAX(), ns = [], alive = {v: true};
+  var g = ax.createGain(); g.gain.value = 0; g.connect(getMG());
+
+  function noiseSrc(secs) { var s = ax.createBufferSource(); s.buffer = mkNoise(ax, secs || 4); s.loop = true; return s; }
+  function bpf(type, freq, Q) { var f = ax.createBiquadFilter(); f.type = type; f.frequency.value = freq; if (Q) f.Q.value = Q; return f; }
+  function osc(type, freq) { var o = ax.createOscillator(); o.type = type; o.frequency.value = freq; return o; }
+  function gainNode(v) { var gn = ax.createGain(); gn.gain.value = v || 0; return gn; }
+
+  if (id === 'rain') {
+    var s = noiseSrc(6), bp = bpf('bandpass',900,.6), lp = bpf('lowpass',3500);
+    s.connect(bp); bp.connect(lp); lp.connect(g); s.start(); ns.push(s,bp,lp); fadeIn(g,.62);
+  } else if (id === 'heavyrain') {
+    var s1 = noiseSrc(6), lp1 = bpf('lowpass',5000);
+    var s2 = noiseSrc(4), hp1 = bpf('highpass',1800), g2 = gainNode(.5);
+    s1.connect(lp1); lp1.connect(g); s2.connect(hp1); hp1.connect(g2); g2.connect(g);
+    s1.start(); s2.start(); ns.push(s1,lp1,s2,hp1,g2); fadeIn(g,.72);
+  } else if (id === 'ocean') {
+    var s = noiseSrc(8), lp = bpf('lowpass',700), lp2 = bpf('lowpass',350);
+    var lfo = osc('sine',.11), lg = gainNode(.32);
+    lfo.connect(lg); lg.connect(g.gain); s.connect(lp); lp.connect(lp2); lp2.connect(g);
+    s.start(); lfo.start(); ns.push(s,lp,lp2,lfo,lg); fadeIn(g,.58);
+  } else if (id === 'forest') {
+    var s = noiseSrc(6), hp = bpf('highpass',1100), lp = bpf('lowpass',4200);
+    var ws = noiseSrc(4), wl = bpf('lowpass',450), wg = gainNode(.28);
+    s.connect(hp); hp.connect(lp); lp.connect(g); ws.connect(wl); wl.connect(wg); wg.connect(g);
+    s.start(); ws.start(); ns.push(s,hp,lp,ws,wl,wg);
+    scheduleBirds(ax, g, ns, alive, false); fadeIn(g,.50);
+  } else if (id === 'birds') {
+    var s = noiseSrc(4), hp = bpf('highpass',1500), lp = bpf('lowpass',4000), bg = gainNode(.10);
+    s.connect(hp); hp.connect(lp); lp.connect(bg); bg.connect(g); s.start(); ns.push(s,hp,lp,bg);
+    scheduleBirds(ax, g, ns, alive, true); fadeIn(g,.50);
+  } else if (id === 'wind') {
+    var s = noiseSrc(6), bp = bpf('bandpass',480,.3);
+    var lfo = osc('sine',.07), lg = gainNode(.28);
+    lfo.connect(lg); lg.connect(g.gain); s.connect(bp); bp.connect(g); s.start(); lfo.start();
+    ns.push(s,bp,lfo,lg); fadeIn(g,.50);
+  } else if (id === 'thunder') {
+    var s = noiseSrc(6), bp = bpf('bandpass',800,.5), lp = bpf('lowpass',3000);
+    var rs = noiseSrc(8), rl = bpf('lowpass',130), rg = gainNode(.45);
+    s.connect(bp); bp.connect(lp); lp.connect(g); s.start();
+    rs.connect(rl); rl.connect(rg); rg.connect(g); rs.start();
+    ns.push(s,bp,lp,rs,rl,rg); fadeIn(g,.55);
+  } else if (id === 'creek') {
+    var s = noiseSrc(6), bp = bpf('bandpass',2200,.9), hp = bpf('highpass',700);
+    var lfo = osc('sine',.3), lg = gainNode(.22);
+    lfo.connect(lg); lg.connect(g.gain); s.connect(bp); bp.connect(hp); hp.connect(g); s.start(); lfo.start();
+    ns.push(s,bp,hp,lfo,lg); fadeIn(g,.50);
+  } else if (id === 'snowfall') {
+    var s = noiseSrc(6), lp = bpf('lowpass',380), lp2 = bpf('lowpass',190);
+    s.connect(lp); lp.connect(lp2); lp2.connect(g); s.start(); ns.push(s,lp,lp2); fadeIn(g,.40);
+  } else if (id === 'fire') {
+    var s = noiseSrc(4), lp = bpf('lowpass',900), hp = bpf('highpass',90);
+    s.connect(lp); lp.connect(hp); hp.connect(g); s.start(); ns.push(s,lp,hp);
+    scheduleCrackle(ax, g, ns, alive); fadeIn(g,.48);
+  } else if (id === 'white') {
+    var s = noiseSrc(4); s.connect(g); s.start(); ns.push(s); fadeIn(g,.50);
+  } else if (id === 'brown') {
+    var s = noiseSrc(4), lp = bpf('lowpass',220), lp2 = bpf('lowpass',110);
+    s.connect(lp); lp.connect(lp2); lp2.connect(g); s.start(); ns.push(s,lp,lp2); fadeIn(g,.65);
+  } else if (id === 'cafe') {
+    var s = noiseSrc(8), bp = bpf('bandpass',1300,1.5), lp = bpf('lowpass',4000);
+    s.connect(bp); bp.connect(lp); lp.connect(g); s.start(); ns.push(s,bp,lp); fadeIn(g,.35);
+  } else if (id === 'fan') {
+    var s = noiseSrc(4), lp = bpf('lowpass',1800), hp = bpf('highpass',300);
+    s.connect(lp); lp.connect(hp); hp.connect(g); s.start(); ns.push(s,lp,hp); fadeIn(g,.55);
+  } else if (id === 'space') {
+    var freqs = [40,53,71,89];
+    for (var i = 0; i < freqs.length; i++) {
+      var o = osc('sine',freqs[i]), g2 = gainNode(.12/(i+1));
+      var lfo = osc('sine',.03+i*.01), lg = gainNode(.06);
+      lfo.connect(lg); lg.connect(g2.gain); o.connect(g2); g2.connect(g);
+      o.start(); lfo.start(); ns.push(o,g2,lfo,lg);
+    }
+    fadeIn(g,.60);
+  } else if (id === 'womb') {
+    var o1 = osc('sine',58), o2 = osc('sine',116);
+    var g1 = gainNode(.50), g2 = gainNode(.15);
+    var lfo = osc('sine',1.1), lg = gainNode(.22);
+    var ns2 = noiseSrc(4), nl = bpf('lowpass',200), ng = gainNode(.18);
+    lfo.connect(lg); lg.connect(g1.gain);
+    ns2.connect(nl); nl.connect(ng); ng.connect(g);
+    o1.connect(g1); g1.connect(g); o2.connect(g2); g2.connect(g);
+    o1.start(); o2.start(); lfo.start(); ns2.start();
+    ns.push(o1,o2,g1,g2,lfo,lg,ns2,nl,ng); fadeIn(g,.95);
+  } else if (id === 'heartbeat') {
+    scheduleHeartbeat(ax, g, ns, alive); fadeIn(g,1.0);
+  } else if (id === 'lullaby') {
+    scheduleLullaby(ax, g, ns, alive);
+    var bs = noiseSrc(4), bl = bpf('lowpass',300), bg = gainNode(.07);
+    bs.connect(bl); bl.connect(bg); bg.connect(g); bs.start(); ns.push(bs,bl,bg); fadeIn(g,.88);
+  } else if (id === 'shush') {
+    var s = noiseSrc(4), bp = bpf('bandpass',3600,1.3);
+    var lfo = osc('sine',.65), lg = gainNode(.32);
+    lfo.connect(lg); lg.connect(g.gain); s.connect(bp); bp.connect(g); s.start(); lfo.start();
+    ns.push(s,bp,lfo,lg); fadeIn(g,.90);
+  } else if (id === 'cradle') {
+    scheduleCradle(ax, g, ns, alive);
+    var bs = noiseSrc(4), bl = bpf('lowpass',250), bg = gainNode(.06);
+    bs.connect(bl); bl.connect(bg); bg.connect(g); bs.start(); ns.push(bs,bl,bg); fadeIn(g,.90);
+  } else if (id === 'tibetan') {
+    scheduleTibetan(ax, g, ns, alive); fadeIn(g,.55);
+  } else if (id === 'binaural') {
+    var l = osc('sine',200), r = osc('sine',208);
+    var m = ax.createChannelMerger(2), lg = gainNode(.28), rg = gainNode(.28);
+    l.connect(lg); lg.connect(m,0,0); r.connect(rg); rg.connect(m,0,1); m.connect(g);
+    l.start(); r.start(); ns.push(l,r,m,lg,rg); fadeIn(g,.42);
+  } else if (id === 'om') {
+    scheduleOm(ax, g, ns, alive); fadeIn(g,.48);
+  } else if (id === 'drone') {
+    var fqs = [110,165,220,275,330];
+    for (var i = 0; i < fqs.length; i++) {
+      var o = ax.createOscillator(); o.type = i<2?'sawtooth':'sine'; o.frequency.value = fqs[i];
+      var gx = gainNode(.1/(i*.5+1)), fl = bpf('lowpass',800);
+      var lfo = osc('sine',.04+i*.007), lg = gainNode(.04);
+      lfo.connect(lg); lg.connect(gx.gain); o.connect(fl); fl.connect(gx); gx.connect(g);
+      o.start(); lfo.start(); ns.push(o,fl,gx,lfo,lg);
+    }
+    fadeIn(g,.55);
+  } else if (id === 'sleep') {
+    var s = noiseSrc(4), lp = bpf('lowpass',550);
+    var lfo = osc('sine',.18), lg = gainNode(.42);
+    lfo.connect(lg); lg.connect(g.gain); s.connect(lp); lp.connect(g); s.start(); lfo.start();
+    ns.push(s,lp,lfo,lg); fadeIn(g,.38);
+  } else if (id === 'deepfreq') {
+    var o1 = osc('sine',432), o2 = osc('sine',216), o3 = osc('sine',864);
+    var g1 = gainNode(.30), g2 = gainNode(.20), g3 = gainNode(.08);
+    var lfo = osc('sine',.05), lg = gainNode(.15);
+    lfo.connect(lg); lg.connect(g1.gain);
+    o1.connect(g1); g1.connect(g); o2.connect(g2); g2.connect(g); o3.connect(g3); g3.connect(g);
+    o1.start(); o2.start(); o3.start(); lfo.start();
+    ns.push(o1,o2,o3,g1,g2,g3,lfo,lg); fadeIn(g,.52);
+  } else {
+    var s = noiseSrc(4); s.connect(g); s.start(); ns.push(s); fadeIn(g,.40);
+  }
+
+  return {nodes: ns, gain: g, alive: alive};
+}
+
+function scheduleBirds(ax, dest, ns, alive, prominent) {
+  var freqs = [2400,3200,2800,3600,2200,4000,2600];
+  function chirp() {
+    if (!alive.v || !AX) return;
+    var f = freqs[Math.floor(Math.random()*freqs.length)] + Math.random()*300;
+    var now = AX.currentTime;
+    var vol = prominent ? .13 : .065;
+    var o = AX.createOscillator(); o.type='sine'; o.frequency.value=f;
+    var gx = AX.createGain(); gx.gain.value=0;
+    gx.gain.setValueAtTime(0,now); gx.gain.linearRampToValueAtTime(vol,now+.04); gx.gain.linearRampToValueAtTime(0,now+.22);
+    o.connect(gx); gx.connect(dest); o.start(now); o.stop(now+.28); ns.push(o,gx);
+    setTimeout(chirp, prominent ? 500+Math.random()*2000 : 1200+Math.random()*5000);
+  }
+  setTimeout(chirp, 600);
+}
+
+function scheduleCrackle(ax, dest, ns, alive) {
+  function crackle() {
+    if (!alive.v || !AX) return;
+    var b = AX.createBuffer(1, Math.floor(AX.sampleRate*.09), AX.sampleRate);
+    var d = b.getChannelData(0);
+    for (var i=0; i<d.length; i++) d[i] = (Math.random()*2-1)*Math.exp(-i/(d.length*.28));
+    var s = AX.createBufferSource(); s.buffer=b;
+    var gx = AX.createGain(); gx.gain.value=.18+Math.random()*.22;
+    var hp = AX.createBiquadFilter(); hp.type='highpass'; hp.frequency.value=800;
+    s.connect(hp); hp.connect(gx); gx.connect(dest); s.start(); ns.push(s,gx,hp);
+    setTimeout(crackle, 180+Math.random()*900);
+  }
+  setTimeout(crackle, 250);
+}
+
+function scheduleHeartbeat(ax, dest, ns, alive) {
+  function beat() {
+    if (!alive.v || !AX) return;
+    var pairs = [[0,.95],[.2,.72]];
+    for (var i=0; i<pairs.length; i++) {
+      (function(off, vol){
+        var now = AX.currentTime + off;
+        var o = AX.createOscillator(); o.type='sine'; o.frequency.value=62;
+        var gx = AX.createGain(); gx.gain.value=0;
+        gx.gain.setValueAtTime(0,now); gx.gain.linearRampToValueAtTime(vol,now+.03); gx.gain.exponentialRampToValueAtTime(.001,now+.28);
+        o.connect(gx); gx.connect(dest); o.start(now); o.stop(now+.32);
+        var nb = AX.createBuffer(1, Math.floor(AX.sampleRate*.04), AX.sampleRate);
+        var nd = nb.getChannelData(0);
+        for (var j=0; j<nd.length; j++) nd[j] = (Math.random()*2-1)*Math.exp(-j/(nd.length*.15));
+        var bs = AX.createBufferSource(); bs.buffer=nb;
+        var bg = AX.createGain(); bg.gain.value=vol*.3;
+        var bl = AX.createBiquadFilter(); bl.type='lowpass'; bl.frequency.value=350;
+        bs.connect(bl); bl.connect(bg); bg.connect(dest); bs.start(now);
+        ns.push(o,gx,bs,bg,bl);
+      })(pairs[i][0], pairs[i][1]);
+    }
+    setTimeout(beat, 920+Math.random()*80);
+  }
+  setTimeout(beat, 100);
+}
+
+function scheduleLullaby(ax, dest, ns, alive) {
+  var scale = [261.63,293.66,329.63,349.23,392,440,493.88,523.25];
+  var mel   = [0,2,4,2,0,2,4,7,5,4,2,0,4,2,0,4,5,4,2,0];
+  var idx = 0;
+  function note() {
+    if (!alive.v || !AX) return;
+    var f = scale[mel[idx % mel.length]]; idx++;
+    var now = AX.currentTime;
+    var o  = AX.createOscillator(); o.type='triangle'; o.frequency.value=f;
+    var o2 = AX.createOscillator(); o2.type='sine'; o2.frequency.value=f*2.01;
+    var gx = AX.createGain(); gx.gain.value=0;
+    var g2 = AX.createGain(); g2.gain.value=0;
+    gx.gain.setValueAtTime(0,now); gx.gain.linearRampToValueAtTime(.22,now+.1); gx.gain.linearRampToValueAtTime(0,now+.6);
+    g2.gain.setValueAtTime(0,now); g2.gain.linearRampToValueAtTime(.07,now+.1); g2.gain.linearRampToValueAtTime(0,now+.6);
+    o.connect(gx); gx.connect(dest); o2.connect(g2); g2.connect(dest);
+    o.start(now); o.stop(now+.65); o2.start(now); o2.stop(now+.65); ns.push(o,gx,o2,g2);
+    setTimeout(note, 560+Math.random()*140);
+  }
+  setTimeout(note, 200);
+}
+
+function scheduleCradle(ax, dest, ns, alive) {
+  function creak() {
+    if (!alive.v || !AX) return;
+    var f = 220+Math.random()*180, now = AX.currentTime;
+    var o = AX.createOscillator(); o.type='sawtooth'; o.frequency.value=f;
+    var fl = AX.createBiquadFilter(); fl.type='bandpass'; fl.frequency.value=f; fl.Q.value=8;
+    var gx = AX.createGain(); gx.gain.value=0;
+    gx.gain.setValueAtTime(0,now); gx.gain.linearRampToValueAtTime(.12,now+.08); gx.gain.linearRampToValueAtTime(0,now+.35);
+    o.connect(fl); fl.connect(gx); gx.connect(dest); o.start(now); o.stop(now+.4); ns.push(o,fl,gx);
+    setTimeout(creak, 1800+Math.random()*2000);
+  }
+  setTimeout(creak, 400);
+}
+
+function scheduleTibetan(ax, dest, ns, alive) {
+  function ring() {
+    if (!alive.v || !AX) return;
+    var harms = [220,440,660,880,1100];
+    for (var i=0; i<harms.length; i++) {
+      (function(f, i){
+        var o = AX.createOscillator(); o.type='sine'; o.frequency.value=f;
+        var gx = AX.createGain(); gx.gain.value=0;
+        var now = AX.currentTime, vol = .14/(i+1);
+        gx.gain.setValueAtTime(0,now); gx.gain.linearRampToValueAtTime(vol,now+.05); gx.gain.exponentialRampToValueAtTime(.001,now+5);
+        o.connect(gx); gx.connect(dest); o.start(now); o.stop(now+5.2); ns.push(o,gx);
+      })(harms[i], i);
+    }
+    setTimeout(ring, 5500+Math.random()*2500);
+  }
+  ring();
+}
+
+function scheduleOm(ax, dest, ns, alive) {
+  var harms = [136.1,272.2,408.3,544.4];
+  function chant() {
+    if (!alive.v || !AX) return;
+    for (var i=0; i<harms.length; i++) {
+      (function(f,i){
+        var o = AX.createOscillator(); o.type='sine'; o.frequency.value=f;
+        var gx = AX.createGain(); gx.gain.value=0;
+        var now = AX.currentTime, dur = 6.5, vol = .12/(i*.7+1);
+        gx.gain.setValueAtTime(0,now); gx.gain.linearRampToValueAtTime(vol,now+1);
+        gx.gain.setValueAtTime(vol,now+dur-1); gx.gain.linearRampToValueAtTime(0,now+dur);
+        o.connect(gx); gx.connect(dest); o.start(now); o.stop(now+dur+.1); ns.push(o,gx);
+      })(harms[i], i);
+    }
+    setTimeout(chant, 7500);
+  }
+  chant();
+}
+
+function killSynth(id) {
+  var e = NODES[id]; if (!e) return;
+  e.alive.v = false;
+  if (AX) {
+    var gn = e.gain;
+    gn.gain.cancelScheduledValues(AX.currentTime);
+    gn.gain.setValueAtTime(gn.gain.value, AX.currentTime);
+    gn.gain.linearRampToValueAtTime(0, AX.currentTime + 1.8);
+    setTimeout(function() {
+      for (var i=0; i<e.nodes.length; i++) { try { e.nodes[i].disconnect(); if (e.nodes[i].stop) e.nodes[i].stop(); } catch(x){} }
+      try { gn.disconnect(); } catch(x){}
+    }, 2100);
+  }
+  delete NODES[id];
+}
+
+// ─── VOLUME ──────────────────────────────────────────────
+function setVol(v) {
+  masterVol = v / 100;
+  if (muted) { muted = false; document.getElementById('vol-icon').textContent = '🔊'; }
+  if (masterGain) masterGain.gain.linearRampToValueAtTime(masterVol, getAX().currentTime + .05);
+  document.getElementById('vol-val').textContent = v + '%';
+  document.getElementById('vol-slider').style.setProperty('--vp', v + '%');
+  document.getElementById('vol-slider').value = v;
+  var mv = document.getElementById('mix-vol'); if (mv) mv.value = v;
+  var mvv = document.getElementById('mix-vval'); if (mvv) mvv.textContent = v + '%';
+}
+
+function toggleMute() {
+  muted = !muted;
+  var ic = document.getElementById('vol-icon');
+  if (muted) { if(masterGain) masterGain.gain.linearRampToValueAtTime(0, getAX().currentTime+.1); ic.textContent='🔇'; }
+  else        { if(masterGain) masterGain.gain.linearRampToValueAtTime(masterVol, getAX().currentTime+.1); ic.textContent='🔊'; }
+}
+
+function setSoundVol(id, v) {
+  var vol = v / 100;
+  soundVols[id] = vol;
+  if (NODES[id] && AX) {
+    var g = NODES[id].gain;
+    g.gain.cancelScheduledValues(AX.currentTime);
+    g.gain.setValueAtTime(g.gain.value, AX.currentTime);
+    g.gain.linearRampToValueAtTime(vol, AX.currentTime + .08);
+  }
+  // update slider display
+  var el = document.getElementById('svol-' + id);
+  if (el) { el.style.setProperty('--svp', v + '%'); el.value = v; }
+  var vv = document.getElementById('svolv-' + id);
+  if (vv) vv.textContent = v + '%';
+}
+
+// ─── PLAYBACK ────────────────────────────────────────────
+function playSound(id) {
+  var snd = null;
+  for (var i=0; i<SOUNDS.length; i++) if (SOUNDS[i].id === id) { snd = SOUNDS[i]; break; }
+  if (!snd) return;
+
+  if (active[id]) {
+    // Toggle off
+    killSynth(id);
+    delete active[id];
+    var cards = document.querySelectorAll('.sc[data-id="' + id + '"]');
+    for (var i=0; i<cards.length; i++) cards[i].classList.remove('on');
+    updateBar();
+    if (Object.keys(active).length === 0) {
+      isPlaying = false; clearInterval(sessInt);
+      setBg('none'); document.body.classList.remove('baby'); resetAcc();
+    }
+    return;
+  }
+
+  // Start
+  try { NODES[id] = buildSynth(id); } catch(e) { console.warn('audio err', e); }
+  if (soundVols[id] === undefined) soundVols[id] = 0.8; // default per-sound vol
+  active[id] = true; lastId = id; isPlaying = true;
+
+  var cards = document.querySelectorAll('.sc[data-id="' + id + '"]');
+  for (var i=0; i<cards.length; i++) cards[i].classList.add('on');
+
+  document.getElementById('np-wave').classList.remove('paused');
+  document.getElementById('np-pp').textContent = '⏸';
+  document.getElementById('p-playbtn').textContent = '⏸';
+  document.getElementById('p-em').textContent = snd.em;
+  document.getElementById('p-title').textContent = snd.name;
+  document.getElementById('p-sub').textContent = snd.desc;
+
+  setAcc(snd.acc);
+  setBg(snd.bg || 'none');
+  if (snd.cat === 'bebek') document.body.classList.add('baby'); else document.body.classList.remove('baby');
+
+  plays++; localStorage.setItem('ds_plays', plays);
+  document.getElementById('st-plays').textContent = plays;
+  startSess(); updateBar();
+}
+
+function updateBar() {
+  var ids = Object.keys(active);
+  var bar = document.getElementById('npb');
+  if (!ids.length) { bar.classList.remove('on'); return; }
+  bar.classList.add('on');
+
+  var prim = null;
+  for (var i=0; i<SOUNDS.length; i++) if (SOUNDS[i].id === ids[ids.length-1]) { prim = SOUNDS[i]; break; }
+  if (prim) {
+    document.getElementById('np-thumb').textContent = prim.em;
+    document.getElementById('np-thumb').style.background = 'linear-gradient(135deg,' + prim.acc + ',#9b87f5)';
+    document.getElementById('np-name').textContent = ids.length > 1 ? ids.length + ' ses çalıyor' : prim.name;
+    document.getElementById('np-meta').textContent = ids.length > 1
+      ? ids.map(function(id){ var s=null; for(var i=0;i<SOUNDS.length;i++) if(SOUNDS[i].id===id){s=SOUNDS[i];break;} return s?s.em:''; }).join(' ')
+      : prim.tag + ' · Loop';
+    document.getElementById('np-fav').textContent = favSet[prim.id] ? '♥' : '♡';
+  }
+
+  var row = document.getElementById('np-chips');
+  var html = '';
+  for (var i=0; i<ids.length; i++) {
+    var s = null;
+    for (var j=0; j<SOUNDS.length; j++) if (SOUNDS[j].id === ids[i]) { s = SOUNDS[j]; break; }
+    if (s) {
+      var svPct = Math.round((soundVols[s.id] !== undefined ? soundVols[s.id] : 0.8) * 100);
+      html += '<div class="nsc" style="border-color:' + s.acc + '40">' +
+        '<div class="nsc-top">' +
+          '<div class="nsc-label" style="color:' + s.acc + '">' +
+            '<span>' + s.em + '</span><span style="color:var(--txt)">' + s.name + '</span>' +
+          '</div>' +
+          '<span class="nsc-x" onclick="playSound(\'' + ids[i] + '\')">✕</span>' +
+        '</div>' +
+        '<div class="nsc-vol-row">' +
+          '<span class="nsc-vol-icon">🔉</span>' +
+          '<input class="nsc-vol" id="svol-' + s.id + '" type="range" min="0" max="100" value="' + svPct + '" style="--svp:' + svPct + '%" ' +
+            'oninput="setSoundVol(\'' + s.id + '\',this.value)">' +
+          '<span class="nsc-vol-val" id="svolv-' + s.id + '">' + svPct + '%</span>' +
+        '</div>' +
+      '</div>';
+    }
+  }
+  row.innerHTML = html;
+}
+
+function togglePlay() {
+  if (!Object.keys(active).length) return;
+  isPlaying = !isPlaying;
+  var ic = isPlaying ? '⏸' : '▶';
+  document.getElementById('np-pp').textContent = ic;
+  document.getElementById('p-playbtn').textContent = ic;
+  if (isPlaying) {
+    document.getElementById('np-wave').classList.remove('paused');
+    if (AX && AX.state === 'suspended') AX.resume();
+    var ids = Object.keys(active);
+    for (var i=0; i<ids.length; i++) {
+      if (!NODES[ids[i]]) { try { NODES[ids[i]] = buildSynth(ids[i]); } catch(e){} }
+      else { var gn = NODES[ids[i]].gain; gn.gain.cancelScheduledValues(AX.currentTime); gn.gain.setValueAtTime(0,AX.currentTime); gn.gain.linearRampToValueAtTime(.65,AX.currentTime+1.2); }
+    }
+    var s = null; for (var j=0; j<SOUNDS.length; j++) if(SOUNDS[j].id===lastId){s=SOUNDS[j];break;}
+    if (s) setBg(s.bg || 'none');
+    startSess();
+  } else {
+    document.getElementById('np-wave').classList.add('paused');
+    setBg('none'); clearInterval(sessInt);
+    var ids = Object.keys(active);
+    for (var i=0; i<ids.length; i++) {
+      if (NODES[ids[i]]) { var gn=NODES[ids[i]].gain; gn.gain.cancelScheduledValues(AX.currentTime); gn.gain.setValueAtTime(gn.gain.value,AX.currentTime); gn.gain.linearRampToValueAtTime(0,AX.currentTime+1.5); }
+    }
+  }
+}
+
+function stopAll() {
+  var ids = Object.keys(active);
+  for (var i=0; i<ids.length; i++) {
+    killSynth(ids[i]);
+    var cards = document.querySelectorAll('.sc[data-id="' + ids[i] + '"]');
+    for (var j=0; j<cards.length; j++) cards[j].classList.remove('on');
+  }
+  active = {}; isPlaying = false;
+  document.getElementById('npb').classList.remove('on');
+  document.getElementById('np-pp').textContent = '⏸';
+  document.getElementById('np-wave').classList.add('paused');
+  document.getElementById('p-playbtn').textContent = '▶';
+  setBg('none'); clearInterval(timerInt); clearInterval(sessInt);
+  document.getElementById('np-timer').style.display = 'none';
+  document.body.classList.remove('baby'); resetAcc();
+}
+
+function adjSound(dir) {
+  var idx = 0;
+  for (var i=0; i<SOUNDS.length; i++) if (SOUNDS[i].id === lastId) { idx = i; break; }
+  var ni = Math.max(0, Math.min(SOUNDS.length-1, idx+dir));
+  playSound(SOUNDS[ni].id);
+}
+
+// ─── FAVORITES ───────────────────────────────────────────
+function favCurrent() { if (lastId) toggleFav(lastId); }
+function toggleFav(id) {
+  if (favSet[id]) delete favSet[id]; else favSet[id] = true;
+  localStorage.setItem('ds_favs', JSON.stringify(Object.keys(favSet)));
+  var els = document.querySelectorAll('.sc-fav[data-id="' + id + '"]');
+  for (var i=0; i<els.length; i++) els[i].classList.toggle('on', !!favSet[id]);
+  document.getElementById('st-favs').textContent = Object.keys(favSet).length;
+  if (lastId === id) document.getElementById('np-fav').textContent = favSet[id] ? '♥' : '♡';
+}
+
+// ─── TIMER ───────────────────────────────────────────────
+function openTimer()  { document.getElementById('modal-timer').classList.add('on'); }
+function closeTimer() { document.getElementById('modal-timer').classList.remove('on'); }
+function selTimer(m, el) {
+  timerMins = m;
+  var opts = document.querySelectorAll('.mo');
+  for (var i=0; i<opts.length; i++) opts[i].classList.remove('on');
+  el.classList.add('on');
+}
+function startTimer()  { closeTimer(); activateTimer(timerMins); }
+function quickTimer(m, el) {
+  var chs = document.querySelectorAll('.tch');
+  for (var i=0; i<chs.length; i++) chs[i].classList.remove('on');
+  el.classList.add('on'); activateTimer(m);
+}
+function activateTimer(m) {
+  clearInterval(timerInt); timerSecs = m * 60;
+  var chip = document.getElementById('np-timer'); chip.style.display = 'block';
+  var sovt = document.getElementById('sov-t');
+  function tick() {
+    timerSecs--;
+    var mm = Math.floor(timerSecs/60), ss = timerSecs%60;
+    var str = mm + ':' + (ss < 10 ? '0' : '') + ss;
+    chip.textContent = str; sovt.textContent = str;
+    if (timerSecs <= 0) { clearInterval(timerInt); stopAll(); document.getElementById('sov').classList.remove('on'); }
+  }
+  tick(); timerInt = setInterval(tick, 1000);
+}
+
+// ─── SLEEP ───────────────────────────────────────────────
+function launchSleep() {
+  if (!Object.keys(active).length) playSound('rain');
+  document.getElementById('sov').classList.add('on');
+  if (!timerInt) activateTimer(30);
+}
+function exitSleep() { document.getElementById('sov').classList.remove('on'); }
+
+// ─── PROGRESS ────────────────────────────────────────────
+progInt = setInterval(function() {
+  if (!isPlaying) return;
+  progPct = (progPct + .04) % 100;
+  document.getElementById('p-fill').style.width = progPct + '%';
+  var sc = Math.floor(progPct * 3.6), mm = Math.floor(sc/60), ss = sc%60;
+  document.getElementById('p-cur').textContent = mm + ':' + (ss<10?'0':'') + ss;
+}, 1000);
+function seekProg(e) {
+  var r = e.currentTarget.getBoundingClientRect();
+  progPct = ((e.clientX - r.left) / r.width) * 100;
+  document.getElementById('p-fill').style.width = progPct + '%';
+}
+
+// ─── SESSION ─────────────────────────────────────────────
+function startSess() {
+  clearInterval(sessInt);
+  sessInt = setInterval(function() {
+    sessSecs++;
+    document.getElementById('st-min').textContent = Math.floor(sessSecs/60);
+  }, 1000);
+}
+
+// ─── ACCENT ──────────────────────────────────────────────
+function hexRgb(h) {
+  var r = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(h);
+  return r ? parseInt(r[1],16)+','+parseInt(r[2],16)+','+parseInt(r[3],16) : null;
+}
+function setAcc(c) {
+  document.documentElement.style.setProperty('--acc', c);
+  var rg = hexRgb(c); if (rg) document.documentElement.style.setProperty('--ar', rg);
+}
+function resetAcc() { setAcc('#6aacf0'); document.documentElement.style.setProperty('--ar','106,172,240'); }
+
+// ─── SIDE MENU (HAMBURGER) ──────────────────────────────
+function toggleSideMenu() {
+  var menu = document.getElementById('side-menu');
+  var overlay = document.getElementById('side-overlay');
+  var btn = document.getElementById('ham-btn');
+  var isOpen = menu.classList.contains('open');
+  menu.classList.toggle('open');
+  overlay.classList.toggle('open');
+  btn.classList.toggle('open');
+  btn.setAttribute('aria-expanded', !isOpen);
+  if (!isOpen) {
+    document.body.style.overflow = 'hidden';
+  } else {
+    document.body.style.overflow = '';
+  }
+}
+
+function closeSideMenu() {
+  document.getElementById('side-menu').classList.remove('open');
+  document.getElementById('side-overlay').classList.remove('open');
+  document.getElementById('ham-btn').classList.remove('open');
+  document.getElementById('ham-btn').setAttribute('aria-expanded', 'false');
+  document.body.style.overflow = '';
+}
+
+function goViewMobile(id) {
+  closeSideMenu();
+  // Update active state in side menu
+  var links = document.querySelectorAll('.sm-section:first-child .sm-link');
+  for (var i = 0; i < links.length; i++) links[i].classList.remove('active');
+  var viewMap = { home: 0, player: 1, mix: 2, favs: 3 };
+  if (viewMap[id] !== undefined && links[viewMap[id]]) links[viewMap[id]].classList.add('active');
+  // Also update desktop nav
+  var tbs = document.querySelectorAll('.tb');
+  for (var i = 0; i < tbs.length; i++) tbs[i].classList.remove('on');
+  if (viewMap[id] !== undefined && tbs[viewMap[id]]) tbs[viewMap[id]].classList.add('on');
+  // Switch view
+  var views = document.querySelectorAll('.view');
+  for (var i = 0; i < views.length; i++) views[i].classList.remove('on');
+  document.getElementById('v-' + id).classList.add('on');
+  if (id === 'favs') renderFavs();
+  if (id === 'mix') renderMixGrid();
+  window.scrollTo(0, 0);
+}
+
+// ─── VIEWS ───────────────────────────────────────────────
+function goView(id, btn) {
+  var views = document.querySelectorAll('.view');
+  for (var i=0; i<views.length; i++) views[i].classList.remove('on');
+  document.getElementById('v-' + id).classList.add('on');
+  var tbs = document.querySelectorAll('.tb');
+  for (var i=0; i<tbs.length; i++) tbs[i].classList.remove('on');
+  if (btn) btn.classList.add('on');
+  if (id === 'favs') renderFavs();
+  if (id === 'mix')  renderMixGrid();
+  window.scrollTo(0,0);
+}
+
+// ─── CARD HTML ───────────────────────────────────────────
+function cardHtml(s, isMixView) {
+  var isOn  = !!active[s.id];
+  var isFav = !!favSet[s.id];
+  var inMix = !!mixSet[s.id];
+  var click = isMixView ? "toggleMix('" + s.id + "')" : "playSound('" + s.id + "')";
+  var foot  = isMixView
+    ? '<span style="font-size:.68rem;color:' + (inMix?'var(--acc)':'var(--txt3)') + '">' + (inMix?'✓':'+ Ekle') + '</span>'
+    : '<button class="sc-fav ' + (isFav?'on':'') + '" data-id="' + s.id + '" onclick="event.stopPropagation();toggleFav(\'' + s.id + '\')">♥</button>';
+  return '<div class="sc ein ' + (isOn?'on':'') + '" data-id="' + s.id + '" style="--ca:' + s.acc + ';--cg:' + s.acc + '18" onclick="' + click + '">' +
+    '<div class="sc-badge"></div><span class="sc-em">' + s.em + '</span>' +
+    '<div class="sc-name">' + s.name + '</div><div class="sc-desc">' + s.desc + '</div>' +
+    '<div class="sc-foot"><span class="sc-tag">' + s.tag + '</span>' + foot + '</div></div>';
+}
+
+function renderGrid(filter) {
+  var el = document.getElementById('home-grid'); if (!el) return;
+  var html = '';
+  for (var i=0; i<SOUNDS.length; i++) {
+    if (!filter || filter==='all' || SOUNDS[i].cat===filter) html += cardHtml(SOUNDS[i], false);
+  }
+  el.innerHTML = html;
+}
+
+function filterCat(cat, el) {
+  var cps = document.querySelectorAll('.cp');
+  for (var i=0; i<cps.length; i++) cps[i].classList.remove('on');
+  el.classList.add('on'); renderGrid(cat);
+}
+
+function renderFavs() {
+  var el = document.getElementById('fav-grid'); if (!el) return;
+  var html = '', found = false;
+  for (var i=0; i<SOUNDS.length; i++) if (favSet[SOUNDS[i].id]) { html += cardHtml(SOUNDS[i], false); found = true; }
+  el.innerHTML = found ? html : '<p style="color:var(--txt2);padding:16px 0">Henüz favori eklemediniz. ♥ ile kaydedin.</p>';
+}
+
+function renderMixGrid() {
+  var el = document.getElementById('mix-grid'); if (!el) return;
+  var html = '';
+  for (var i=0; i<SOUNDS.length; i++) html += cardHtml(SOUNDS[i], true);
+  el.innerHTML = html;
+  renderMixChips();
+}
+
+function toggleMix(id) {
+  if (mixSet[id]) delete mixSet[id]; else mixSet[id] = true;
+  renderMixGrid();
+}
+
+function renderMixChips() {
+  var el = document.getElementById('mix-chips'); if (!el) return;
+  var ids = Object.keys(mixSet);
+  if (!ids.length) { el.innerHTML = '<span class="mix-empty">Aşağıdan ses ekle...</span>'; return; }
+  var html = '';
+  for (var i=0; i<ids.length; i++) {
+    var s = null;
+    for (var j=0; j<SOUNDS.length; j++) if (SOUNDS[j].id===ids[i]){ s=SOUNDS[j]; break; }
+    if (s) html += '<div class="mchip" style="border-color:' + s.acc + '44"><span>' + s.em + '</span><span>' + s.name + '</span>' +
+      '<button class="mch-x" onclick="toggleMix(\'' + ids[i] + '\')">✕</button></div>';
+  }
+  el.innerHTML = html;
+}
+
+function clearMix() { mixSet = {}; renderMixGrid(); document.getElementById('mix-playbtn').textContent = "▶ Mix'i Oynat"; }
+
+function playMix() {
+  var ids = Object.keys(mixSet);
+  if (!ids.length) return;
+  for (var i=0; i<ids.length; i++) if (!active[ids[i]]) playSound(ids[i]);
+  document.getElementById('mix-playbtn').textContent = '⏸ Çalıyor';
+}
+
+// ─── AI MOODS ────────────────────────────────────────────
+function moodRec(mood, el) {
+  var acs = document.querySelectorAll('.ac');
+  for (var i=0; i<acs.length; i++) acs[i].classList.remove('on');
+  el.classList.add('on');
+  var ids = MOODS[mood] || [];
+  var html = '';
+  for (var i=0; i<ids.length; i++) {
+    var s = null;
+    for (var j=0; j<SOUNDS.length; j++) if (SOUNDS[j].id===ids[i]){ s=SOUNDS[j]; break; }
+    if (s) html += '<div class="arc" onclick="playSound(\'' + s.id + '\')"><span style="font-size:1.3rem">' + s.em + '</span><span style="font-size:.78rem">' + s.name + '</span></div>';
+  }
+  document.getElementById('ai-res').innerHTML = html;
+}
+
+// ─── INIT ────────────────────────────────────────────────
+document.getElementById('st-favs').textContent  = Object.keys(favSet).length;
+document.getElementById('st-plays').textContent = plays;
+
+document.getElementById('modal-timer').addEventListener('click', function(e) { if (e.target === this) closeTimer(); });
+
+// ─── ANALYTICS EVENT TRACKING ───────────────────────────
+function trackSoundPlay(snd) {
+  trackEvent('sound_play', { sound_name: snd.name, sound_category: snd.cat, sound_id: snd.id });
+}
+function trackFavorite(id, added) {
+  trackEvent('favorite_toggle', { sound_id: id, action: added ? 'add' : 'remove' });
+}
+function trackTimerSet(minutes) {
+  trackEvent('timer_set', { duration_minutes: minutes });
+}
+function trackMixCreated(ids) {
+  trackEvent('mix_created', { sound_count: ids.length, sounds: ids.join(',') });
+}
+function trackSessionEnd(seconds) {
+  trackEvent('session_end', { session_duration_seconds: seconds, session_duration_minutes: Math.round(seconds/60) });
+}
+function trackBreathing(cycles) {
+  trackEvent('breathing_exercise', { cycles_completed: cycles });
+}
+
+// ─── ENHANCED SLEEP STATS (UX) ─────────────────────────
+var sleepStats = JSON.parse(localStorage.getItem('uykucu_stats') || '{}');
+if (!sleepStats.totalMinutes) sleepStats.totalMinutes = 0;
+if (!sleepStats.totalSessions) sleepStats.totalSessions = 0;
+if (!sleepStats.soundPlays) sleepStats.soundPlays = {};
+if (!sleepStats.lastDate) sleepStats.lastDate = '';
+if (!sleepStats.streak) sleepStats.streak = 1;
+
+function saveSleepStats() {
+  localStorage.setItem('uykucu_stats', JSON.stringify(sleepStats));
+}
+
+function updateSleepStatsUI() {
+  var el;
+  el = document.getElementById('ss-today');
+  if (el) el.textContent = Math.floor(sessSecs / 60);
+  el = document.getElementById('ss-total');
+  if (el) el.textContent = Math.round((sleepStats.totalMinutes / 60) * 10) / 10;
+  el = document.getElementById('ss-streak');
+  if (el) el.textContent = sleepStats.streak;
+  el = document.getElementById('ss-sessions');
+  if (el) el.textContent = sleepStats.totalSessions;
+
+  // Find most played sound
+  var maxPlays = 0, maxId = null;
+  for (var sid in sleepStats.soundPlays) {
+    if (sleepStats.soundPlays[sid] > maxPlays) { maxPlays = sleepStats.soundPlays[sid]; maxId = sid; }
+  }
+  el = document.getElementById('ss-fav-sound');
+  if (el && maxId) {
+    var snd = null;
+    for (var i = 0; i < SOUNDS.length; i++) if (SOUNDS[i].id === maxId) { snd = SOUNDS[i]; break; }
+    if (snd) el.textContent = snd.em + ' ' + snd.name;
+  }
+}
+
+function checkStreak() {
+  var today = new Date().toISOString().slice(0, 10);
+  if (sleepStats.lastDate === today) return;
+  var yesterday = new Date(Date.now() - 86400000).toISOString().slice(0, 10);
+  if (sleepStats.lastDate === yesterday) {
+    sleepStats.streak++;
+  } else if (sleepStats.lastDate !== today) {
+    sleepStats.streak = 1;
+  }
+  sleepStats.lastDate = today;
+  saveSleepStats();
+}
+
+// Override playSound to add analytics + stats
+var _origPlaySound = playSound;
+playSound = function(id) {
+  _origPlaySound(id);
+  if (active[id]) {
+    var snd = null;
+    for (var i = 0; i < SOUNDS.length; i++) if (SOUNDS[i].id === id) { snd = SOUNDS[i]; break; }
+    if (snd) trackSoundPlay(snd);
+    sleepStats.soundPlays[id] = (sleepStats.soundPlays[id] || 0) + 1;
+    sleepStats.totalSessions++;
+    checkStreak();
+    saveSleepStats();
+    updateSleepStatsUI();
+    announce(snd ? snd.name + ' çalınıyor' : 'Ses çalınıyor');
+  } else {
+    announce('Ses durduruldu');
+  }
+};
+
+// Override toggleFav to add analytics
+var _origToggleFav = toggleFav;
+toggleFav = function(id) {
+  var wasFav = !!favSet[id];
+  _origToggleFav(id);
+  trackFavorite(id, !wasFav);
+  showToast(!wasFav ? '♥ Favorilere eklendi' : '♡ Favorilerden çıkarıldı');
+};
+
+// Override activateTimer to add analytics
+var _origActivateTimer = activateTimer;
+activateTimer = function(m) {
+  _origActivateTimer(m);
+  trackTimerSet(m);
+  showToast('⏱ Zamanlayıcı: ' + m + ' dakika');
+};
+
+// Update session minutes in stats periodically
+setInterval(function() {
+  if (isPlaying) {
+    sleepStats.totalMinutes += 1/60;
+    updateSleepStatsUI();
+    if (Math.floor(sessSecs) % 300 === 0 && sessSecs > 0) saveSleepStats();
+  }
+}, 1000);
+
+// ─── ACCESSIBILITY: Screen Reader Announcements ────────
+function announce(msg) {
+  var el = document.getElementById('a11y-status');
+  if (el) { el.textContent = ''; setTimeout(function() { el.textContent = msg; }, 50); }
+}
+
+// ─── ACCESSIBILITY: Keyboard Navigation ────────────────
+document.addEventListener('keydown', function(e) {
+  // Escape closes modals
+  if (e.key === 'Escape') {
+    if (document.getElementById('side-menu').classList.contains('open')) { closeSideMenu(); return; }
+    if (document.getElementById('breath-modal').classList.contains('on')) { closeBreathing(); return; }
+    if (document.getElementById('onboard').classList.contains('on')) { closeOnboard(); return; }
+    if (document.getElementById('sov').classList.contains('on')) { exitSleep(); return; }
+    if (document.getElementById('modal-timer').classList.contains('on')) { closeTimer(); return; }
+  }
+  // Space toggles play/pause when not in input
+  if (e.key === ' ' && e.target.tagName !== 'INPUT' && e.target.tagName !== 'BUTTON') {
+    e.preventDefault();
+    togglePlay();
+  }
+  // M toggles mute
+  if (e.key === 'm' && e.target.tagName !== 'INPUT') { toggleMute(); }
+});
+
+// Make sound cards keyboard-accessible
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Enter' && e.target.classList.contains('sc')) {
+    e.target.click();
+  }
+});
+
+// ─── TOAST NOTIFICATION (UX) ────────────────────────────
+var toastTimer = null;
+function showToast(msg, icon) {
+  var toast = document.getElementById('toast');
+  var msgEl = document.getElementById('toast-msg');
+  var icEl = document.getElementById('toast-icon');
+  if (icEl) icEl.textContent = icon || '';
+  if (msgEl) msgEl.textContent = msg;
+  toast.classList.add('on');
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(function() { toast.classList.remove('on'); }, 2800);
+}
+
+// ─── BREATHING EXERCISE (UX) ────────────────────────────
+var breathInt = null, breathCycle = 0, breathPhase = 0, breathCount = 0;
+
+function openBreathing() {
+  document.getElementById('breath-modal').classList.add('on');
+  document.getElementById('breath-phase').textContent = 'Hazır mısın?';
+  document.getElementById('breath-count').textContent = '4-7-8';
+  document.getElementById('breath-ring').className = 'breath-ring';
+  document.getElementById('breath-start-btn').style.display = '';
+  breathCycle = 0;
+  trackEvent('breathing_opened', {});
+}
+
+function closeBreathing() {
+  document.getElementById('breath-modal').classList.remove('on');
+  clearInterval(breathInt);
+  if (breathCycle > 0) trackBreathing(breathCycle);
+}
+
+function startBreathing() {
+  document.getElementById('breath-start-btn').style.display = 'none';
+  breathPhase = 0; breathCount = 4; breathCycle = 0;
+  runBreathPhase();
+}
+
+function runBreathPhase() {
+  clearInterval(breathInt);
+  var ring = document.getElementById('breath-ring');
+  var phaseEl = document.getElementById('breath-phase');
+  var countEl = document.getElementById('breath-count');
+
+  if (breathPhase === 0) {
+    // Inhale 4s
+    phaseEl.textContent = 'Nefes Al...';
+    ring.className = 'breath-ring inhale';
+    breathCount = 4;
+  } else if (breathPhase === 1) {
+    // Hold 7s
+    phaseEl.textContent = 'Tut...';
+    breathCount = 7;
+  } else if (breathPhase === 2) {
+    // Exhale 8s
+    phaseEl.textContent = 'Nefes Ver...';
+    ring.className = 'breath-ring exhale';
+    breathCount = 8;
+  }
+
+  countEl.textContent = breathCount;
+  breathInt = setInterval(function() {
+    breathCount--;
+    countEl.textContent = breathCount;
+    if (breathCount <= 0) {
+      clearInterval(breathInt);
+      breathPhase++;
+      if (breathPhase > 2) {
+        breathPhase = 0;
+        breathCycle++;
+        if (breathCycle >= 4) {
+          phaseEl.textContent = 'Tebrikler! 🌟';
+          countEl.textContent = '✓';
+          ring.className = 'breath-ring';
+          trackBreathing(breathCycle);
+          showToast('🫁 Nefes egzersizi tamamlandı!');
+          setTimeout(closeBreathing, 2500);
+          return;
+        }
+      }
+      runBreathPhase();
+    }
+  }, 1000);
+}
+
+// ─── ONBOARDING (UX) ────────────────────────────────────
+var obStep = 0;
+var obData = [
+  { icon: '🌙', title: 'Uykucu\'ya Hoş Geldin', desc: 'Doğanın sesleriyle huzurlu bir uyku deneyimi seni bekliyor. İşte seni neler bekliyor:', steps: [{em:'🎵',txt:'26+ Doğal Ses'},{em:'🎛',txt:'Mix Stüdyo'},{em:'🧠',txt:'AI Öneriler'}] },
+  { icon: '🎧', title: 'Sesleri Keşfet', desc: 'Yağmurdan şömine ateşine, beyaz gürültüden Tibet kasesine kadar birçok ses seni bekliyor. Birden fazla sesi aynı anda çalabilirsin!', steps: [{em:'♥',txt:'Favorile'},{em:'🔊',txt:'Ses Ayarı'},{em:'⏱',txt:'Zamanlayıcı'}] },
+  { icon: '✨', title: 'Hazırsın!', desc: 'Keyifli bir uyku deneyimi dileriz. İyi geceler!', steps: [{em:'🌙',txt:'Uyku Modu'},{em:'🫁',txt:'Nefes Egzersizi'},{em:'📊',txt:'Uyku Raporu'}] }
+];
+
+function showOnboard() {
+  if (localStorage.getItem('uykucu_onboard') === 'done') return;
+  document.getElementById('onboard').classList.add('on');
+  renderOnboard();
+}
+
+function renderOnboard() {
+  var d = obData[obStep];
+  document.querySelector('.ob-icon').textContent = d.icon;
+  document.getElementById('ob-title').textContent = d.title;
+  document.getElementById('ob-desc').textContent = d.desc;
+
+  var dotsHtml = '';
+  for (var i = 0; i < obData.length; i++) dotsHtml += '<div class="ob-dot ' + (i === obStep ? 'on' : '') + '"></div>';
+  document.getElementById('ob-dots').innerHTML = dotsHtml;
+
+  var stepsHtml = '';
+  for (var i = 0; i < d.steps.length; i++) {
+    stepsHtml += '<div class="ob-step"><div class="ob-step-em">' + d.steps[i].em + '</div><div class="ob-step-txt">' + d.steps[i].txt + '</div></div>';
+  }
+  document.getElementById('ob-steps').innerHTML = stepsHtml;
+
+  document.getElementById('ob-next').textContent = obStep < obData.length - 1 ? 'Devam Et' : 'Başla!';
+}
+
+function nextOnboard() {
+  obStep++;
+  if (obStep >= obData.length) { closeOnboard(); return; }
+  renderOnboard();
+}
+
+function closeOnboard() {
+  document.getElementById('onboard').classList.remove('on');
+  localStorage.setItem('uykucu_onboard', 'done');
+  trackEvent('onboarding_completed', { step_reached: obStep + 1 });
+  showToast('🌙 Hoş geldin! Bir ses seç ve rahatla.');
+}
+
+// ─── ENHANCED CARD HTML (a11y) ──────────────────────────
+var _origCardHtml = cardHtml;
+cardHtml = function(s, isMixView) {
+  var html = _origCardHtml(s, isMixView);
+  // Add tabindex and aria-label to cards
+  html = html.replace('<div class="sc ein', '<div role="button" tabindex="0" aria-label="' + s.name + ' - ' + s.desc + '" class="sc ein');
+  return html;
+};
+
+// ─── INIT ENHANCEMENTS ─────────────────────────────────
+updateSleepStatsUI();
+renderGrid('all');
+
+// Show onboarding for first-time users
+setTimeout(showOnboard, 800);
+
+// ─── PWA SERVICE WORKER ─────────────────────────────────
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', function() {
+    navigator.serviceWorker.register('sw.js').then(function(reg) {
+      console.log('SW registered:', reg.scope);
+    }).catch(function(err) {
+      console.log('SW registration failed:', err);
+    });
+  });
+}
+
+// ─── PAGE VISIBILITY (save stats when leaving) ─────────
+document.addEventListener('visibilitychange', function() {
+  if (document.hidden && isPlaying) {
+    sleepStats.totalMinutes += sessSecs / 60;
+    saveSleepStats();
+    trackSessionEnd(sessSecs);
+  }
+});
+</script>
+
+
+</body></html>

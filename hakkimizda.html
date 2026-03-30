@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="tr" dir="ltr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hakkımızda — Uykucu</title>
+<meta name="description" content="Uykucu hakkında. Doğanın sesleriyle huzurlu uyku deneyimi sunan ücretsiz web uygulaması.">
+<meta name="theme-color" content="#07090f">
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@200;300;400;500&family=Playfair+Display:ital,wght@0,300;0,400;1,300;1,400&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#07090f;--bg1:#0b0f1a;--surf:rgba(255,255,255,.045);--surf2:rgba(255,255,255,.08);--bdr:rgba(255,255,255,.07);--bdr2:rgba(255,255,255,.13);--txt:#dde6f5;--txt2:rgba(221,230,245,.52);--txt3:rgba(221,230,245,.26);--acc:#6aacf0;--acc2:#9b87f5;--ar:106,172,240;--rc:18px;--rp:100px}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Nunito',sans-serif;font-weight:300;background:var(--bg);color:var(--txt);min-height:100vh;line-height:1.7}
+a{color:var(--acc);text-decoration:none}a:hover{text-decoration:underline}
+.topbar{position:sticky;top:0;z-index:90;display:flex;align-items:center;justify-content:space-between;padding:16px 36px;background:rgba(7,9,15,.8);backdrop-filter:blur(24px);border-bottom:1px solid var(--bdr)}
+.logo{display:flex;align-items:center;gap:10px;font-family:'Playfair Display',serif;font-size:1.45rem;font-weight:300;color:var(--txt);text-decoration:none}
+.logo-orb{width:26px;height:26px;border-radius:50%;background:conic-gradient(from 0deg,var(--acc),var(--acc2),#5ef0d4,var(--acc));animation:spin 8s linear infinite;box-shadow:0 0 16px rgba(var(--ar),.4)}
+@keyframes spin{to{transform:rotate(360deg)}}
+.back-btn{display:flex;align-items:center;gap:6px;padding:7px 15px;border-radius:var(--rp);font-size:.82rem;color:var(--txt2);border:1px solid var(--bdr);background:var(--surf);text-decoration:none;transition:.3s}.back-btn:hover{color:var(--txt);border-color:rgba(var(--ar),.3);text-decoration:none}
+.page{max-width:740px;margin:0 auto;padding:52px 36px 60px}
+.page h1{font-family:'Playfair Display',serif;font-size:2.2rem;font-weight:300;margin-bottom:8px}
+.page .subtitle{color:var(--txt2);font-size:.88rem;margin-bottom:36px}
+.page h2{font-family:'Playfair Display',serif;font-size:1.35rem;font-weight:300;margin:32px 0 12px;color:var(--acc)}
+.page p{margin-bottom:14px;font-size:.92rem;color:var(--txt2);line-height:1.8}
+.page ul{margin:0 0 16px 20px;color:var(--txt2);font-size:.88rem}.page li{margin-bottom:6px;line-height:1.7}
+.card-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:14px;margin:24px 0}
+.feature-card{background:var(--surf);border:1px solid var(--bdr);border-radius:var(--rc);padding:22px 18px;text-align:center;transition:.3s}
+.feature-card:hover{border-color:rgba(var(--ar),.3);transform:translateY(-3px)}
+.feature-card .em{font-size:2rem;margin-bottom:10px;display:block}
+.feature-card .title{font-weight:500;font-size:.9rem;margin-bottom:4px}
+.feature-card .desc{font-size:.76rem;color:var(--txt2)}
+footer{border-top:1px solid var(--bdr);padding:26px 36px;display:flex;align-items:center;justify-content:space-between;color:var(--txt3);font-size:.7rem;flex-wrap:wrap;gap:8px}
+footer a{color:var(--txt3);text-decoration:none}footer a:hover{color:var(--txt2)}
+@media(max-width:640px){.topbar{padding:13px 17px}.page{padding:32px 17px 40px}.page h1{font-size:1.7rem}footer{flex-direction:column;text-align:center;padding:20px 17px}}
+</style>
+</head>
+<body>
+<header class="topbar">
+  <a class="logo" href="index.html"><div class="logo-orb"></div>UYKUCU</a>
+  <a class="back-btn" href="index.html">← Ana Sayfa</a>
+</header>
+
+<main class="page">
+  <h1>Hakkımızda</h1>
+  <p class="subtitle">Daha huzurlu geceler için buradayız.</p>
+
+  <p>Uykucu, herkesin kaliteli bir uyku deneyimi yaşamasını sağlamak amacıyla geliştirilmiş ücretsiz bir web uygulamasıdır. Modern Web Audio API teknolojisini kullanarak, tarayıcınızda doğrudan ses sentezi yapar — herhangi bir ses dosyası indirmenize gerek kalmaz.</p>
+
+  <p>Projenin arkasındaki motivasyon basit: uyku, sağlığımızın temel taşı olmasına rağmen, dünya nüfusunun önemli bir kısmı uyku problemleri yaşıyor. Uykucu, doğanın rahatlatıcı seslerini herkesin erişimine sunarak bu soruna bir katkıda bulunmayı amaçlıyor.</p>
+
+  <h2>Ne Sunuyoruz?</h2>
+  <div class="card-grid">
+    <div class="feature-card"><span class="em">🎵</span><div class="title">26+ Doğal Ses</div><div class="desc">Yağmur, deniz, orman, beyaz gürültü ve daha fazlası</div></div>
+    <div class="feature-card"><span class="em">🎛</span><div class="title">Mix Stüdyo</div><div class="desc">Birden fazla sesi karıştırarak kendi ortamını yarat</div></div>
+    <div class="feature-card"><span class="em">👶</span><div class="title">Bebek Sesleri</div><div class="desc">Anne karnı, ninni, kalp atışı ve beşik sesi</div></div>
+    <div class="feature-card"><span class="em">🧠</span><div class="title">AI Öneriler</div><div class="desc">Ruh haline göre akıllı ses önerileri</div></div>
+    <div class="feature-card"><span class="em">⏱</span><div class="title">Zamanlayıcı</div><div class="desc">Belirlediğin sürede sesler yavaşça kapanır</div></div>
+    <div class="feature-card"><span class="em">🫁</span><div class="title">Nefes Egzersizi</div><div class="desc">4-7-8 tekniği ile rehberli soluma</div></div>
+  </div>
+
+  <h2>Teknoloji</h2>
+  <p>Uykucu, tamamen istemci taraflı (client-side) çalışan bir uygulamadır. Tüm ses sentezi Web Audio API ile tarayıcınızda gerçekleşir. Bu sayede ses dosyası indirmenize gerek kalmaz, veri tüketiminiz minimum düzeyde kalır ve çevrimdışı kullanım mümkün olur.</p>
+
+  <h2>Misyonumuz</h2>
+  <p>Herkesin daha iyi uyumasına yardımcı olmak. Uykucu tamamen ücretsizdir ve öyle kalmaya devam edecektir. Reklam gelirleri ile uygulamanın sürdürülebilirliğini sağlamayı hedefliyoruz.</p>
+
+  <h2>İletişim</h2>
+  <p>Geri bildirimleriniz, önerileriniz ve işbirliği teklifleriniz için <a href="iletisim.html">iletişim sayfamızdan</a> bize ulaşabilirsiniz.</p>
+</main>
+
+<footer>
+  <div>© 2025 Uykucu</div>
+  <div><a href="hakkimizda.html">Hakkımızda</a> · <a href="iletisim.html">İletişim</a></div>
+  <div><a href="gizlilik.html">Gizlilik</a> · <a href="kosullar.html">Koşullar</a> · <a href="cerez-politikasi.html">Çerez Politikası</a></div>
+</footer>
+</body>
+</html>
