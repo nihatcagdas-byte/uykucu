@@ -274,7 +274,7 @@ body::after{content:'';position:fixed;inset:0;z-index:1;pointer-events:none;opac
 /* VOLUME ROW */
 .np-vol{display:flex;align-items:center;gap:10px;padding:8px 17px 13px;border-top:1px solid var(--bdr)}
 .vol-icon{font-size:.88rem;color:var(--txt3);user-select:none;transition:.3s}.vol-icon:hover{color:var(--acc)}
-.vol-slider{flex:1;-webkit-appearance:none;height:3px;border-radius:2px;outline:none;cursor:pointer;background:linear-gradient(to right,var(--acc) var(--vp,70%),rgba(255,255,255,.1) var(--vp,70%))}
+.vol-slider{flex:1;-webkit-appearance:none;height:3px;border-radius:2px;outline:none;cursor:pointer;background:linear-gradient(to right,var(--acc) var(--vp,85%),rgba(255,255,255,.1) var(--vp,85%))}
 .vol-slider::-webkit-slider-thumb{-webkit-appearance:none;width:13px;height:13px;border-radius:50%;background:var(--acc);cursor:pointer;box-shadow:0 0 7px rgba(var(--ar),.5)}
 .vol-val{font-size:.68rem;color:var(--txt3);min-width:28px;text-align:right}
 
@@ -647,7 +647,7 @@ button:focus-visible,a:focus-visible{outline:2px solid var(--acc);outline-offset
     <h2>🎛 Mix Stüdyo</h2>
     <p class="msub">Birden fazla sesi katmanlayarak kendi benzersiz ortamını yarat.</p>
     <div class="mix-stage"><div class="mix-lbl">Aktif Sesler</div><div class="mix-chips" id="mix-chips"><span class="mix-empty">Aşağıdan ses ekle...</span></div></div>
-    <div class="mix-vrow"><span class="mix-vlbl">🔊 Genel Ses</span><input type="range" class="mix-sl" id="mix-vol" min="0" max="100" value="70" oninput="setVol(this.value)"><span class="mix-sv" id="mix-vval">70%</span></div>
+    <div class="mix-vrow"><span class="mix-vlbl">🔊 Genel Ses</span><input type="range" class="mix-sl" id="mix-vol" min="0" max="100" value="85" oninput="setVol(this.value)"><span class="mix-sv" id="mix-vval">85%</span></div>
     <div class="mix-vrow"><span class="mix-vlbl">🌙 Fade Süresi</span><input type="range" class="mix-sl" min="0" max="60" value="10" oninput="this.nextElementSibling.textContent=this.value+&#39;s&#39;"><span class="mix-sv">10s</span></div>
     <div class="mix-btns">
       <button class="mix-play" id="mix-playbtn" onclick="playMix()">▶ Mix'i Oynat</button>
@@ -682,8 +682,8 @@ button:focus-visible,a:focus-visible{outline:2px solid var(--acc);outline-offset
   <div class="np-chips" id="np-chips"></div>
   <div class="np-vol">
     <span class="vol-icon" id="vol-icon" onclick="toggleMute()">🔊</span>
-    <input type="range" class="vol-slider" id="vol-slider" min="0" max="100" value="70" style="--vp:70%" oninput="setVol(this.value)">
-    <span class="vol-val" id="vol-val">70%</span>
+    <input type="range" class="vol-slider" id="vol-slider" min="0" max="100" value="85" style="--vp:85%" oninput="setVol(this.value)">
+    <span class="vol-val" id="vol-val">85%</span>
   </div>
 </div>
 
@@ -767,40 +767,71 @@ button:focus-visible,a:focus-visible{outline:2px solid var(--acc);outline-offset
 <script>
 // ─── DATA ───────────────────────────────────────────────
 var SOUNDS = [
+  // ─── DOĞA (11 ses) ──────────────────────────────────────
   {id:'rain',      em:'🌧', name:'Yağmur',            desc:'Çatıya hafifçe damlayan yağmur',    cat:'doga',      tag:'Doğa',      acc:'#60a5fa', bg:'rain'  },
-  {id:'heavyrain', em:'🌧', name:'Sağanak Yağmur',    desc:'Kuvvetli sürükleyici yağmur',       cat:'doga',      tag:'Doğa',      acc:'#3b82f6', bg:'rain'  },
+  {id:'heavyrain', em:'⛈', name:'Sağanak Yağmur',    desc:'Kuvvetli sürükleyici yağmur',       cat:'doga',      tag:'Doğa',      acc:'#3b82f6', bg:'rain'  },
   {id:'ocean',     em:'🌊', name:'Deniz Dalgaları',   desc:'Kıyıya vuran yavaş derin dalgalar', cat:'doga',      tag:'Doğa',      acc:'#22d3ee', bg:'ocean' },
   {id:'forest',    em:'🌲', name:'Orman',             desc:'Kuşlar, yapraklar ve huzur',         cat:'doga',      tag:'Doğa',      acc:'#86efac', bg:'forest'},
   {id:'wind',      em:'🍃', name:'Rüzgar',            desc:'Sakin esen serin rüzgar',             cat:'doga',      tag:'Doğa',      acc:'#a7f3d0', bg:'none'  },
-  {id:'thunder',   em:'⛈', name:'Gök Gürültüsü',    desc:'Uzaktan gelen şimşek ve fırtına',    cat:'doga',      tag:'Doğa',      acc:'#818cf8', bg:'none'  },
+  {id:'thunder',   em:'🌩', name:'Gök Gürültüsü',    desc:'Uzaktan gelen şimşek ve fırtına',    cat:'doga',      tag:'Doğa',      acc:'#818cf8', bg:'none'  },
   {id:'creek',     em:'🏞', name:'Dere Sesi',         desc:'Akan serin tatlı su sesi',            cat:'doga',      tag:'Doğa',      acc:'#67e8f9', bg:'none'  },
   {id:'birds',     em:'🐦', name:'Sabah Kuşları',     desc:'Şafakta ötüşen kuşlar',               cat:'doga',      tag:'Doğa',      acc:'#bbf7d0', bg:'forest'},
   {id:'snowfall',  em:'❄️', name:'Kar Yağışı',        desc:'Sessiz ve sakin kar sesi',            cat:'doga',      tag:'Doğa',      acc:'#bae6fd', bg:'none'  },
+  {id:'crickets',  em:'🦗', name:'Gece Cırcırları',   desc:'Yaz gecesinde cırcırböcekleri',      cat:'doga',      tag:'Doğa',      acc:'#a3e635', bg:'none'  },
+  {id:'waterfall', em:'💧', name:'Şelale',            desc:'Güçlü ve sürekli akan şelale sesi',  cat:'doga',      tag:'Doğa',      acc:'#38bdf8', bg:'ocean' },
+
+  // ─── AMBİENT (8 ses) ────────────────────────────────────
   {id:'fire',      em:'🔥', name:'Şömine',            desc:'Odun ateşinin çıtırtısı',             cat:'ambient',   tag:'Ambient',   acc:'#fb923c', bg:'fire'  },
   {id:'white',     em:'〰️',name:'Beyaz Gürültü',     desc:'Odak ve derin uyku için',             cat:'ambient',   tag:'Ambient',   acc:'#c4b5fd', bg:'none'  },
   {id:'brown',     em:'🌫', name:'Kahverengi Gürültü',desc:'Derin sarmalayan geniş ses',          cat:'ambient',   tag:'Ambient',   acc:'#d97706', bg:'none'  },
+  {id:'pink',      em:'🩷', name:'Pembe Gürültü',     desc:'Doğal ve dengeli frekans dağılımı',   cat:'ambient',   tag:'Ambient',   acc:'#f472b6', bg:'none'  },
   {id:'cafe',      em:'☕', name:'Kafe Gürültüsü',    desc:'Hafif arka plan kalabalık sesi',      cat:'ambient',   tag:'Ambient',   acc:'#a78bfa', bg:'none'  },
   {id:'fan',       em:'🌀', name:'Vantilatör',        desc:'Sabit ve sürekli fan sesi',            cat:'ambient',   tag:'Ambient',   acc:'#94a3b8', bg:'none'  },
   {id:'space',     em:'🌌', name:'Uzay Ambiyansı',    desc:'Derin kozmik hum sesi',               cat:'ambient',   tag:'Ambient',   acc:'#6366f1', bg:'none'  },
+  {id:'train',     em:'🚂', name:'Tren Yolculuğu',   desc:'Raylarda ritmik sallanma sesi',       cat:'ambient',   tag:'Ambient',   acc:'#78716c', bg:'none'  },
+
+  // ─── BEBEK (15 ses) ──────────────────────────────────────
   {id:'womb',      em:'💞', name:'Anne Karnı',        desc:'Bebekler için sıcak ve güvenli',      cat:'bebek',     tag:'Bebek',     acc:'#f0abfc', bg:'baby'  },
   {id:'heartbeat', em:'💓', name:'Kalp Atışı',        desc:'Düzenli sakinleştirici ritim',        cat:'bebek',     tag:'Bebek',     acc:'#fb7185', bg:'baby'  },
   {id:'lullaby',   em:'🎵', name:'Ninni',             desc:'Yumuşak melodi ve nefes sesleri',     cat:'bebek',     tag:'Bebek',     acc:'#d8b4fe', bg:'baby'  },
   {id:'shush',     em:'🤫', name:'Shushing',          desc:'Bebeği sakinleştiren ses',             cat:'bebek',     tag:'Bebek',     acc:'#fca5a5', bg:'baby'  },
   {id:'cradle',    em:'🍼', name:'Beşik Sesi',        desc:'Hafif sallanan beşik gıcırtısı',      cat:'bebek',     tag:'Bebek',     acc:'#fde68a', bg:'baby'  },
+  {id:'hairdryer', em:'💨', name:'Saç Kurutma',       desc:'Bebeği anında sakinleştiren ses',     cat:'bebek',     tag:'Bebek',     acc:'#e2e8f0', bg:'baby'  },
+  {id:'vacuum',    em:'🔌', name:'Elektrik Süpürgesi',desc:'Sürekli ve güçlü beyaz gürültü',     cat:'bebek',     tag:'Bebek',     acc:'#a1a1aa', bg:'baby'  },
+  {id:'carride',   em:'🚗', name:'Araba Yolculuğu',  desc:'Motor ve yol sesi ile uyku',          cat:'bebek',     tag:'Bebek',     acc:'#93c5fd', bg:'baby'  },
+  {id:'musicbox',  em:'🎶', name:'Müzik Kutusu',     desc:'Nazik ve tınlayan melodi',             cat:'bebek',     tag:'Bebek',     acc:'#c4b5fd', bg:'baby'  },
+  {id:'purring',   em:'🐱', name:'Kedi Mırıltısı',   desc:'Sakinleştirici kedi purring sesi',    cat:'bebek',     tag:'Bebek',     acc:'#fdba74', bg:'baby'  },
+  {id:'washer',    em:'🫧', name:'Çamaşır Makinesi', desc:'Ritmik dönme ve su sesi',              cat:'bebek',     tag:'Bebek',     acc:'#7dd3fc', bg:'baby'  },
+  {id:'mobile',    em:'🎠', name:'Dönence',           desc:'Beşik üstü oyuncak melodisi',          cat:'bebek',     tag:'Bebek',     acc:'#e9d5ff', bg:'baby'  },
+  {id:'babybrown', em:'🧸', name:'Bebek Gürültüsü',  desc:'Bebeklere özel kahverengi gürültü',   cat:'bebek',     tag:'Bebek',     acc:'#d4a574', bg:'baby'  },
+  {id:'lullaby2',  em:'🌟', name:'Yıldız Ninnisi',   desc:'Farklı tonda yumuşak ninni',           cat:'bebek',     tag:'Bebek',     acc:'#fef08a', bg:'baby'  },
+  {id:'babyocean', em:'🐚', name:'Deniz Kabuğu',     desc:'Yumuşak deniz sesi bebek için',       cat:'bebek',     tag:'Bebek',     acc:'#99f6e4', bg:'baby'  },
+
+  // ─── MEDİTASYON (7 ses) ─────────────────────────────────
   {id:'tibetan',   em:'🔔', name:'Tibet Kasesi',      desc:'Derin meditasyon titreşimleri',       cat:'meditasyon',tag:'Meditasyon',acc:'#fcd34d', bg:'none'  },
   {id:'binaural',  em:'🧠', name:'Binaural Beats',    desc:'Alfa dalgaları ile derin uyku',       cat:'meditasyon',tag:'Meditasyon',acc:'#818cf8', bg:'none'  },
   {id:'om',        em:'🕉', name:'Om Mantrası',       desc:'Sakinleştirici titreşim ve ses',      cat:'meditasyon',tag:'Meditasyon',acc:'#fde68a', bg:'none'  },
   {id:'drone',     em:'🎶', name:'Drone Müzik',       desc:'Sürekli drone ve overtone sesi',      cat:'meditasyon',tag:'Meditasyon',acc:'#a5b4fc', bg:'none'  },
+  {id:'chimes',    em:'🎐', name:'Rüzgar Çanları',   desc:'Hafif esintide tınlayan çanlar',      cat:'meditasyon',tag:'Meditasyon',acc:'#67e8f9', bg:'none'  },
+  {id:'crystal',   em:'💎', name:'Kristal Kase',      desc:'Yüksek frekanslı şifa tınısı',        cat:'meditasyon',tag:'Meditasyon',acc:'#c084fc', bg:'none'  },
+  {id:'theta',     em:'🌀', name:'Theta Dalgaları',   desc:'4-8Hz meditasyon frekansı',            cat:'meditasyon',tag:'Meditasyon',acc:'#6366f1', bg:'none'  },
+
+  // ─── UYKU (7 ses) ───────────────────────────────────────
   {id:'sleep',     em:'💤', name:'Uyku Fısıltısı',    desc:'ASMR benzeri yumuşak fısıltı',        cat:'uyku',      tag:'Uyku',      acc:'#a5b4fc', bg:'none'  },
-  {id:'deepfreq',  em:'🌠', name:'Derin Uyku 432Hz',  desc:'432Hz harmonik uyku frekansı',        cat:'uyku',      tag:'Uyku',      acc:'#7c3aed', bg:'none'  }
+  {id:'deepfreq',  em:'🌠', name:'Derin Uyku 432Hz',  desc:'432Hz harmonik uyku frekansı',        cat:'uyku',      tag:'Uyku',      acc:'#7c3aed', bg:'none'  },
+  {id:'delta',     em:'🧬', name:'Delta Dalgaları',   desc:'0.5-4Hz derin uyku frekansı',         cat:'uyku',      tag:'Uyku',      acc:'#4f46e5', bg:'none'  },
+  {id:'nightrain', em:'🌃', name:'Gece Yağmuru',      desc:'Cam arkasında hafif yağmur ve rüzgar',cat:'uyku',      tag:'Uyku',      acc:'#6d28d9', bg:'rain'  },
+  {id:'softpiano', em:'🎹', name:'Yumuşak Piyano',   desc:'Sakin ve huzurlu piyano melodisi',     cat:'uyku',      tag:'Uyku',      acc:'#a78bfa', bg:'none'  },
+  {id:'cloudbed',  em:'☁️', name:'Bulut Yatağı',      desc:'Çok katmanlı derin ambient',           cat:'uyku',      tag:'Uyku',      acc:'#c7d2fe', bg:'none'  },
+  {id:'warmhum',   em:'🕯', name:'Sıcak Uğultu',     desc:'Derin ve sarmalayan bas uğultu',       cat:'uyku',      tag:'Uyku',      acc:'#f59e0b', bg:'none'  }
 ];
 
 var MOODS = {
-  stresli:    ['rain','ocean','wind','fire','snowfall'],
-  uykusuz:   ['white','brown','binaural','sleep','deepfreq'],
-  bebek:     ['womb','heartbeat','lullaby','shush','cradle'],
-  odak:      ['forest','cafe','tibetan','creek','birds'],
-  meditasyon:['tibetan','om','ocean','drone','fire']
+  stresli:    ['rain','ocean','wind','fire','snowfall','nightrain','cloudbed'],
+  uykusuz:   ['white','brown','pink','binaural','sleep','deepfreq','delta','warmhum','cloudbed'],
+  bebek:     ['womb','heartbeat','lullaby','shush','cradle','hairdryer','vacuum','carride','musicbox','purring','washer','mobile','babybrown','lullaby2','babyocean'],
+  odak:      ['forest','cafe','tibetan','creek','birds','train','pink','chimes'],
+  meditasyon:['tibetan','om','ocean','drone','fire','delta','chimes','crystal','theta']
 };
 
 // ─── STATE ──────────────────────────────────────────────
@@ -810,8 +841,9 @@ var favSet = JSON.parse(localStorage.getItem('ds_favs') || '[]').reduce(function
 var plays  = parseInt(localStorage.getItem('ds_plays') || '0');
 var sessSecs = 0, timerSecs = 0, timerMins = 30;
 var isPlaying = false, lastId = null, progPct = 0;
-var masterVol = 0.7, muted = false;
+var masterVol = 0.85, muted = false;
 var soundVols = {}; // id -> 0..1 per-sound volume
+var defaultSoundVol = 0.92;
 var sessInt = null, timerInt = null, progInt = null;
 
 // ─── CANVAS ─────────────────────────────────────────────
@@ -931,129 +963,301 @@ function buildSynth(id) {
 
   if (id === 'rain') {
     var s = noiseSrc(6), bp = bpf('bandpass',900,.6), lp = bpf('lowpass',3500);
-    s.connect(bp); bp.connect(lp); lp.connect(g); s.start(); ns.push(s,bp,lp); fadeIn(g,.62);
+    s.connect(bp); bp.connect(lp); lp.connect(g); s.start(); ns.push(s,bp,lp); fadeIn(g,.85);
   } else if (id === 'heavyrain') {
     var s1 = noiseSrc(6), lp1 = bpf('lowpass',5000);
     var s2 = noiseSrc(4), hp1 = bpf('highpass',1800), g2 = gainNode(.5);
     s1.connect(lp1); lp1.connect(g); s2.connect(hp1); hp1.connect(g2); g2.connect(g);
-    s1.start(); s2.start(); ns.push(s1,lp1,s2,hp1,g2); fadeIn(g,.72);
+    s1.start(); s2.start(); ns.push(s1,lp1,s2,hp1,g2); fadeIn(g,.92);
   } else if (id === 'ocean') {
     var s = noiseSrc(8), lp = bpf('lowpass',700), lp2 = bpf('lowpass',350);
-    var lfo = osc('sine',.11), lg = gainNode(.32);
+    var lfo = osc('sine',.11), lg = gainNode(.38);
     lfo.connect(lg); lg.connect(g.gain); s.connect(lp); lp.connect(lp2); lp2.connect(g);
-    s.start(); lfo.start(); ns.push(s,lp,lp2,lfo,lg); fadeIn(g,.58);
+    s.start(); lfo.start(); ns.push(s,lp,lp2,lfo,lg); fadeIn(g,.82);
   } else if (id === 'forest') {
     var s = noiseSrc(6), hp = bpf('highpass',1100), lp = bpf('lowpass',4200);
-    var ws = noiseSrc(4), wl = bpf('lowpass',450), wg = gainNode(.28);
+    var ws = noiseSrc(4), wl = bpf('lowpass',450), wg = gainNode(.35);
     s.connect(hp); hp.connect(lp); lp.connect(g); ws.connect(wl); wl.connect(wg); wg.connect(g);
     s.start(); ws.start(); ns.push(s,hp,lp,ws,wl,wg);
-    scheduleBirds(ax, g, ns, alive, false); fadeIn(g,.50);
+    scheduleBirds(ax, g, ns, alive, false); fadeIn(g,.75);
   } else if (id === 'birds') {
-    var s = noiseSrc(4), hp = bpf('highpass',1500), lp = bpf('lowpass',4000), bg = gainNode(.10);
+    var s = noiseSrc(4), hp = bpf('highpass',1500), lp = bpf('lowpass',4000), bg = gainNode(.15);
     s.connect(hp); hp.connect(lp); lp.connect(bg); bg.connect(g); s.start(); ns.push(s,hp,lp,bg);
-    scheduleBirds(ax, g, ns, alive, true); fadeIn(g,.50);
+    scheduleBirds(ax, g, ns, alive, true); fadeIn(g,.72);
   } else if (id === 'wind') {
     var s = noiseSrc(6), bp = bpf('bandpass',480,.3);
-    var lfo = osc('sine',.07), lg = gainNode(.28);
+    var lfo = osc('sine',.07), lg = gainNode(.32);
     lfo.connect(lg); lg.connect(g.gain); s.connect(bp); bp.connect(g); s.start(); lfo.start();
-    ns.push(s,bp,lfo,lg); fadeIn(g,.50);
+    ns.push(s,bp,lfo,lg); fadeIn(g,.75);
   } else if (id === 'thunder') {
     var s = noiseSrc(6), bp = bpf('bandpass',800,.5), lp = bpf('lowpass',3000);
-    var rs = noiseSrc(8), rl = bpf('lowpass',130), rg = gainNode(.45);
+    var rs = noiseSrc(8), rl = bpf('lowpass',130), rg = gainNode(.55);
     s.connect(bp); bp.connect(lp); lp.connect(g); s.start();
     rs.connect(rl); rl.connect(rg); rg.connect(g); rs.start();
-    ns.push(s,bp,lp,rs,rl,rg); fadeIn(g,.55);
+    ns.push(s,bp,lp,rs,rl,rg); fadeIn(g,.78);
   } else if (id === 'creek') {
     var s = noiseSrc(6), bp = bpf('bandpass',2200,.9), hp = bpf('highpass',700);
-    var lfo = osc('sine',.3), lg = gainNode(.22);
+    var lfo = osc('sine',.3), lg = gainNode(.28);
     lfo.connect(lg); lg.connect(g.gain); s.connect(bp); bp.connect(hp); hp.connect(g); s.start(); lfo.start();
-    ns.push(s,bp,hp,lfo,lg); fadeIn(g,.50);
+    ns.push(s,bp,hp,lfo,lg); fadeIn(g,.74);
   } else if (id === 'snowfall') {
-    var s = noiseSrc(6), lp = bpf('lowpass',380), lp2 = bpf('lowpass',190);
-    s.connect(lp); lp.connect(lp2); lp2.connect(g); s.start(); ns.push(s,lp,lp2); fadeIn(g,.40);
+    var s = noiseSrc(6), lp = bpf('lowpass',480), lp2 = bpf('lowpass',260);
+    s.connect(lp); lp.connect(lp2); lp2.connect(g); s.start(); ns.push(s,lp,lp2); fadeIn(g,.72);
+  } else if (id === 'crickets') {
+    // Cırcırböceği: yüksek frekanslı ritmik ses
+    var s = noiseSrc(4), bp = bpf('bandpass',4800,3);
+    var lfo = osc('sine',7), lg = gainNode(.45);
+    lfo.connect(lg); lg.connect(g.gain); s.connect(bp); bp.connect(g); s.start(); lfo.start();
+    // Arka plan gece ambiyansı
+    var s2 = noiseSrc(6), lp2 = bpf('lowpass',400), g2 = gainNode(.20);
+    s2.connect(lp2); lp2.connect(g2); g2.connect(g); s2.start();
+    ns.push(s,bp,lfo,lg,s2,lp2,g2); fadeIn(g,.80);
+  } else if (id === 'waterfall') {
+    // Şelale: geniş bantlı güçlü su sesi
+    var s1 = noiseSrc(6), lp = bpf('lowpass',3000), hp = bpf('highpass',80);
+    var s2 = noiseSrc(4), bp = bpf('bandpass',1200,.5), g2 = gainNode(.35);
+    s1.connect(lp); lp.connect(hp); hp.connect(g);
+    s2.connect(bp); bp.connect(g2); g2.connect(g);
+    s1.start(); s2.start(); ns.push(s1,lp,hp,s2,bp,g2); fadeIn(g,.85);
   } else if (id === 'fire') {
     var s = noiseSrc(4), lp = bpf('lowpass',900), hp = bpf('highpass',90);
     s.connect(lp); lp.connect(hp); hp.connect(g); s.start(); ns.push(s,lp,hp);
-    scheduleCrackle(ax, g, ns, alive); fadeIn(g,.48);
+    scheduleCrackle(ax, g, ns, alive); fadeIn(g,.72);
   } else if (id === 'white') {
-    var s = noiseSrc(4); s.connect(g); s.start(); ns.push(s); fadeIn(g,.50);
+    var s = noiseSrc(4); s.connect(g); s.start(); ns.push(s); fadeIn(g,.80);
   } else if (id === 'brown') {
     var s = noiseSrc(4), lp = bpf('lowpass',220), lp2 = bpf('lowpass',110);
-    s.connect(lp); lp.connect(lp2); lp2.connect(g); s.start(); ns.push(s,lp,lp2); fadeIn(g,.65);
+    s.connect(lp); lp.connect(lp2); lp2.connect(g); s.start(); ns.push(s,lp,lp2); fadeIn(g,.85);
+  } else if (id === 'pink') {
+    // Pembe gürültü: -3dB/octave — her oktavda eşit enerji
+    var s = noiseSrc(6), lp = bpf('lowpass',8000);
+    var pf1 = bpf('lowpass',1000), pf2 = bpf('lowpass',2500);
+    s.connect(pf1); pf1.connect(pf2); pf2.connect(lp); lp.connect(g);
+    s.start(); ns.push(s,pf1,pf2,lp); fadeIn(g,.78);
   } else if (id === 'cafe') {
     var s = noiseSrc(8), bp = bpf('bandpass',1300,1.5), lp = bpf('lowpass',4000);
-    s.connect(bp); bp.connect(lp); lp.connect(g); s.start(); ns.push(s,bp,lp); fadeIn(g,.35);
+    s.connect(bp); bp.connect(lp); lp.connect(g); s.start(); ns.push(s,bp,lp); fadeIn(g,.78);
   } else if (id === 'fan') {
     var s = noiseSrc(4), lp = bpf('lowpass',1800), hp = bpf('highpass',300);
-    s.connect(lp); lp.connect(hp); hp.connect(g); s.start(); ns.push(s,lp,hp); fadeIn(g,.55);
+    s.connect(lp); lp.connect(hp); hp.connect(g); s.start(); ns.push(s,lp,hp); fadeIn(g,.78);
   } else if (id === 'space') {
     var freqs = [40,53,71,89];
     for (var i = 0; i < freqs.length; i++) {
-      var o = osc('sine',freqs[i]), g2 = gainNode(.12/(i+1));
-      var lfo = osc('sine',.03+i*.01), lg = gainNode(.06);
+      var o = osc('sine',freqs[i]), g2 = gainNode(.18/(i+1));
+      var lfo = osc('sine',.03+i*.01), lg = gainNode(.08);
       lfo.connect(lg); lg.connect(g2.gain); o.connect(g2); g2.connect(g);
       o.start(); lfo.start(); ns.push(o,g2,lfo,lg);
     }
-    fadeIn(g,.60);
+    fadeIn(g,.80);
+  } else if (id === 'train') {
+    // Tren: ritmik tekerleme + motor hum
+    var s = noiseSrc(6), lp = bpf('lowpass',600), hp = bpf('highpass',60);
+    var lfo = osc('sine',2.8), lg = gainNode(.30);
+    lfo.connect(lg); lg.connect(g.gain);
+    s.connect(lp); lp.connect(hp); hp.connect(g); s.start(); lfo.start();
+    // Ritmik tıkırtı
+    var o1 = osc('sine',45), g1 = gainNode(.35);
+    var lfo2 = osc('square',1.4), lg2 = gainNode(.20);
+    lfo2.connect(lg2); lg2.connect(g1.gain);
+    o1.connect(g1); g1.connect(g); o1.start(); lfo2.start();
+    ns.push(s,lp,hp,lfo,lg,o1,g1,lfo2,lg2); fadeIn(g,.75);
   } else if (id === 'womb') {
     var o1 = osc('sine',58), o2 = osc('sine',116);
-    var g1 = gainNode(.50), g2 = gainNode(.15);
-    var lfo = osc('sine',1.1), lg = gainNode(.22);
-    var ns2 = noiseSrc(4), nl = bpf('lowpass',200), ng = gainNode(.18);
+    var g1 = gainNode(.60), g2 = gainNode(.22);
+    var lfo = osc('sine',1.1), lg = gainNode(.28);
+    var ns2 = noiseSrc(4), nl = bpf('lowpass',200), ng = gainNode(.25);
     lfo.connect(lg); lg.connect(g1.gain);
     ns2.connect(nl); nl.connect(ng); ng.connect(g);
     o1.connect(g1); g1.connect(g); o2.connect(g2); g2.connect(g);
     o1.start(); o2.start(); lfo.start(); ns2.start();
-    ns.push(o1,o2,g1,g2,lfo,lg,ns2,nl,ng); fadeIn(g,.95);
+    ns.push(o1,o2,g1,g2,lfo,lg,ns2,nl,ng); fadeIn(g,1.0);
   } else if (id === 'heartbeat') {
     scheduleHeartbeat(ax, g, ns, alive); fadeIn(g,1.0);
   } else if (id === 'lullaby') {
     scheduleLullaby(ax, g, ns, alive);
-    var bs = noiseSrc(4), bl = bpf('lowpass',300), bg = gainNode(.07);
-    bs.connect(bl); bl.connect(bg); bg.connect(g); bs.start(); ns.push(bs,bl,bg); fadeIn(g,.88);
+    var bs = noiseSrc(4), bl = bpf('lowpass',300), bg = gainNode(.12);
+    bs.connect(bl); bl.connect(bg); bg.connect(g); bs.start(); ns.push(bs,bl,bg); fadeIn(g,.95);
   } else if (id === 'shush') {
     var s = noiseSrc(4), bp = bpf('bandpass',3600,1.3);
-    var lfo = osc('sine',.65), lg = gainNode(.32);
+    var lfo = osc('sine',.65), lg = gainNode(.38);
     lfo.connect(lg); lg.connect(g.gain); s.connect(bp); bp.connect(g); s.start(); lfo.start();
-    ns.push(s,bp,lfo,lg); fadeIn(g,.90);
+    ns.push(s,bp,lfo,lg); fadeIn(g,.95);
   } else if (id === 'cradle') {
     scheduleCradle(ax, g, ns, alive);
-    var bs = noiseSrc(4), bl = bpf('lowpass',250), bg = gainNode(.06);
-    bs.connect(bl); bl.connect(bg); bg.connect(g); bs.start(); ns.push(bs,bl,bg); fadeIn(g,.90);
+    var bs = noiseSrc(4), bl = bpf('lowpass',250), bg = gainNode(.12);
+    bs.connect(bl); bl.connect(bg); bg.connect(g); bs.start(); ns.push(bs,bl,bg); fadeIn(g,.95);
+  } else if (id === 'hairdryer') {
+    // Saç kurutma: orta-geniş bant gürültü, çok etkili bebek sesi
+    var s = noiseSrc(6), lp = bpf('lowpass',4500), hp = bpf('highpass',200);
+    var s2 = noiseSrc(4), bp = bpf('bandpass',1800,.4), g2 = gainNode(.30);
+    s.connect(lp); lp.connect(hp); hp.connect(g);
+    s2.connect(bp); bp.connect(g2); g2.connect(g);
+    s.start(); s2.start(); ns.push(s,lp,hp,s2,bp,g2); fadeIn(g,.90);
+  } else if (id === 'vacuum') {
+    // Elektrik süpürgesi: güçlü düşük-orta bant gürültü
+    var s = noiseSrc(6), lp = bpf('lowpass',2200), hp = bpf('highpass',120);
+    var o1 = osc('sawtooth',60), gx = gainNode(.15), fl = bpf('lowpass',300);
+    s.connect(lp); lp.connect(hp); hp.connect(g);
+    o1.connect(fl); fl.connect(gx); gx.connect(g);
+    s.start(); o1.start(); ns.push(s,lp,hp,o1,gx,fl); fadeIn(g,.88);
+  } else if (id === 'carride') {
+    // Araba yolculuğu: motor hum + yol sesi
+    var o1 = osc('sine',42), o2 = osc('sine',84), o3 = osc('sine',126);
+    var g1 = gainNode(.40), g2 = gainNode(.18), g3 = gainNode(.08);
+    var lfo = osc('sine',.15), lg = gainNode(.12);
+    lfo.connect(lg); lg.connect(g1.gain);
+    o1.connect(g1); g1.connect(g); o2.connect(g2); g2.connect(g); o3.connect(g3); g3.connect(g);
+    // Yol gürültüsü
+    var rs = noiseSrc(6), rl = bpf('lowpass',800), rh = bpf('highpass',80), rg = gainNode(.30);
+    rs.connect(rl); rl.connect(rh); rh.connect(rg); rg.connect(g);
+    o1.start(); o2.start(); o3.start(); lfo.start(); rs.start();
+    ns.push(o1,o2,o3,g1,g2,g3,lfo,lg,rs,rl,rh,rg); fadeIn(g,.92);
+  } else if (id === 'musicbox') {
+    // Müzik kutusu: pentatonik melodi, çan tınısı
+    scheduleMusicBox(ax, g, ns, alive); fadeIn(g,.90);
+  } else if (id === 'purring') {
+    // Kedi mırıltısı: 25-50Hz titreşim + yumuşak gürültü
+    var o1 = osc('sine',26), o2 = osc('sine',52);
+    var g1 = gainNode(.50), g2 = gainNode(.22);
+    var lfo = osc('sine',4.5), lg = gainNode(.25);
+    lfo.connect(lg); lg.connect(g1.gain);
+    o1.connect(g1); g1.connect(g); o2.connect(g2); g2.connect(g);
+    var ns2 = noiseSrc(4), nl = bpf('lowpass',180), ng = gainNode(.15);
+    ns2.connect(nl); nl.connect(ng); ng.connect(g);
+    o1.start(); o2.start(); lfo.start(); ns2.start();
+    ns.push(o1,o2,g1,g2,lfo,lg,ns2,nl,ng); fadeIn(g,.88);
   } else if (id === 'tibetan') {
-    scheduleTibetan(ax, g, ns, alive); fadeIn(g,.55);
+    scheduleTibetan(ax, g, ns, alive); fadeIn(g,.78);
   } else if (id === 'binaural') {
     var l = osc('sine',200), r = osc('sine',208);
-    var m = ax.createChannelMerger(2), lg = gainNode(.28), rg = gainNode(.28);
+    var m = ax.createChannelMerger(2), lg = gainNode(.38), rg = gainNode(.38);
     l.connect(lg); lg.connect(m,0,0); r.connect(rg); rg.connect(m,0,1); m.connect(g);
-    l.start(); r.start(); ns.push(l,r,m,lg,rg); fadeIn(g,.42);
+    l.start(); r.start(); ns.push(l,r,m,lg,rg); fadeIn(g,.78);
   } else if (id === 'om') {
-    scheduleOm(ax, g, ns, alive); fadeIn(g,.48);
+    scheduleOm(ax, g, ns, alive); fadeIn(g,.72);
   } else if (id === 'drone') {
     var fqs = [110,165,220,275,330];
     for (var i = 0; i < fqs.length; i++) {
       var o = ax.createOscillator(); o.type = i<2?'sawtooth':'sine'; o.frequency.value = fqs[i];
-      var gx = gainNode(.1/(i*.5+1)), fl = bpf('lowpass',800);
-      var lfo = osc('sine',.04+i*.007), lg = gainNode(.04);
+      var gx = gainNode(.14/(i*.5+1)), fl = bpf('lowpass',800);
+      var lfo = osc('sine',.04+i*.007), lg = gainNode(.06);
       lfo.connect(lg); lg.connect(gx.gain); o.connect(fl); fl.connect(gx); gx.connect(g);
       o.start(); lfo.start(); ns.push(o,fl,gx,lfo,lg);
     }
-    fadeIn(g,.55);
+    fadeIn(g,.75);
   } else if (id === 'sleep') {
     var s = noiseSrc(4), lp = bpf('lowpass',550);
-    var lfo = osc('sine',.18), lg = gainNode(.42);
+    var lfo = osc('sine',.18), lg = gainNode(.48);
     lfo.connect(lg); lg.connect(g.gain); s.connect(lp); lp.connect(g); s.start(); lfo.start();
-    ns.push(s,lp,lfo,lg); fadeIn(g,.38);
+    ns.push(s,lp,lfo,lg); fadeIn(g,.78);
   } else if (id === 'deepfreq') {
     var o1 = osc('sine',432), o2 = osc('sine',216), o3 = osc('sine',864);
-    var g1 = gainNode(.30), g2 = gainNode(.20), g3 = gainNode(.08);
-    var lfo = osc('sine',.05), lg = gainNode(.15);
+    var g1 = gainNode(.40), g2 = gainNode(.28), g3 = gainNode(.12);
+    var lfo = osc('sine',.05), lg = gainNode(.18);
     lfo.connect(lg); lg.connect(g1.gain);
     o1.connect(g1); g1.connect(g); o2.connect(g2); g2.connect(g); o3.connect(g3); g3.connect(g);
     o1.start(); o2.start(); o3.start(); lfo.start();
-    ns.push(o1,o2,o3,g1,g2,g3,lfo,lg); fadeIn(g,.52);
+    ns.push(o1,o2,o3,g1,g2,g3,lfo,lg); fadeIn(g,.75);
+  } else if (id === 'delta') {
+    // Delta dalgaları: 2Hz binaural beat + derin drone
+    var l = osc('sine',100), r = osc('sine',102);
+    var m = ax.createChannelMerger(2), lg = gainNode(.35), rg = gainNode(.35);
+    l.connect(lg); lg.connect(m,0,0); r.connect(rg); rg.connect(m,0,1); m.connect(g);
+    // Derin pad
+    var o1 = osc('sine',55), gp = gainNode(.25);
+    var lfo = osc('sine',.04), lfg = gainNode(.10);
+    lfo.connect(lfg); lfg.connect(gp.gain);
+    o1.connect(gp); gp.connect(g);
+    l.start(); r.start(); o1.start(); lfo.start();
+    ns.push(l,r,m,lg,rg,o1,gp,lfo,lfg); fadeIn(g,.72);
+  } else if (id === 'nightrain') {
+    // Gece yağmuru: hafif yağmur + rüzgar + uzak gök gürültüsü
+    var s1 = noiseSrc(6), bp1 = bpf('bandpass',1100,.5), lp1 = bpf('lowpass',3000);
+    s1.connect(bp1); bp1.connect(lp1); lp1.connect(g); s1.start();
+    var sw = noiseSrc(4), bpw = bpf('bandpass',350,.3), gw = gainNode(.22);
+    sw.connect(bpw); bpw.connect(gw); gw.connect(g); sw.start();
+    // Uzak gök gürültüsü
+    var sr = noiseSrc(8), rl = bpf('lowpass',100), rg = gainNode(.30);
+    sr.connect(rl); rl.connect(rg); rg.connect(g); sr.start();
+    ns.push(s1,bp1,lp1,sw,bpw,gw,sr,rl,rg); fadeIn(g,.82);
+  } else if (id === 'washer') {
+    var s = noiseSrc(6), lp = bpf('lowpass',1200), hp = bpf('highpass',80);
+    var lfo = osc('sine',.8), lg = gainNode(.30);
+    lfo.connect(lg); lg.connect(g.gain);
+    s.connect(lp); lp.connect(hp); hp.connect(g); s.start(); lfo.start();
+    var o1 = osc('sine',52), gm = gainNode(.35);
+    var lfo2 = osc('sine',.4), lg2 = gainNode(.12);
+    lfo2.connect(lg2); lg2.connect(gm.gain);
+    o1.connect(gm); gm.connect(g); o1.start(); lfo2.start();
+    ns.push(s,lp,hp,lfo,lg,o1,gm,lfo2,lg2); fadeIn(g,.92);
+  } else if (id === 'mobile') {
+    scheduleMobile(ax, g, ns, alive); fadeIn(g,.90);
+  } else if (id === 'babybrown') {
+    var s = noiseSrc(6), lp = bpf('lowpass',180), lp2 = bpf('lowpass',90);
+    s.connect(lp); lp.connect(lp2); lp2.connect(g); s.start(); ns.push(s,lp,lp2); fadeIn(g,.95);
+  } else if (id === 'lullaby2') {
+    scheduleLullaby2(ax, g, ns, alive);
+    var bs = noiseSrc(4), bl = bpf('lowpass',280), bg = gainNode(.14);
+    bs.connect(bl); bl.connect(bg); bg.connect(g); bs.start(); ns.push(bs,bl,bg); fadeIn(g,.92);
+  } else if (id === 'babyocean') {
+    var s = noiseSrc(8), lp = bpf('lowpass',400), lp2 = bpf('lowpass',280);
+    var lfo = osc('sine',.08), lg = gainNode(.25);
+    lfo.connect(lg); lg.connect(g.gain);
+    s.connect(lp); lp.connect(lp2); lp2.connect(g); s.start(); lfo.start();
+    ns.push(s,lp,lp2,lfo,lg); fadeIn(g,.88);
+  } else if (id === 'chimes') {
+    scheduleChimes(ax, g, ns, alive); fadeIn(g,.78);
+  } else if (id === 'crystal') {
+    var harms = [528,792,1056,1320,1584];
+    for (var i = 0; i < harms.length; i++) {
+      (function(f, idx){
+        var o = ax.createOscillator(); o.type='sine'; o.frequency.value=f;
+        var gx = gainNode(.18/(idx*.6+1));
+        var lf = osc('sine',.02+idx*.008), lfg = gainNode(.04);
+        lf.connect(lfg); lfg.connect(gx.gain);
+        o.connect(gx); gx.connect(g); o.start(); lf.start();
+        ns.push(o,gx,lf,lfg);
+      })(harms[i], i);
+    }
+    fadeIn(g,.75);
+  } else if (id === 'theta') {
+    var l = osc('sine',150), r = osc('sine',156);
+    var m = ax.createChannelMerger(2), lgn = gainNode(.35), rgn = gainNode(.35);
+    l.connect(lgn); lgn.connect(m,0,0); r.connect(rgn); rgn.connect(m,0,1); m.connect(g);
+    var o1 = osc('sine',75), gp = gainNode(.22);
+    var lfo = osc('sine',.06), lfg = gainNode(.08);
+    lfo.connect(lfg); lfg.connect(gp.gain);
+    o1.connect(gp); gp.connect(g);
+    l.start(); r.start(); o1.start(); lfo.start();
+    ns.push(l,r,m,lgn,rgn,o1,gp,lfo,lfg); fadeIn(g,.74);
+  } else if (id === 'softpiano') {
+    scheduleSoftPiano(ax, g, ns, alive); fadeIn(g,.82);
+  } else if (id === 'cloudbed') {
+    var freqs = [55,82.5,110,165];
+    for (var i = 0; i < freqs.length; i++) {
+      (function(f, idx){
+        var o = osc('sine',f), gx = gainNode(.22/(idx*.4+1));
+        var lf = osc('sine',.02+idx*.005), lfg = gainNode(.06);
+        lf.connect(lfg); lfg.connect(gx.gain);
+        o.connect(gx); gx.connect(g); o.start(); lf.start();
+        ns.push(o,gx,lf,lfg);
+      })(freqs[i], i);
+    }
+    var sn = noiseSrc(6), snl = bpf('lowpass',200), sng = gainNode(.18);
+    sn.connect(snl); snl.connect(sng); sng.connect(g); sn.start();
+    ns.push(sn,snl,sng); fadeIn(g,.80);
+  } else if (id === 'warmhum') {
+    var o1 = osc('sine',55), o2 = osc('sine',110), o3 = osc('triangle',82.5);
+    var g1 = gainNode(.45), g2x = gainNode(.25), g3 = gainNode(.15);
+    var lfo = osc('sine',.03), lg = gainNode(.12);
+    lfo.connect(lg); lg.connect(g1.gain);
+    o1.connect(g1); g1.connect(g); o2.connect(g2x); g2x.connect(g); o3.connect(g3); g3.connect(g);
+    var sn = noiseSrc(4), snl = bpf('lowpass',150), sng = gainNode(.12);
+    sn.connect(snl); snl.connect(sng); sng.connect(g);
+    o1.start(); o2.start(); o3.start(); lfo.start(); sn.start();
+    ns.push(o1,o2,o3,g1,g2x,g3,lfo,lg,sn,snl,sng); fadeIn(g,.85);
   } else {
-    var s = noiseSrc(4); s.connect(g); s.start(); ns.push(s); fadeIn(g,.40);
+    var s = noiseSrc(4); s.connect(g); s.start(); ns.push(s); fadeIn(g,.75);
   }
 
   return {nodes: ns, gain: g, alive: alive};
@@ -1065,7 +1269,7 @@ function scheduleBirds(ax, dest, ns, alive, prominent) {
     if (!alive.v || !AX) return;
     var f = freqs[Math.floor(Math.random()*freqs.length)] + Math.random()*300;
     var now = AX.currentTime;
-    var vol = prominent ? .13 : .065;
+    var vol = prominent ? .22 : .11;
     var o = AX.createOscillator(); o.type='sine'; o.frequency.value=f;
     var gx = AX.createGain(); gx.gain.value=0;
     gx.gain.setValueAtTime(0,now); gx.gain.linearRampToValueAtTime(vol,now+.04); gx.gain.linearRampToValueAtTime(0,now+.22);
@@ -1082,7 +1286,7 @@ function scheduleCrackle(ax, dest, ns, alive) {
     var d = b.getChannelData(0);
     for (var i=0; i<d.length; i++) d[i] = (Math.random()*2-1)*Math.exp(-i/(d.length*.28));
     var s = AX.createBufferSource(); s.buffer=b;
-    var gx = AX.createGain(); gx.gain.value=.18+Math.random()*.22;
+    var gx = AX.createGain(); gx.gain.value=.28+Math.random()*.30;
     var hp = AX.createBiquadFilter(); hp.type='highpass'; hp.frequency.value=800;
     s.connect(hp); hp.connect(gx); gx.connect(dest); s.start(); ns.push(s,gx,hp);
     setTimeout(crackle, 180+Math.random()*900);
@@ -1105,7 +1309,7 @@ function scheduleHeartbeat(ax, dest, ns, alive) {
         var nd = nb.getChannelData(0);
         for (var j=0; j<nd.length; j++) nd[j] = (Math.random()*2-1)*Math.exp(-j/(nd.length*.15));
         var bs = AX.createBufferSource(); bs.buffer=nb;
-        var bg = AX.createGain(); bg.gain.value=vol*.3;
+        var bg = AX.createGain(); bg.gain.value=vol*.5;
         var bl = AX.createBiquadFilter(); bl.type='lowpass'; bl.frequency.value=350;
         bs.connect(bl); bl.connect(bg); bg.connect(dest); bs.start(now);
         ns.push(o,gx,bs,bg,bl);
@@ -1128,8 +1332,8 @@ function scheduleLullaby(ax, dest, ns, alive) {
     var o2 = AX.createOscillator(); o2.type='sine'; o2.frequency.value=f*2.01;
     var gx = AX.createGain(); gx.gain.value=0;
     var g2 = AX.createGain(); g2.gain.value=0;
-    gx.gain.setValueAtTime(0,now); gx.gain.linearRampToValueAtTime(.22,now+.1); gx.gain.linearRampToValueAtTime(0,now+.6);
-    g2.gain.setValueAtTime(0,now); g2.gain.linearRampToValueAtTime(.07,now+.1); g2.gain.linearRampToValueAtTime(0,now+.6);
+    gx.gain.setValueAtTime(0,now); gx.gain.linearRampToValueAtTime(.35,now+.1); gx.gain.linearRampToValueAtTime(0,now+.6);
+    g2.gain.setValueAtTime(0,now); g2.gain.linearRampToValueAtTime(.12,now+.1); g2.gain.linearRampToValueAtTime(0,now+.6);
     o.connect(gx); gx.connect(dest); o2.connect(g2); g2.connect(dest);
     o.start(now); o.stop(now+.65); o2.start(now); o2.stop(now+.65); ns.push(o,gx,o2,g2);
     setTimeout(note, 560+Math.random()*140);
@@ -1144,7 +1348,7 @@ function scheduleCradle(ax, dest, ns, alive) {
     var o = AX.createOscillator(); o.type='sawtooth'; o.frequency.value=f;
     var fl = AX.createBiquadFilter(); fl.type='bandpass'; fl.frequency.value=f; fl.Q.value=8;
     var gx = AX.createGain(); gx.gain.value=0;
-    gx.gain.setValueAtTime(0,now); gx.gain.linearRampToValueAtTime(.12,now+.08); gx.gain.linearRampToValueAtTime(0,now+.35);
+    gx.gain.setValueAtTime(0,now); gx.gain.linearRampToValueAtTime(.22,now+.08); gx.gain.linearRampToValueAtTime(0,now+.35);
     o.connect(fl); fl.connect(gx); gx.connect(dest); o.start(now); o.stop(now+.4); ns.push(o,fl,gx);
     setTimeout(creak, 1800+Math.random()*2000);
   }
@@ -1159,7 +1363,7 @@ function scheduleTibetan(ax, dest, ns, alive) {
       (function(f, i){
         var o = AX.createOscillator(); o.type='sine'; o.frequency.value=f;
         var gx = AX.createGain(); gx.gain.value=0;
-        var now = AX.currentTime, vol = .14/(i+1);
+        var now = AX.currentTime, vol = .24/(i+1);
         gx.gain.setValueAtTime(0,now); gx.gain.linearRampToValueAtTime(vol,now+.05); gx.gain.exponentialRampToValueAtTime(.001,now+5);
         o.connect(gx); gx.connect(dest); o.start(now); o.stop(now+5.2); ns.push(o,gx);
       })(harms[i], i);
@@ -1177,7 +1381,7 @@ function scheduleOm(ax, dest, ns, alive) {
       (function(f,i){
         var o = AX.createOscillator(); o.type='sine'; o.frequency.value=f;
         var gx = AX.createGain(); gx.gain.value=0;
-        var now = AX.currentTime, dur = 6.5, vol = .12/(i*.7+1);
+        var now = AX.currentTime, dur = 6.5, vol = .20/(i*.7+1);
         gx.gain.setValueAtTime(0,now); gx.gain.linearRampToValueAtTime(vol,now+1);
         gx.gain.setValueAtTime(vol,now+dur-1); gx.gain.linearRampToValueAtTime(0,now+dur);
         o.connect(gx); gx.connect(dest); o.start(now); o.stop(now+dur+.1); ns.push(o,gx);
@@ -1186,6 +1390,143 @@ function scheduleOm(ax, dest, ns, alive) {
     setTimeout(chant, 7500);
   }
   chant();
+}
+
+function scheduleMusicBox(ax, dest, ns, alive) {
+  // Pentatonik melodi — bebek için nazik müzik kutusu
+  var scale = [523.25,587.33,659.25,783.99,880,1046.5,1174.66,1318.51];
+  var mel = [0,2,4,5,4,2,0,2,4,7,5,4,2,0,5,4,2,0,4,2];
+  var idx = 0;
+  function chime() {
+    if (!alive.v || !AX) return;
+    var f = scale[mel[idx % mel.length]]; idx++;
+    var now = AX.currentTime;
+    // Çan benzeri tını: sine + yüksek harmonik
+    var o = AX.createOscillator(); o.type = 'sine'; o.frequency.value = f;
+    var o2 = AX.createOscillator(); o2.type = 'sine'; o2.frequency.value = f * 3.01;
+    var gx = AX.createGain(); gx.gain.value = 0;
+    var g2 = AX.createGain(); g2.gain.value = 0;
+    gx.gain.setValueAtTime(0, now);
+    gx.gain.linearRampToValueAtTime(.28, now + .01);
+    gx.gain.exponentialRampToValueAtTime(.001, now + 1.8);
+    g2.gain.setValueAtTime(0, now);
+    g2.gain.linearRampToValueAtTime(.08, now + .01);
+    g2.gain.exponentialRampToValueAtTime(.001, now + 1.0);
+    o.connect(gx); gx.connect(dest);
+    o2.connect(g2); g2.connect(dest);
+    o.start(now); o.stop(now + 2);
+    o2.start(now); o2.stop(now + 1.2);
+    ns.push(o, gx, o2, g2);
+    setTimeout(chime, 650 + Math.random() * 200);
+  }
+  setTimeout(chime, 300);
+}
+
+function scheduleMobile(ax, dest, ns, alive) {
+  // Dönence: yavaş pentatonik, celesta tınısı
+  var scale = [392,440,523.25,587.33,659.25,783.99];
+  var mel = [0,2,4,2,0,5,3,1,0,2,4,5,3,1,0,4];
+  var idx = 0;
+  function ting() {
+    if (!alive.v || !AX) return;
+    var f = scale[mel[idx % mel.length]]; idx++;
+    var now = AX.currentTime;
+    var o = AX.createOscillator(); o.type = 'sine'; o.frequency.value = f;
+    var o2 = AX.createOscillator(); o2.type = 'sine'; o2.frequency.value = f * 4;
+    var gx = AX.createGain(); gx.gain.value = 0;
+    var g2 = AX.createGain(); g2.gain.value = 0;
+    gx.gain.setValueAtTime(0, now);
+    gx.gain.linearRampToValueAtTime(.22, now + .01);
+    gx.gain.exponentialRampToValueAtTime(.001, now + 2.5);
+    g2.gain.setValueAtTime(0, now);
+    g2.gain.linearRampToValueAtTime(.04, now + .01);
+    g2.gain.exponentialRampToValueAtTime(.001, now + 0.8);
+    o.connect(gx); gx.connect(dest); o2.connect(g2); g2.connect(dest);
+    o.start(now); o.stop(now + 2.8); o2.start(now); o2.stop(now + 1);
+    ns.push(o, gx, o2, g2);
+    setTimeout(ting, 900 + Math.random() * 400);
+  }
+  setTimeout(ting, 400);
+}
+
+function scheduleLullaby2(ax, dest, ns, alive) {
+  // Yıldız Ninnisi: farklı melodi, triangle dalga
+  var scale = [329.63,349.23,392,440,493.88,523.25,587.33,659.25];
+  var mel = [4,2,0,2,4,5,4,2,0,1,2,4,7,5,4,2,0,2,4,2];
+  var idx = 0;
+  function note() {
+    if (!alive.v || !AX) return;
+    var f = scale[mel[idx % mel.length]]; idx++;
+    var now = AX.currentTime;
+    var o = AX.createOscillator(); o.type = 'triangle'; o.frequency.value = f;
+    var o2 = AX.createOscillator(); o2.type = 'sine'; o2.frequency.value = f * 2;
+    var gx = AX.createGain(); gx.gain.value = 0;
+    var g2 = AX.createGain(); g2.gain.value = 0;
+    gx.gain.setValueAtTime(0, now);
+    gx.gain.linearRampToValueAtTime(.25, now + .08);
+    gx.gain.linearRampToValueAtTime(0, now + .7);
+    g2.gain.setValueAtTime(0, now);
+    g2.gain.linearRampToValueAtTime(.06, now + .08);
+    g2.gain.linearRampToValueAtTime(0, now + .5);
+    o.connect(gx); gx.connect(dest); o2.connect(g2); g2.connect(dest);
+    o.start(now); o.stop(now + .75); o2.start(now); o2.stop(now + .55);
+    ns.push(o, gx, o2, g2);
+    setTimeout(note, 620 + Math.random() * 160);
+  }
+  setTimeout(note, 200);
+}
+
+function scheduleChimes(ax, dest, ns, alive) {
+  // Rüzgar çanları: rastgele yüksek frekanslı çınlamalar
+  var freqs = [1200,1400,1600,1800,2000,2400,2800];
+  function ring() {
+    if (!alive.v || !AX) return;
+    var f = freqs[Math.floor(Math.random() * freqs.length)] + Math.random() * 200;
+    var now = AX.currentTime;
+    var o = AX.createOscillator(); o.type = 'sine'; o.frequency.value = f;
+    var gx = AX.createGain(); gx.gain.value = 0;
+    var vol = .12 + Math.random() * .10;
+    gx.gain.setValueAtTime(0, now);
+    gx.gain.linearRampToValueAtTime(vol, now + .01);
+    gx.gain.exponentialRampToValueAtTime(.001, now + 3.5);
+    o.connect(gx); gx.connect(dest); o.start(now); o.stop(now + 3.8);
+    ns.push(o, gx);
+    setTimeout(ring, 1500 + Math.random() * 4000);
+  }
+  setTimeout(ring, 500);
+}
+
+function scheduleSoftPiano(ax, dest, ns, alive) {
+  // Yumuşak piyano: yavaş melodik döngü
+  var scale = [261.63,293.66,329.63,349.23,392,440,493.88,523.25];
+  var mel = [0,4,2,5,3,7,5,2,0,3,5,4,2,0,7,5,3,2,0,4];
+  var idx = 0;
+  function note() {
+    if (!alive.v || !AX) return;
+    var f = scale[mel[idx % mel.length]]; idx++;
+    var now = AX.currentTime;
+    // Piyano: temel + 2. harmonik + hafif 3.
+    var o = AX.createOscillator(); o.type = 'triangle'; o.frequency.value = f;
+    var o2 = AX.createOscillator(); o2.type = 'sine'; o2.frequency.value = f * 2;
+    var o3 = AX.createOscillator(); o3.type = 'sine'; o3.frequency.value = f * 3;
+    var gx = AX.createGain(); gx.gain.value = 0;
+    var g2 = AX.createGain(); g2.gain.value = 0;
+    var g3 = AX.createGain(); g3.gain.value = 0;
+    gx.gain.setValueAtTime(0, now);
+    gx.gain.linearRampToValueAtTime(.20, now + .02);
+    gx.gain.exponentialRampToValueAtTime(.001, now + 2.2);
+    g2.gain.setValueAtTime(0, now);
+    g2.gain.linearRampToValueAtTime(.06, now + .02);
+    g2.gain.exponentialRampToValueAtTime(.001, now + 1.5);
+    g3.gain.setValueAtTime(0, now);
+    g3.gain.linearRampToValueAtTime(.02, now + .02);
+    g3.gain.exponentialRampToValueAtTime(.001, now + 0.8);
+    o.connect(gx); gx.connect(dest); o2.connect(g2); g2.connect(dest); o3.connect(g3); g3.connect(dest);
+    o.start(now); o.stop(now + 2.5); o2.start(now); o2.stop(now + 1.8); o3.start(now); o3.stop(now + 1);
+    ns.push(o, gx, o2, g2, o3, g3);
+    setTimeout(note, 1200 + Math.random() * 600);
+  }
+  setTimeout(note, 400);
 }
 
 function killSynth(id) {
@@ -1261,7 +1602,7 @@ function playSound(id) {
 
   // Start
   try { NODES[id] = buildSynth(id); } catch(e) { console.warn('audio err', e); }
-  if (soundVols[id] === undefined) soundVols[id] = 0.8; // default per-sound vol
+  if (soundVols[id] === undefined) soundVols[id] = defaultSoundVol;
   active[id] = true; lastId = id; isPlaying = true;
 
   var cards = document.querySelectorAll('.sc[data-id="' + id + '"]');
@@ -1307,7 +1648,7 @@ function updateBar() {
     var s = null;
     for (var j=0; j<SOUNDS.length; j++) if (SOUNDS[j].id === ids[i]) { s = SOUNDS[j]; break; }
     if (s) {
-      var svPct = Math.round((soundVols[s.id] !== undefined ? soundVols[s.id] : 0.8) * 100);
+      var svPct = Math.round((soundVols[s.id] !== undefined ? soundVols[s.id] : defaultSoundVol) * 100);
       html += '<div class="nsc" style="border-color:' + s.acc + '40">' +
         '<div class="nsc-top">' +
           '<div class="nsc-label" style="color:' + s.acc + '">' +
