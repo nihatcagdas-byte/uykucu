@@ -430,6 +430,13 @@ button:focus-visible,a:focus-visible{outline:2px solid var(--acc);outline-offset
 .cb-detail:hover{color:var(--txt2)}
 @media(max-width:640px){.cb{padding:18px 17px;flex-direction:column;align-items:stretch;gap:14px}.cb-btns{justify-content:stretch}.cb-accept,.cb-reject{flex:1;text-align:center}}
 
+
+/* LANGUAGE TOGGLE */
+.lang-toggle{display:flex;align-items:center;border-radius:var(--rp);border:1px solid var(--bdr);background:var(--surf);overflow:hidden;flex-shrink:0}
+.lang-btn{padding:6px 10px;font-size:.72rem;font-weight:500;color:var(--txt3);border:none;background:none;cursor:pointer;transition:.2s;font-family:inherit;letter-spacing:.04em}
+.lang-btn.active{color:var(--acc);background:rgba(var(--ar),.1)}
+.lang-btn:hover:not(.active){color:var(--txt2)}
+
 /* HAMBURGER MENU */
 .ham-btn{display:none;width:36px;height:36px;border-radius:50%;border:1px solid var(--bdr);background:var(--surf);align-items:center;justify-content:center;cursor:pointer;flex-shrink:0;transition:.3s;position:relative;z-index:102}
 .ham-btn:hover{border-color:rgba(var(--ar),.4)}
@@ -483,22 +490,26 @@ button:focus-visible,a:focus-visible{outline:2px solid var(--acc);outline-offset
 <header class="topbar" role="banner">
   <a class="logo" href="#" onclick="return false" aria-label="Uykucu - Ana Sayfa"><div class="logo-orb" aria-hidden="true"></div>UYKUCU</a>
   <nav class="tnav" role="navigation" aria-label="Ana navigasyon">
-    <button class="tb on" onclick="goView('home',this)" aria-label="Ana Sayfa" aria-current="page" tabindex="0">Ana Sayfa</button>
-    <button class="tb" onclick="goView('player',this)" aria-label="Oynatıcı" tabindex="0">Oynatıcı</button>
-    <button class="tb" onclick="goView('mix',this)" aria-label="Mix Stüdyo" tabindex="0">Mix Stüdyo</button>
-    <button class="tb" onclick="goView('favs',this)" aria-label="Favoriler" tabindex="0">Favoriler</button>
+    <button class="tb on" onclick="goView('home',this)" aria-label="Ana Sayfa" aria-current="page" tabindex="0" data-i18n="nav_home">Ana Sayfa</button>
+    <button class="tb" onclick="goView('player',this)" aria-label="Oynatıcı" tabindex="0" data-i18n="nav_player">Oynatıcı</button>
+    <button class="tb" onclick="goView('mix',this)" aria-label="Mix Stüdyo" tabindex="0" data-i18n="nav_mix">Mix Stüdyo</button>
+    <button class="tb" onclick="goView('favs',this)" aria-label="Favoriler" tabindex="0" data-i18n="nav_favs">Favoriler</button>
   </nav>
   <div style="display:flex;gap:8px;align-items:center">
     <nav class="desk-links" aria-label="Bilgi sayfaları">
       <a href="hakkimizda.html">Hakkımızda</a>
-      <a href="iletisim.html">İletişim</a>
+      <a href="iletisim.html" data-i18n="nav_contact">İletişim</a>
     </nav>
     <button class="sleep-btn" onclick="openBreathing()" aria-label="Nefes egzersizi başlat" title="Nefes Egzersizi" style="background:var(--surf);border:1px solid var(--bdr);box-shadow:none;color:var(--txt2);padding:9px 14px">
-      <span aria-hidden="true">🫁</span> <span class="mob-hide">Nefes</span>
+      <span aria-hidden="true">🫁</span> <span class="mob-hide" data-i18n="btn_breath">Nefes</span>
     </button>
     <button class="sleep-btn" onclick="launchSleep()" aria-label="Uyku modunu başlat">
       <span aria-hidden="true">🌙</span> Uyku Modu
     </button>
+    <div class="lang-toggle" role="group" aria-label="Dil seçimi">
+      <button class="lang-btn active" id="lang-tr" onclick="setLang('tr')" aria-label="Türkçe">TR</button>
+      <button class="lang-btn" id="lang-en" onclick="setLang('en')" aria-label="English">EN</button>
+    </div>
     <button class="ham-btn" id="ham-btn" onclick="toggleSideMenu()" aria-label="Menüyü aç" aria-expanded="false">
       <span class="ham-bar"></span><span class="ham-bar"></span><span class="ham-bar"></span>
     </button>
@@ -509,63 +520,69 @@ button:focus-visible,a:focus-visible{outline:2px solid var(--acc);outline-offset
 <div class="side-overlay" id="side-overlay" onclick="closeSideMenu()"></div>
 <nav class="side-menu" id="side-menu" role="navigation" aria-label="Mobil menü">
   <div class="sm-section">
-    <div class="sm-label">Uygulama</div>
-    <button class="sm-link active" onclick="goViewMobile('home')"><span class="sm-icon">🏠</span>Ana Sayfa</button>
-    <button class="sm-link" onclick="goViewMobile('player')"><span class="sm-icon">▶</span>Oynatıcı</button>
-    <button class="sm-link" onclick="goViewMobile('mix')"><span class="sm-icon">🎛</span>Mix Stüdyo</button>
-    <button class="sm-link" onclick="goViewMobile('favs')"><span class="sm-icon">♥</span>Favoriler</button>
+    <div class="sm-label" data-i18n="sm_app">Uygulama</div>
+    <button class="sm-link active" onclick="goViewMobile('home')"><span class="sm-icon">🏠</span><span data-i18n="nav_home">Ana Sayfa</span></button>
+    <button class="sm-link" onclick="goViewMobile('player')"><span class="sm-icon">▶</span><span data-i18n="nav_player">Oynatıcı</span></button>
+    <button class="sm-link" onclick="goViewMobile('mix')"><span class="sm-icon">🎛</span><span data-i18n="nav_mix">Mix Stüdyo</span></button>
+    <button class="sm-link" onclick="goViewMobile('favs')"><span class="sm-icon">♥</span><span data-i18n="nav_favs">Favoriler</span></button>
   </div>
   <div class="sm-divider"></div>
   <div class="sm-section">
-    <div class="sm-label">Özellikler</div>
-    <button class="sm-link" onclick="closeSideMenu();launchSleep()"><span class="sm-icon">🌙</span>Uyku Modu</button>
-    <button class="sm-link" onclick="closeSideMenu();openBreathing()"><span class="sm-icon">🫁</span>Nefes Egzersizi</button>
+    <div class="sm-label" data-i18n="sm_features">Özellikler</div>
+    <button class="sm-link" onclick="closeSideMenu();launchSleep()"><span class="sm-icon">🌙</span><span data-i18n="sm_sleep_mode">Uyku Modu</span></button>
+    <button class="sm-link" onclick="closeSideMenu();openBreathing()"><span class="sm-icon">🫁</span><span data-i18n="sm_breathing">Nefes Egzersizi</span></button>
   </div>
   <div class="sm-divider"></div>
   <div class="sm-section">
-    <div class="sm-label">Bilgi</div>
-    <a class="sm-link" href="hakkimizda.html"><span class="sm-icon">ℹ</span>Hakkımızda</a>
-    <a class="sm-link" href="iletisim.html"><span class="sm-icon">📧</span>İletişim</a>
+    <div class="sm-label" data-i18n="sm_info">Bilgi</div>
+    <a class="sm-link" href="hakkimizda.html"><span class="sm-icon">ℹ</span><span data-i18n="nav_about">Hakkımızda</span></a>
+    <a class="sm-link" href="iletisim.html"><span class="sm-icon">📧</span><span data-i18n="nav_contact">İletişim</span></a>
   </div>
   <div class="sm-divider"></div>
   <div class="sm-section">
-    <div class="sm-label">Yasal</div>
-    <a class="sm-link" href="gizlilik.html"><span class="sm-icon">🔒</span>Gizlilik Politikası</a>
-    <a class="sm-link" href="kosullar.html"><span class="sm-icon">📋</span>Kullanım Koşulları</a>
-    <a class="sm-link" href="cerez-politikasi.html"><span class="sm-icon">🍪</span>Çerez Politikası</a>
-    <button class="sm-link" onclick="closeSideMenu();openCookieSettings()"><span class="sm-icon">⚙</span>Çerez Ayarları</button>
+    <div class="sm-label" data-i18n="sm_legal">Yasal</div>
+    <a class="sm-link" href="gizlilik.html"><span class="sm-icon">🔒</span><span data-i18n="sm_privacy">Gizlilik Politikası</span></a>
+    <a class="sm-link" href="kosullar.html"><span class="sm-icon">📋</span><span data-i18n="sm_terms">Kullanım Koşulları</span></a>
+    <a class="sm-link" href="cerez-politikasi.html"><span class="sm-icon">🍪</span><span data-i18n="sm_cookies">Çerez Politikası</span></a>
+    <button class="sm-link" onclick="closeSideMenu();openCookieSettings()"><span class="sm-icon">⚙</span><span data-i18n="sm_cookie_settings">Çerez Ayarları</span></button>
+  </div>
+  <div class="sm-divider"></div>
+  <div class="sm-section">
+    <div class="sm-label" data-i18n="sm_language">Dil / Language</div>
+    <button class="sm-link" onclick="setLang('tr');closeSideMenu()"><span class="sm-icon">🇹🇷</span>Türkçe</button>
+    <button class="sm-link" onclick="setLang('en');closeSideMenu()"><span class="sm-icon">🇬🇧</span>English</button>
   </div>
 </nav>
 
 <!-- HOME -->
 <div class="view on" id="v-home" id="main-content">
   <div class="hero" role="banner">
-    <div class="eyebrow" aria-label="Uygulama durumu"><div class="eyebrow-dot" aria-hidden="true"></div>Huzurlu Uyku Deneyimi</div>
-    <h1>Gecenin <em>sessizliğini</em><br>içine al</h1>
-    <p>Doğanın ritmiyle nefes al. Beyin dalgalarını yavaşlat, zihnini boşalt.</p>
+    <div class="eyebrow" aria-label="Uygulama durumu"><div class="eyebrow-dot" aria-hidden="true"></div data-i18n="hero_eyebrow">Huzurlu Uyku Deneyimi</div>
+    <h1><span data-i18n="hero_title_1">Gecenin </span><em data-i18n="hero_title_em">sessizliğini</em><br><span data-i18n="hero_title_2">içine al</span></h1>
+    <p data-i18n="hero_desc">Doğanın ritmiyle nefes al. Beyin dalgalarını yavaşlat, zihnini boşalt.</p>
     <div class="actions" role="group" aria-label="Hızlı başlangıç">
-      <button class="btn-p" onclick="launchSleep()" aria-label="Hemen uyku moduna başla">🌙 Hemen Başla</button>
-      <button class="btn-g" onclick="goView(&#39;mix&#39;,document.querySelector(&#39;.tb:nth-child(3)&#39;))" aria-label="Mix Stüdyo'ya git">🎛 Mix Oluştur</button>
+      <button class="btn-p" onclick="launchSleep()" aria-label="Hemen uyku moduna başla" data-i18n="hero_cta">🌙 Hemen Başla</button>
+      <button class="btn-g" onclick="goView(&#39;mix&#39;,document.querySelector(&#39;.tb:nth-child(3)&#39;))" aria-label="Mix Stüdyo'ya git" data-i18n="hero_mix">🎛 Mix Oluştur</button>
     </div>
   </div>
 
   <!-- Sleep Stats Card (UX) -->
   <div class="sleep-stats-card" role="region" aria-label="Uyku istatistikleri">
-    <div class="ss-title"><span aria-hidden="true">📊</span> Uyku Raporun</div>
+    <div class="ss-title"><span aria-hidden="true">📊</span data-i18n="stats_title"> Uyku Raporun</div>
     <div class="ss-grid">
-      <div class="ss-item"><div class="ss-val" id="ss-today">0</div><div class="ss-lbl">Bugünkü Dakika</div></div>
-      <div class="ss-item"><div class="ss-val" id="ss-total">0</div><div class="ss-lbl">Toplam Saat</div></div>
-      <div class="ss-item"><div class="ss-val" id="ss-streak">1</div><div class="ss-lbl">Gün Serisi</div></div>
-      <div class="ss-item"><div class="ss-val" id="ss-fav-sound">—</div><div class="ss-lbl">En Çok Dinlenen</div></div>
-      <div class="ss-item"><div class="ss-val" id="ss-sessions">0</div><div class="ss-lbl">Toplam Oturum</div></div>
+      <div class="ss-item"><div class="ss-val" id="ss-today">0</div><div class="ss-lbl" data-i18n="stats_today">Bugünkü Dakika</div></div>
+      <div class="ss-item"><div class="ss-val" id="ss-total">0</div><div class="ss-lbl" data-i18n="stats_total_hours">Toplam Saat</div></div>
+      <div class="ss-item"><div class="ss-val" id="ss-streak">1</div><div class="ss-lbl" data-i18n="stats_streak">Gün Serisi</div></div>
+      <div class="ss-item"><div class="ss-val" id="ss-fav-sound">—</div><div class="ss-lbl" data-i18n="stats_fav">En Çok Dinlenen</div></div>
+      <div class="ss-item"><div class="ss-val" id="ss-sessions">0</div><div class="ss-lbl" data-i18n="stats_sessions">Toplam Oturum</div></div>
     </div>
   </div>
 
   <div class="stats" role="region" aria-label="Kısa istatistikler">
-    <div class="stat"><div class="sn" id="st-min">0</div><div class="sl">Bugünkü Dakika</div></div>
-    <div class="stat"><div class="sn" id="st-plays">51</div><div class="sl">Toplam Oynatma</div></div>
-    <div class="stat"><div class="sn" id="st-favs">0</div><div class="sl">Favoriler</div></div>
-    <div class="stat"><div class="sn">1</div><div class="sl">Gün Serisi</div></div>
+    <div class="stat"><div class="sn" id="st-min">0</div><div class="sl" data-i18n="stat_today_min">Bugünkü Dakika</div></div>
+    <div class="stat"><div class="sn" id="st-plays">51</div><div class="sl" data-i18n="stat_total_plays">Toplam Oynatma</div></div>
+    <div class="stat"><div class="sn" id="st-favs">0</div><div class="sl" data-i18n="stat_favs">Favoriler</div></div>
+    <div class="stat"><div class="sn">1</div><div class="sl" data-i18n="stat_streak2">Gün Serisi</div></div>
   </div>
   <div class="featured" role="region" aria-label="Öne çıkan sesler">
     <div class="fc" style="--fc1:#6aacf022;--fc2:#5ef0d414" onclick="playSound(&#39;rain&#39;)" role="button" tabindex="0" aria-label="Yağmur Dinleti - Çatıya yavaş damlayan yağmur" onkeydown="if(event.key==='Enter')this.click()"><div class="fc-em" aria-hidden="true">🌧</div><div class="fc-cat">Popüler · Doğa</div><div class="fc-title">Yağmur Dinleti</div><div class="fc-sub">Çatıya yavaş damlayan yağmur</div></div>
@@ -573,26 +590,26 @@ button:focus-visible,a:focus-visible{outline:2px solid var(--acc);outline-offset
     <div class="fc" style="--fc1:#fb923c1e;--fc2:#fcd34d12" onclick="playSound(&#39;fire&#39;)" role="button" tabindex="0" aria-label="Şömine - Odun ateşinin sıcaklığı" onkeydown="if(event.key==='Enter')this.click()"><div class="fc-em" aria-hidden="true">🔥</div><div class="fc-cat">Ambient · Kış</div><div class="fc-title">Şömine</div><div class="fc-sub">Odun ateşinin sıcaklığı</div></div>
   </div>
   <div class="cats" role="toolbar" aria-label="Kategori filtresi">
-    <button class="cp on" onclick="filterCat(&#39;all&#39;,this)">✦ Tümü</button>
-    <button class="cp" onclick="filterCat(&#39;doga&#39;,this)">🌿 Doğa</button>
-    <button class="cp" onclick="filterCat(&#39;bebek&#39;,this)">👶 Bebek</button>
-    <button class="cp" onclick="filterCat(&#39;ambient&#39;,this)">🌌 Ambient</button>
-    <button class="cp" onclick="filterCat(&#39;meditasyon&#39;,this)">🧘 Meditasyon</button>
-    <button class="cp" onclick="filterCat(&#39;uyku&#39;,this)">💤 Uyku</button>
+    <button class="cp on" onclick="filterCat(&#39;all&#39;,this)" data-i18n="cat_all">✦ Tümü</button>
+    <button class="cp" onclick="filterCat(&#39;doga&#39;,this)" data-i18n="cat_nature">🌿 Doğa</button>
+    <button class="cp" onclick="filterCat(&#39;bebek&#39;,this)" data-i18n="cat_baby">👶 Bebek</button>
+    <button class="cp" onclick="filterCat(&#39;ambient&#39;,this)" data-i18n="cat_ambient">🌌 Ambient</button>
+    <button class="cp" onclick="filterCat(&#39;meditasyon&#39;,this)" data-i18n="mood_meditation" data-i18n="cat_meditation">🧘 Meditasyon</button>
+    <button class="cp" onclick="filterCat(&#39;uyku&#39;,this)" data-i18n="cat_sleep">💤 Uyku</button>
   </div>
   <div class="sec">
-    <div class="sec-h"><div class="sec-t">Sesler</div></div>
+    <div class="sec-h"><div class="sec-t" data-i18n="sec_sounds">Sesler</div></div>
     <div class="sgrid" id="home-grid"><div class="sc ein " data-id="rain" style="--ca:#60a5fa;--cg:#60a5fa18" onclick="playSound(&#39;rain&#39;)"><div class="sc-badge"></div><span class="sc-em">🌧</span><div class="sc-name">Yağmur</div><div class="sc-desc">Çatıya hafifçe damlayan yağmur</div><div class="sc-foot"><span class="sc-tag">Doğa</span><button class="sc-fav " data-id="rain" onclick="event.stopPropagation();toggleFav(&#39;rain&#39;)">♥</button></div></div><div class="sc ein " data-id="heavyrain" style="--ca:#3b82f6;--cg:#3b82f618" onclick="playSound(&#39;heavyrain&#39;)"><div class="sc-badge"></div><span class="sc-em">🌧</span><div class="sc-name">Sağanak Yağmur</div><div class="sc-desc">Kuvvetli sürükleyici yağmur</div><div class="sc-foot"><span class="sc-tag">Doğa</span><button class="sc-fav " data-id="heavyrain" onclick="event.stopPropagation();toggleFav(&#39;heavyrain&#39;)">♥</button></div></div><div class="sc ein " data-id="ocean" style="--ca:#22d3ee;--cg:#22d3ee18" onclick="playSound(&#39;ocean&#39;)"><div class="sc-badge"></div><span class="sc-em">🌊</span><div class="sc-name">Deniz Dalgaları</div><div class="sc-desc">Kıyıya vuran yavaş derin dalgalar</div><div class="sc-foot"><span class="sc-tag">Doğa</span><button class="sc-fav " data-id="ocean" onclick="event.stopPropagation();toggleFav(&#39;ocean&#39;)">♥</button></div></div><div class="sc ein " data-id="forest" style="--ca:#86efac;--cg:#86efac18" onclick="playSound(&#39;forest&#39;)"><div class="sc-badge"></div><span class="sc-em">🌲</span><div class="sc-name">Orman</div><div class="sc-desc">Kuşlar, yapraklar ve huzur</div><div class="sc-foot"><span class="sc-tag">Doğa</span><button class="sc-fav " data-id="forest" onclick="event.stopPropagation();toggleFav(&#39;forest&#39;)">♥</button></div></div><div class="sc ein " data-id="wind" style="--ca:#a7f3d0;--cg:#a7f3d018" onclick="playSound(&#39;wind&#39;)"><div class="sc-badge"></div><span class="sc-em">🍃</span><div class="sc-name">Rüzgar</div><div class="sc-desc">Sakin esen serin rüzgar</div><div class="sc-foot"><span class="sc-tag">Doğa</span><button class="sc-fav " data-id="wind" onclick="event.stopPropagation();toggleFav(&#39;wind&#39;)">♥</button></div></div><div class="sc ein " data-id="thunder" style="--ca:#818cf8;--cg:#818cf818" onclick="playSound(&#39;thunder&#39;)"><div class="sc-badge"></div><span class="sc-em">⛈</span><div class="sc-name">Gök Gürültüsü</div><div class="sc-desc">Uzaktan gelen şimşek ve fırtına</div><div class="sc-foot"><span class="sc-tag">Doğa</span><button class="sc-fav " data-id="thunder" onclick="event.stopPropagation();toggleFav(&#39;thunder&#39;)">♥</button></div></div><div class="sc ein " data-id="creek" style="--ca:#67e8f9;--cg:#67e8f918" onclick="playSound(&#39;creek&#39;)"><div class="sc-badge"></div><span class="sc-em">🏞</span><div class="sc-name">Dere Sesi</div><div class="sc-desc">Akan serin tatlı su sesi</div><div class="sc-foot"><span class="sc-tag">Doğa</span><button class="sc-fav " data-id="creek" onclick="event.stopPropagation();toggleFav(&#39;creek&#39;)">♥</button></div></div><div class="sc ein " data-id="birds" style="--ca:#bbf7d0;--cg:#bbf7d018" onclick="playSound(&#39;birds&#39;)"><div class="sc-badge"></div><span class="sc-em">🐦</span><div class="sc-name">Sabah Kuşları</div><div class="sc-desc">Şafakta ötüşen kuşlar</div><div class="sc-foot"><span class="sc-tag">Doğa</span><button class="sc-fav " data-id="birds" onclick="event.stopPropagation();toggleFav(&#39;birds&#39;)">♥</button></div></div><div class="sc ein " data-id="snowfall" style="--ca:#bae6fd;--cg:#bae6fd18" onclick="playSound(&#39;snowfall&#39;)"><div class="sc-badge"></div><span class="sc-em">❄️</span><div class="sc-name">Kar Yağışı</div><div class="sc-desc">Sessiz ve sakin kar sesi</div><div class="sc-foot"><span class="sc-tag">Doğa</span><button class="sc-fav " data-id="snowfall" onclick="event.stopPropagation();toggleFav(&#39;snowfall&#39;)">♥</button></div></div><div class="sc ein " data-id="fire" style="--ca:#fb923c;--cg:#fb923c18" onclick="playSound(&#39;fire&#39;)"><div class="sc-badge"></div><span class="sc-em">🔥</span><div class="sc-name">Şömine</div><div class="sc-desc">Odun ateşinin çıtırtısı</div><div class="sc-foot"><span class="sc-tag">Ambient</span><button class="sc-fav " data-id="fire" onclick="event.stopPropagation();toggleFav(&#39;fire&#39;)">♥</button></div></div><div class="sc ein " data-id="white" style="--ca:#c4b5fd;--cg:#c4b5fd18" onclick="playSound(&#39;white&#39;)"><div class="sc-badge"></div><span class="sc-em">〰️</span><div class="sc-name">Beyaz Gürültü</div><div class="sc-desc">Odak ve derin uyku için</div><div class="sc-foot"><span class="sc-tag">Ambient</span><button class="sc-fav " data-id="white" onclick="event.stopPropagation();toggleFav(&#39;white&#39;)">♥</button></div></div><div class="sc ein " data-id="brown" style="--ca:#d97706;--cg:#d9770618" onclick="playSound(&#39;brown&#39;)"><div class="sc-badge"></div><span class="sc-em">🌫</span><div class="sc-name">Kahverengi Gürültü</div><div class="sc-desc">Derin sarmalayan geniş ses</div><div class="sc-foot"><span class="sc-tag">Ambient</span><button class="sc-fav " data-id="brown" onclick="event.stopPropagation();toggleFav(&#39;brown&#39;)">♥</button></div></div><div class="sc ein " data-id="cafe" style="--ca:#a78bfa;--cg:#a78bfa18" onclick="playSound(&#39;cafe&#39;)"><div class="sc-badge"></div><span class="sc-em">☕</span><div class="sc-name">Kafe Gürültüsü</div><div class="sc-desc">Hafif arka plan kalabalık sesi</div><div class="sc-foot"><span class="sc-tag">Ambient</span><button class="sc-fav " data-id="cafe" onclick="event.stopPropagation();toggleFav(&#39;cafe&#39;)">♥</button></div></div><div class="sc ein " data-id="fan" style="--ca:#94a3b8;--cg:#94a3b818" onclick="playSound(&#39;fan&#39;)"><div class="sc-badge"></div><span class="sc-em">🌀</span><div class="sc-name">Vantilatör</div><div class="sc-desc">Sabit ve sürekli fan sesi</div><div class="sc-foot"><span class="sc-tag">Ambient</span><button class="sc-fav " data-id="fan" onclick="event.stopPropagation();toggleFav(&#39;fan&#39;)">♥</button></div></div><div class="sc ein " data-id="space" style="--ca:#6366f1;--cg:#6366f118" onclick="playSound(&#39;space&#39;)"><div class="sc-badge"></div><span class="sc-em">🌌</span><div class="sc-name">Uzay Ambiyansı</div><div class="sc-desc">Derin kozmik hum sesi</div><div class="sc-foot"><span class="sc-tag">Ambient</span><button class="sc-fav " data-id="space" onclick="event.stopPropagation();toggleFav(&#39;space&#39;)">♥</button></div></div><div class="sc ein " data-id="womb" style="--ca:#f0abfc;--cg:#f0abfc18" onclick="playSound(&#39;womb&#39;)"><div class="sc-badge"></div><span class="sc-em">💞</span><div class="sc-name">Anne Karnı</div><div class="sc-desc">Bebekler için sıcak ve güvenli</div><div class="sc-foot"><span class="sc-tag">Bebek</span><button class="sc-fav " data-id="womb" onclick="event.stopPropagation();toggleFav(&#39;womb&#39;)">♥</button></div></div><div class="sc ein " data-id="heartbeat" style="--ca:#fb7185;--cg:#fb718518" onclick="playSound(&#39;heartbeat&#39;)"><div class="sc-badge"></div><span class="sc-em">💓</span><div class="sc-name">Kalp Atışı</div><div class="sc-desc">Düzenli sakinleştirici ritim</div><div class="sc-foot"><span class="sc-tag">Bebek</span><button class="sc-fav " data-id="heartbeat" onclick="event.stopPropagation();toggleFav(&#39;heartbeat&#39;)">♥</button></div></div><div class="sc ein " data-id="lullaby" style="--ca:#d8b4fe;--cg:#d8b4fe18" onclick="playSound(&#39;lullaby&#39;)"><div class="sc-badge"></div><span class="sc-em">🎵</span><div class="sc-name">Ninni</div><div class="sc-desc">Yumuşak melodi ve nefes sesleri</div><div class="sc-foot"><span class="sc-tag">Bebek</span><button class="sc-fav " data-id="lullaby" onclick="event.stopPropagation();toggleFav(&#39;lullaby&#39;)">♥</button></div></div><div class="sc ein " data-id="shush" style="--ca:#fca5a5;--cg:#fca5a518" onclick="playSound(&#39;shush&#39;)"><div class="sc-badge"></div><span class="sc-em">🤫</span><div class="sc-name">Shushing</div><div class="sc-desc">Bebeği sakinleştiren ses</div><div class="sc-foot"><span class="sc-tag">Bebek</span><button class="sc-fav " data-id="shush" onclick="event.stopPropagation();toggleFav(&#39;shush&#39;)">♥</button></div></div><div class="sc ein " data-id="cradle" style="--ca:#fde68a;--cg:#fde68a18" onclick="playSound(&#39;cradle&#39;)"><div class="sc-badge"></div><span class="sc-em">🍼</span><div class="sc-name">Beşik Sesi</div><div class="sc-desc">Hafif sallanan beşik gıcırtısı</div><div class="sc-foot"><span class="sc-tag">Bebek</span><button class="sc-fav " data-id="cradle" onclick="event.stopPropagation();toggleFav(&#39;cradle&#39;)">♥</button></div></div><div class="sc ein " data-id="tibetan" style="--ca:#fcd34d;--cg:#fcd34d18" onclick="playSound(&#39;tibetan&#39;)"><div class="sc-badge"></div><span class="sc-em">🔔</span><div class="sc-name">Tibet Kasesi</div><div class="sc-desc">Derin meditasyon titreşimleri</div><div class="sc-foot"><span class="sc-tag">Meditasyon</span><button class="sc-fav " data-id="tibetan" onclick="event.stopPropagation();toggleFav(&#39;tibetan&#39;)">♥</button></div></div><div class="sc ein " data-id="binaural" style="--ca:#818cf8;--cg:#818cf818" onclick="playSound(&#39;binaural&#39;)"><div class="sc-badge"></div><span class="sc-em">🧠</span><div class="sc-name">Binaural Beats</div><div class="sc-desc">Alfa dalgaları ile derin uyku</div><div class="sc-foot"><span class="sc-tag">Meditasyon</span><button class="sc-fav " data-id="binaural" onclick="event.stopPropagation();toggleFav(&#39;binaural&#39;)">♥</button></div></div><div class="sc ein " data-id="om" style="--ca:#fde68a;--cg:#fde68a18" onclick="playSound(&#39;om&#39;)"><div class="sc-badge"></div><span class="sc-em">🕉</span><div class="sc-name">Om Mantrası</div><div class="sc-desc">Sakinleştirici titreşim ve ses</div><div class="sc-foot"><span class="sc-tag">Meditasyon</span><button class="sc-fav " data-id="om" onclick="event.stopPropagation();toggleFav(&#39;om&#39;)">♥</button></div></div><div class="sc ein " data-id="drone" style="--ca:#a5b4fc;--cg:#a5b4fc18" onclick="playSound(&#39;drone&#39;)"><div class="sc-badge"></div><span class="sc-em">🎶</span><div class="sc-name">Drone Müzik</div><div class="sc-desc">Sürekli drone ve overtone sesi</div><div class="sc-foot"><span class="sc-tag">Meditasyon</span><button class="sc-fav " data-id="drone" onclick="event.stopPropagation();toggleFav(&#39;drone&#39;)">♥</button></div></div><div class="sc ein " data-id="sleep" style="--ca:#a5b4fc;--cg:#a5b4fc18" onclick="playSound(&#39;sleep&#39;)"><div class="sc-badge"></div><span class="sc-em">💤</span><div class="sc-name">Uyku Fısıltısı</div><div class="sc-desc">ASMR benzeri yumuşak fısıltı</div><div class="sc-foot"><span class="sc-tag">Uyku</span><button class="sc-fav " data-id="sleep" onclick="event.stopPropagation();toggleFav(&#39;sleep&#39;)">♥</button></div></div><div class="sc ein " data-id="deepfreq" style="--ca:#7c3aed;--cg:#7c3aed18" onclick="playSound(&#39;deepfreq&#39;)"><div class="sc-badge"></div><span class="sc-em">🌠</span><div class="sc-name">Derin Uyku 432Hz</div><div class="sc-desc">432Hz harmonik uyku frekansı</div><div class="sc-foot"><span class="sc-tag">Uyku</span><button class="sc-fav " data-id="deepfreq" onclick="event.stopPropagation();toggleFav(&#39;deepfreq&#39;)">♥</button></div></div></div>
   </div>
   <div class="ai-wrap">
     <div class="ai-card" role="region" aria-label="AI ses önerisi">
-      <div class="ai-hd"><div class="ai-ic" aria-hidden="true">✦</div><div><div class="ai-tit">AI Öneri Motoru</div><div class="ai-sub">Ruh haline göre öneriler</div></div></div>
-      <p style="font-size:.8rem;color:var(--txt2);margin-bottom:14px">Şu an nasıl hissediyorsun?</p>
+      <div class="ai-hd"><div class="ai-ic" aria-hidden="true">✦</div><div><div class="ai-tit" data-i18n="ai_title">AI Öneri Motoru</div><div class="ai-sub" data-i18n="ai_sub">Ruh haline göre öneriler</div></div></div>
+      <p style="font-size:.8rem;color:var(--txt2);margin-bottom:14px" data-i18n="ai_q">Şu an nasıl hissediyorsun?</p>
       <div class="ai-chips" role="group" aria-label="Ruh hali seçenekleri">
-        <button class="ac" onclick="moodRec(&#39;stresli&#39;,this)">😰 Stresli</button>
-        <button class="ac" onclick="moodRec(&#39;uykusuz&#39;,this)">😴 Uykusuzluk</button>
-        <button class="ac" onclick="moodRec(&#39;bebek&#39;,this)">👶 Bebek İçin</button>
-        <button class="ac" onclick="moodRec(&#39;odak&#39;,this)">🎯 Odaklanma</button>
+        <button class="ac" onclick="moodRec(&#39;stresli&#39;,this)" data-i18n="mood_stress">😰 Stresli</button>
+        <button class="ac" onclick="moodRec(&#39;uykusuz&#39;,this)" data-i18n="mood_sleepless">😴 Uykusuzluk</button>
+        <button class="ac" onclick="moodRec(&#39;bebek&#39;,this)" data-i18n="mood_baby">👶 Bebek İçin</button>
+        <button class="ac" onclick="moodRec(&#39;odak&#39;,this)" data-i18n="mood_focus">🎯 Odaklanma</button>
         <button class="ac" onclick="moodRec(&#39;meditasyon&#39;,this)">🧘 Meditasyon</button>
       </div>
       <div class="ai-res" id="ai-res"></div>
@@ -617,8 +634,8 @@ button:focus-visible,a:focus-visible{outline:2px solid var(--acc);outline-offset
 <div class="view" id="v-player">
   <div class="pv">
     <div class="porb"><span class="porb-i" id="p-em">🎵</span></div>
-    <h2 id="p-title">Ses Seçilmedi</h2>
-    <p class="psub" id="p-sub">Ana sayfadan bir ses seçin</p>
+    <h2 id="p-title" data-i18n="player_none">Ses Seçilmedi</h2>
+    <p class="psub" id="p-sub" data-i18n="player_hint">Ana sayfadan bir ses seçin</p>
     <div class="pctrls" role="toolbar" aria-label="Oynatıcı kontrolleri">
       <button class="pb" onclick="favCurrent()" aria-label="Favorilere ekle" title="Favorilere ekle">♡</button>
       <button class="pb" onclick="adjSound(-1)" aria-label="Önceki ses" title="Önceki ses">⏮</button>
@@ -631,7 +648,7 @@ button:focus-visible,a:focus-visible{outline:2px solid var(--acc);outline-offset
       <div class="ptimes"><span id="p-cur">0:00</span><span>∞ Loop</span></div>
     </div>
     <div class="tsel">
-      <span style="font-size:.7rem;color:var(--txt3);margin-right:3px">Zamanlayıcı:</span>
+      <span style="font-size:.7rem;color:var(--txt3);margin-right:3px" data-i18n="player_timer">Zamanlayıcı:</span>
       <button class="tch" onclick="quickTimer(15,this)">15 dak</button>
       <button class="tch" onclick="quickTimer(30,this)">30 dak</button>
       <button class="tch" onclick="quickTimer(60,this)">1 saat</button>
@@ -644,23 +661,23 @@ button:focus-visible,a:focus-visible{outline:2px solid var(--acc);outline-offset
 <!-- MIX -->
 <div class="view" id="v-mix">
   <div class="mv">
-    <h2>🎛 Mix Stüdyo</h2>
-    <p class="msub">Birden fazla sesi katmanlayarak kendi benzersiz ortamını yarat.</p>
-    <div class="mix-stage"><div class="mix-lbl">Aktif Sesler</div><div class="mix-chips" id="mix-chips"><span class="mix-empty">Aşağıdan ses ekle...</span></div></div>
-    <div class="mix-vrow"><span class="mix-vlbl">🔊 Genel Ses</span><input type="range" class="mix-sl" id="mix-vol" min="0" max="100" value="85" oninput="setVol(this.value)"><span class="mix-sv" id="mix-vval">85%</span></div>
-    <div class="mix-vrow"><span class="mix-vlbl">🌙 Fade Süresi</span><input type="range" class="mix-sl" min="0" max="60" value="10" oninput="this.nextElementSibling.textContent=this.value+&#39;s&#39;"><span class="mix-sv">10s</span></div>
+    <h2 data-i18n="mix_title">🎛 Mix Stüdyo</h2>
+    <p class="msub" data-i18n="mix_desc">Birden fazla sesi katmanlayarak kendi benzersiz ortamını yarat.</p>
+    <div class="mix-stage"><div class="mix-lbl" data-i18n="mix_active">Aktif Sesler</div><div class="mix-chips" id="mix-chips"><span class="mix-empty">Aşağıdan ses ekle...</span></div></div>
+    <div class="mix-vrow"><span class="mix-vlbl" data-i18n="mix_vol">🔊 Genel Ses</span><input type="range" class="mix-sl" id="mix-vol" min="0" max="100" value="85" oninput="setVol(this.value)"><span class="mix-sv" id="mix-vval">85%</span></div>
+    <div class="mix-vrow"><span class="mix-vlbl" data-i18n="mix_fade">🌙 Fade Süresi</span><input type="range" class="mix-sl" min="0" max="60" value="10" oninput="this.nextElementSibling.textContent=this.value+&#39;s&#39;"><span class="mix-sv">10s</span></div>
     <div class="mix-btns">
-      <button class="mix-play" id="mix-playbtn" onclick="playMix()">▶ Mix'i Oynat</button>
-      <button class="btn-g" onclick="clearMix()">🗑 Temizle</button>
+      <button class="mix-play" id="mix-playbtn" onclick="playMix()" data-i18n="mix_play">▶ Mix'i Oynat</button>
+      <button class="btn-g" onclick="clearMix()" data-i18n="mix_clear">🗑 Temizle</button>
     </div>
-    <div class="sec-h" style="margin-bottom:16px"><div class="sec-t" style="font-size:1.15rem">Sesleri Ekle</div></div>
+    <div class="sec-h" style="margin-bottom:16px"><div class="sec-t" style="font-size:1.15rem" data-i18n="mix_add">Sesleri Ekle</div></div>
     <div class="sgrid" id="mix-grid"></div>
   </div>
 </div>
 
 <!-- FAVS -->
 <div class="view" id="v-favs">
-  <div class="fv"><h2>♡ Favorilerim</h2><p class="fsub">Sık dinlediğin sesler.</p><div class="sgrid" id="fav-grid"></div></div>
+  <div class="fv"><h2 data-i18n="fav_title">♡ Favorilerim</h2><p class="fsub" data-i18n="fav_desc">Sık dinlediğin sesler.</p><div class="sgrid" id="fav-grid"></div></div>
 </div>
 
 </div>
@@ -690,8 +707,8 @@ button:focus-visible,a:focus-visible{outline:2px solid var(--acc);outline-offset
 <!-- TIMER MODAL -->
 <div class="modal" id="modal-timer" role="dialog" aria-modal="true" aria-label="Uyku zamanlayıcısı">
   <div class="mbox">
-    <h3>⏱ Uyku Zamanlayıcısı</h3>
-    <p>Seçilen süre sonunda ses yavaşça kapanır.</p>
+    <h3 data-i18n="timer_title">⏱ Uyku Zamanlayıcısı</h3>
+    <p data-i18n="timer_desc">Seçilen süre sonunda ses yavaşça kapanır.</p>
     <div class="mgrid" role="radiogroup" aria-label="Süre seçenekleri">
       <button class="mo" onclick="selTimer(10,this)">10 dak</button>
       <button class="mo" onclick="selTimer(20,this)">20 dak</button>
@@ -700,17 +717,17 @@ button:focus-visible,a:focus-visible{outline:2px solid var(--acc);outline-offset
       <button class="mo" onclick="selTimer(60,this)">1 Saat</button>
       <button class="mo" onclick="selTimer(90,this)">1.5 Saat</button>
     </div>
-    <div class="macts"><button class="mcan" onclick="closeTimer()">İptal</button><button class="mok" onclick="startTimer()">Başlat</button></div>
+    <div class="macts"><button class="mcan" onclick="closeTimer()" data-i18n="timer_cancel">İptal</button><button class="mok" onclick="startTimer()">Başlat</button></div>
   </div>
 </div>
 
 <!-- SLEEP OVERLAY -->
 <div class="sov" id="sov" role="dialog" aria-modal="true" aria-label="Uyku modu">
   <div class="sov-moon" aria-hidden="true">🌙</div>
-  <h2>İyi Geceler</h2>
-  <p class="sovp">Gözlerini kapat, nefes al, bırak...</p>
+  <h2 data-i18n="sleep_title">İyi Geceler</h2>
+  <p class="sovp" data-i18n="sleep_desc">Gözlerini kapat, nefes al, bırak...</p>
   <div class="sov-t" id="sov-t" aria-live="polite" aria-label="Kalan süre">—</div>
-  <button class="sov-exit" onclick="exitSleep()" aria-label="Uyku modundan çık">Uyku Modundan Çık</button>
+  <button class="sov-exit" onclick="exitSleep()" aria-label="Uyku modundan çık" data-i18n="sleep_exit">Uyku Modundan Çık</button>
 </div>
 
 <!-- BREATHING EXERCISE (UX) -->
@@ -719,8 +736,8 @@ button:focus-visible,a:focus-visible{outline:2px solid var(--acc);outline-offset
     <div class="breath-ring" id="breath-ring"></div>
     <span class="breath-txt" id="breath-txt" aria-hidden="true">🫁</span>
   </div>
-  <div class="breath-phase" id="breath-phase" aria-live="polite">Hazır mısın?</div>
-  <div class="breath-count" id="breath-count" aria-live="polite">4-7-8</div>
+  <div class="breath-phase" id="breath-phase" aria-live="polite" data-i18n="breath_ready">Hazır mısın?</div>
+  <div class="breath-count" id="breath-count" aria-live="polite" data-i18n="breath_count">4-7-8</div>
   <p class="breath-sub">4 saniye nefes al, 7 saniye tut, 8 saniye nefes ver.<br>Rahatlamak için 4 döngü yeterli.</p>
   <div style="display:flex;gap:10px">
     <button class="breath-close" onclick="startBreathing()" id="breath-start-btn" aria-label="Nefes egzersizini başlat" style="background:linear-gradient(135deg,var(--acc),var(--acc2));color:#fff;border-color:transparent">Başlat</button>
@@ -750,7 +767,7 @@ button:focus-visible,a:focus-visible{outline:2px solid var(--acc);outline-offset
 <!-- COOKIE CONSENT BANNER -->
 <div class="cb" id="cookie-banner" role="dialog" aria-modal="false" aria-label="Çerez bildirimi">
   <div class="cb-text">
-    <div class="cb-title">🍪 Çerez Kullanımı</div>
+    <div class="cb-title" data-i18n="cookie_title">🍪 Çerez Kullanımı</div>
     <div class="cb-desc">
       Deneyimini iyileştirmek için çerezleri kullanıyoruz. Analitik ve reklam çerezleri yalnızca senin onayınla etkinleştirilir.
       <a href="cerez-politikasi.html" aria-label="Çerez politikası sayfasına git">Çerez Politikası</a> ·
@@ -758,9 +775,9 @@ button:focus-visible,a:focus-visible{outline:2px solid var(--acc);outline-offset
     </div>
   </div>
   <div class="cb-btns">
-    <button class="cb-accept" onclick="acceptCookies()" aria-label="Tüm çerezleri kabul et">Kabul Et</button>
-    <button class="cb-reject" onclick="rejectCookies()" aria-label="Zorunlu olmayan çerezleri reddet">Reddet</button>
-    <button class="cb-detail" onclick="window.open('cerez-politikasi.html','_blank')" aria-label="Detaylı çerez bilgisi">Detaylar</button>
+    <button class="cb-accept" onclick="acceptCookies()" aria-label="Tüm çerezleri kabul et" data-i18n="cookie_accept">Kabul Et</button>
+    <button class="cb-reject" onclick="rejectCookies()" aria-label="Zorunlu olmayan çerezleri reddet" data-i18n="cookie_reject">Reddet</button>
+    <button class="cb-detail" onclick="window.open('cerez-politikasi.html','_blank')" aria-label="Detaylı çerez bilgisi" data-i18n="cookie_detail">Detaylar</button>
   </div>
 </div>
 
@@ -768,39 +785,39 @@ button:focus-visible,a:focus-visible{outline:2px solid var(--acc);outline-offset
 // ─── DATA ───────────────────────────────────────────────
 var SOUNDS = [
   // ─── DOĞA (11 ses) ──────────────────────────────────────
-  {id:'rain',      em:'🌧', name:'Yağmur',            desc:'Çatıya hafifçe damlayan yağmur',    cat:'doga',      tag:'Doğa',      acc:'#60a5fa', bg:'rain'  },
-  {id:'heavyrain', em:'⛈', name:'Sağanak Yağmur',    desc:'Kuvvetli sürükleyici yağmur',       cat:'doga',      tag:'Doğa',      acc:'#3b82f6', bg:'rain'  },
-  {id:'ocean',     em:'🌊', name:'Deniz Dalgaları',   desc:'Kıyıya vuran yavaş derin dalgalar', cat:'doga',      tag:'Doğa',      acc:'#22d3ee', bg:'ocean' },
-  {id:'forest',    em:'🌲', name:'Orman',             desc:'Kuşlar, yapraklar ve huzur',         cat:'doga',      tag:'Doğa',      acc:'#86efac', bg:'forest'},
-  {id:'wind',      em:'🍃', name:'Rüzgar',            desc:'Sakin esen serin rüzgar',             cat:'doga',      tag:'Doğa',      acc:'#a7f3d0', bg:'none'  },
-  {id:'thunder',   em:'🌩', name:'Gök Gürültüsü',    desc:'Uzaktan gelen şimşek ve fırtına',    cat:'doga',      tag:'Doğa',      acc:'#818cf8', bg:'none'  },
-  {id:'creek',     em:'🏞', name:'Dere Sesi',         desc:'Akan serin tatlı su sesi',            cat:'doga',      tag:'Doğa',      acc:'#67e8f9', bg:'none'  },
-  {id:'birds',     em:'🐦', name:'Sabah Kuşları',     desc:'Şafakta ötüşen kuşlar',               cat:'doga',      tag:'Doğa',      acc:'#bbf7d0', bg:'forest'},
-  {id:'snowfall',  em:'❄️', name:'Kar Yağışı',        desc:'Sessiz ve sakin kar sesi',            cat:'doga',      tag:'Doğa',      acc:'#bae6fd', bg:'none'  },
-  {id:'crickets',  em:'🦗', name:'Gece Cırcırları',   desc:'Yaz gecesinde cırcırböcekleri',      cat:'doga',      tag:'Doğa',      acc:'#a3e635', bg:'none'  },
-  {id:'waterfall', em:'💧', name:'Şelale',            desc:'Güçlü ve sürekli akan şelale sesi',  cat:'doga',      tag:'Doğa',      acc:'#38bdf8', bg:'ocean' },
+  {id:'rain', name_en:'Rain', desc_en:'Gentle rain drops on the roof', tag_en:'Nature',      em:'🌧', name:'Yağmur',            desc:'Çatıya hafifçe damlayan yağmur',    cat:'doga',      tag:'Doğa',      acc:'#60a5fa', bg:'rain'  },
+  {id:'heavyrain', name_en:'Heavy Rain', desc_en:'Strong immersive rainfall', tag_en:'Nature', em:'⛈', name:'Sağanak Yağmur',    desc:'Kuvvetli sürükleyici yağmur',       cat:'doga',      tag:'Doğa',      acc:'#3b82f6', bg:'rain'  },
+  {id:'ocean', name_en:'Ocean Waves', desc_en:'Slow deep waves hitting the shore', tag_en:'Nature',     em:'🌊', name:'Deniz Dalgaları',   desc:'Kıyıya vuran yavaş derin dalgalar', cat:'doga',      tag:'Doğa',      acc:'#22d3ee', bg:'ocean' },
+  {id:'forest', name_en:'Forest', desc_en:'Birds, leaves and serenity', tag_en:'Nature',    em:'🌲', name:'Orman',             desc:'Kuşlar, yapraklar ve huzur',         cat:'doga',      tag:'Doğa',      acc:'#86efac', bg:'forest'},
+  {id:'wind', name_en:'Wind', desc_en:'Calm cool breeze', tag_en:'Nature',      em:'🍃', name:'Rüzgar',            desc:'Sakin esen serin rüzgar',             cat:'doga',      tag:'Doğa',      acc:'#a7f3d0', bg:'none'  },
+  {id:'thunder', name_en:'Thunder', desc_en:'Distant lightning and storm', tag_en:'Nature',   em:'🌩', name:'Gök Gürültüsü',    desc:'Uzaktan gelen şimşek ve fırtına',    cat:'doga',      tag:'Doğa',      acc:'#818cf8', bg:'none'  },
+  {id:'creek', name_en:'Creek', desc_en:'Flowing fresh water sounds', tag_en:'Nature',     em:'🏞', name:'Dere Sesi',         desc:'Akan serin tatlı su sesi',            cat:'doga',      tag:'Doğa',      acc:'#67e8f9', bg:'none'  },
+  {id:'birds', name_en:'Morning Birds', desc_en:'Birds singing at dawn', tag_en:'Nature',     em:'🐦', name:'Sabah Kuşları',     desc:'Şafakta ötüşen kuşlar',               cat:'doga',      tag:'Doğa',      acc:'#bbf7d0', bg:'forest'},
+  {id:'snowfall', name_en:'Snowfall', desc_en:'Silent and peaceful snow', tag_en:'Nature',  em:'❄️', name:'Kar Yağışı',        desc:'Sessiz ve sakin kar sesi',            cat:'doga',      tag:'Doğa',      acc:'#bae6fd', bg:'none'  },
+  {id:'crickets', name_en:'Night Crickets', desc_en:'Crickets on a summer night', tag_en:'Nature',  em:'🦗', name:'Gece Cırcırları',   desc:'Yaz gecesinde cırcırböcekleri',      cat:'doga',      tag:'Doğa',      acc:'#a3e635', bg:'none'  },
+  {id:'waterfall', name_en:'Waterfall', desc_en:'Powerful continuous waterfall', tag_en:'Nature', em:'💧', name:'Şelale',            desc:'Güçlü ve sürekli akan şelale sesi',  cat:'doga',      tag:'Doğa',      acc:'#38bdf8', bg:'ocean' },
 
   // ─── AMBİENT (8 ses) ────────────────────────────────────
-  {id:'fire',      em:'🔥', name:'Şömine',            desc:'Odun ateşinin çıtırtısı',             cat:'ambient',   tag:'Ambient',   acc:'#fb923c', bg:'fire'  },
-  {id:'white',     em:'〰️',name:'Beyaz Gürültü',     desc:'Odak ve derin uyku için',             cat:'ambient',   tag:'Ambient',   acc:'#c4b5fd', bg:'none'  },
-  {id:'brown',     em:'🌫', name:'Kahverengi Gürültü',desc:'Derin sarmalayan geniş ses',          cat:'ambient',   tag:'Ambient',   acc:'#d97706', bg:'none'  },
-  {id:'pink',      em:'🩷', name:'Pembe Gürültü',     desc:'Doğal ve dengeli frekans dağılımı',   cat:'ambient',   tag:'Ambient',   acc:'#f472b6', bg:'none'  },
-  {id:'cafe',      em:'☕', name:'Kafe Gürültüsü',    desc:'Hafif arka plan kalabalık sesi',      cat:'ambient',   tag:'Ambient',   acc:'#a78bfa', bg:'none'  },
-  {id:'fan',       em:'🌀', name:'Vantilatör',        desc:'Sabit ve sürekli fan sesi',            cat:'ambient',   tag:'Ambient',   acc:'#94a3b8', bg:'none'  },
-  {id:'space',     em:'🌌', name:'Uzay Ambiyansı',    desc:'Derin kozmik hum sesi',               cat:'ambient',   tag:'Ambient',   acc:'#6366f1', bg:'none'  },
-  {id:'train',     em:'🚂', name:'Tren Yolculuğu',   desc:'Raylarda ritmik sallanma sesi',       cat:'ambient',   tag:'Ambient',   acc:'#78716c', bg:'none'  },
+  {id:'fire', name_en:'Fireplace', desc_en:'Crackling wood fire', tag_en:'Ambient',      em:'🔥', name:'Şömine',            desc:'Odun ateşinin çıtırtısı',             cat:'ambient',   tag:'Ambient',   acc:'#fb923c', bg:'fire'  },
+  {id:'white', name_en:'White Noise', desc_en:'For focus and deep sleep', tag_en:'Ambient',     em:'〰️',name:'Beyaz Gürültü',     desc:'Odak ve derin uyku için',             cat:'ambient',   tag:'Ambient',   acc:'#c4b5fd', bg:'none'  },
+  {id:'brown', name_en:'Brown Noise', desc_en:'Deep enveloping wide sound', tag_en:'Ambient',     em:'🌫', name:'Kahverengi Gürültü',desc:'Derin sarmalayan geniş ses',          cat:'ambient',   tag:'Ambient',   acc:'#d97706', bg:'none'  },
+  {id:'pink', name_en:'Pink Noise', desc_en:'Natural balanced frequency', tag_en:'Ambient',      em:'🩷', name:'Pembe Gürültü',     desc:'Doğal ve dengeli frekans dağılımı',   cat:'ambient',   tag:'Ambient',   acc:'#f472b6', bg:'none'  },
+  {id:'cafe', name_en:'Café Ambience', desc_en:'Soft background chatter', tag_en:'Ambient',      em:'☕', name:'Kafe Gürültüsü',    desc:'Hafif arka plan kalabalık sesi',      cat:'ambient',   tag:'Ambient',   acc:'#a78bfa', bg:'none'  },
+  {id:'fan', name_en:'Fan', desc_en:'Steady continuous fan sound', tag_en:'Ambient',       em:'🌀', name:'Vantilatör',        desc:'Sabit ve sürekli fan sesi',            cat:'ambient',   tag:'Ambient',   acc:'#94a3b8', bg:'none'  },
+  {id:'space', name_en:'Space Ambience', desc_en:'Deep cosmic hum sound', tag_en:'Ambient',     em:'🌌', name:'Uzay Ambiyansı',    desc:'Derin kozmik hum sesi',               cat:'ambient',   tag:'Ambient',   acc:'#6366f1', bg:'none'  },
+  {id:'train', name_en:'Train Ride', desc_en:'Rhythmic swaying on the rails', tag_en:'Ambient',     em:'🚂', name:'Tren Yolculuğu',   desc:'Raylarda ritmik sallanma sesi',       cat:'ambient',   tag:'Ambient',   acc:'#78716c', bg:'none'  },
 
   // ─── BEBEK (15 ses) ──────────────────────────────────────
-  {id:'womb',      em:'💞', name:'Anne Karnı',        desc:'Bebekler için sıcak ve güvenli',      cat:'bebek',     tag:'Bebek',     acc:'#f0abfc', bg:'baby'  },
-  {id:'heartbeat', em:'💓', name:'Kalp Atışı',        desc:'Düzenli sakinleştirici ritim',        cat:'bebek',     tag:'Bebek',     acc:'#fb7185', bg:'baby'  },
-  {id:'lullaby',   em:'🎵', name:'Ninni',             desc:'Yumuşak melodi ve nefes sesleri',     cat:'bebek',     tag:'Bebek',     acc:'#d8b4fe', bg:'baby'  },
-  {id:'shush',     em:'🤫', name:'Shushing',          desc:'Bebeği sakinleştiren ses',             cat:'bebek',     tag:'Bebek',     acc:'#fca5a5', bg:'baby'  },
-  {id:'cradle',    em:'🍼', name:'Beşik Sesi',        desc:'Hafif sallanan beşik gıcırtısı',      cat:'bebek',     tag:'Bebek',     acc:'#fde68a', bg:'baby'  },
-  {id:'hairdryer', em:'💨', name:'Saç Kurutma',       desc:'Bebeği anında sakinleştiren ses',     cat:'bebek',     tag:'Bebek',     acc:'#e2e8f0', bg:'baby'  },
-  {id:'vacuum',    em:'🔌', name:'Elektrik Süpürgesi',desc:'Sürekli ve güçlü beyaz gürültü',     cat:'bebek',     tag:'Bebek',     acc:'#a1a1aa', bg:'baby'  },
-  {id:'carride',   em:'🚗', name:'Araba Yolculuğu',  desc:'Motor ve yol sesi ile uyku',          cat:'bebek',     tag:'Bebek',     acc:'#93c5fd', bg:'baby'  },
-  {id:'musicbox',  em:'🎶', name:'Müzik Kutusu',     desc:'Nazik ve tınlayan melodi',             cat:'bebek',     tag:'Bebek',     acc:'#c4b5fd', bg:'baby'  },
-  {id:'purring',   em:'🐱', name:'Kedi Mırıltısı',   desc:'Sakinleştirici kedi purring sesi',    cat:'bebek',     tag:'Bebek',     acc:'#fdba74', bg:'baby'  },
+  {id:'womb', name_en:'Womb Sounds', desc_en:'Warm and safe for babies', tag_en:'Baby',      em:'💞', name:'Anne Karnı',        desc:'Bebekler için sıcak ve güvenli',      cat:'bebek',     tag:'Bebek',     acc:'#f0abfc', bg:'baby'  },
+  {id:'heartbeat', name_en:'Heartbeat', desc_en:'Steady soothing rhythm', tag_en:'Baby', em:'💓', name:'Kalp Atışı',        desc:'Düzenli sakinleştirici ritim',        cat:'bebek',     tag:'Bebek',     acc:'#fb7185', bg:'baby'  },
+  {id:'lullaby', name_en:'Lullaby', desc_en:'Soft melody and breath sounds', tag_en:'Baby',   em:'🎵', name:'Ninni',             desc:'Yumuşak melodi ve nefes sesleri',     cat:'bebek',     tag:'Bebek',     acc:'#d8b4fe', bg:'baby'  },
+  {id:'shush', name_en:'Shushing', desc_en:'Calming sound for babies', tag_en:'Baby',     em:'🤫', name:'Shushing',          desc:'Bebeği sakinleştiren ses',             cat:'bebek',     tag:'Bebek',     acc:'#fca5a5', bg:'baby'  },
+  {id:'cradle', name_en:'Cradle Sound', desc_en:'Gentle rocking cradle creak', tag_en:'Baby',    em:'🍼', name:'Beşik Sesi',        desc:'Hafif sallanan beşik gıcırtısı',      cat:'bebek',     tag:'Bebek',     acc:'#fde68a', bg:'baby'  },
+  {id:'hairdryer', name_en:'Hair Dryer', desc_en:'Instantly calms babies', tag_en:'Baby', em:'💨', name:'Saç Kurutma',       desc:'Bebeği anında sakinleştiren ses',     cat:'bebek',     tag:'Bebek',     acc:'#e2e8f0', bg:'baby'  },
+  {id:'vacuum', name_en:'Vacuum Cleaner', desc_en:'Continuous strong white noise', tag_en:'Baby',    em:'🔌', name:'Elektrik Süpürgesi',desc:'Sürekli ve güçlü beyaz gürültü',     cat:'bebek',     tag:'Bebek',     acc:'#a1a1aa', bg:'baby'  },
+  {id:'carride', name_en:'Car Ride', desc_en:'Engine and road sounds for sleep', tag_en:'Baby',   em:'🚗', name:'Araba Yolculuğu',  desc:'Motor ve yol sesi ile uyku',          cat:'bebek',     tag:'Bebek',     acc:'#93c5fd', bg:'baby'  },
+  {id:'musicbox', name_en:'Music Box', desc_en:'Gentle tinkling melody', tag_en:'Baby',  em:'🎶', name:'Müzik Kutusu',     desc:'Nazik ve tınlayan melodi',             cat:'bebek',     tag:'Bebek',     acc:'#c4b5fd', bg:'baby'  },
+  {id:'purring', name_en:'Cat Purring', desc_en:'Soothing cat purring sound', tag_en:'Baby',   em:'🐱', name:'Kedi Mırıltısı',   desc:'Sakinleştirici kedi purring sesi',    cat:'bebek',     tag:'Bebek',     acc:'#fdba74', bg:'baby'  },
   {id:'washer',    em:'🫧', name:'Çamaşır Makinesi', desc:'Ritmik dönme ve su sesi',              cat:'bebek',     tag:'Bebek',     acc:'#7dd3fc', bg:'baby'  },
   {id:'mobile',    em:'🎠', name:'Dönence',           desc:'Beşik üstü oyuncak melodisi',          cat:'bebek',     tag:'Bebek',     acc:'#e9d5ff', bg:'baby'  },
   {id:'babybrown', em:'🧸', name:'Bebek Gürültüsü',  desc:'Bebeklere özel kahverengi gürültü',   cat:'bebek',     tag:'Bebek',     acc:'#d4a574', bg:'baby'  },
@@ -808,19 +825,19 @@ var SOUNDS = [
   {id:'babyocean', em:'🐚', name:'Deniz Kabuğu',     desc:'Yumuşak deniz sesi bebek için',       cat:'bebek',     tag:'Bebek',     acc:'#99f6e4', bg:'baby'  },
 
   // ─── MEDİTASYON (7 ses) ─────────────────────────────────
-  {id:'tibetan',   em:'🔔', name:'Tibet Kasesi',      desc:'Derin meditasyon titreşimleri',       cat:'meditasyon',tag:'Meditasyon',acc:'#fcd34d', bg:'none'  },
-  {id:'binaural',  em:'🧠', name:'Binaural Beats',    desc:'Alfa dalgaları ile derin uyku',       cat:'meditasyon',tag:'Meditasyon',acc:'#818cf8', bg:'none'  },
-  {id:'om',        em:'🕉', name:'Om Mantrası',       desc:'Sakinleştirici titreşim ve ses',      cat:'meditasyon',tag:'Meditasyon',acc:'#fde68a', bg:'none'  },
-  {id:'drone',     em:'🎶', name:'Drone Müzik',       desc:'Sürekli drone ve overtone sesi',      cat:'meditasyon',tag:'Meditasyon',acc:'#a5b4fc', bg:'none'  },
+  {id:'tibetan', name_en:'Tibetan Bowl', desc_en:'Deep meditation vibrations', tag_en:'Meditation',   em:'🔔', name:'Tibet Kasesi',      desc:'Derin meditasyon titreşimleri',       cat:'meditasyon',tag:'Meditasyon',acc:'#fcd34d', bg:'none'  },
+  {id:'binaural', name_en:'Binaural Beats', desc_en:'Alpha waves for deep sleep', tag_en:'Meditation',  em:'🧠', name:'Binaural Beats',    desc:'Alfa dalgaları ile derin uyku',       cat:'meditasyon',tag:'Meditasyon',acc:'#818cf8', bg:'none'  },
+  {id:'om', name_en:'Om Mantra', desc_en:'Calming vibration and sound', tag_en:'Meditation',        em:'🕉', name:'Om Mantrası',       desc:'Sakinleştirici titreşim ve ses',      cat:'meditasyon',tag:'Meditasyon',acc:'#fde68a', bg:'none'  },
+  {id:'drone', name_en:'Drone Music', desc_en:'Continuous drone and overtone', tag_en:'Meditation',     em:'🎶', name:'Drone Müzik',       desc:'Sürekli drone ve overtone sesi',      cat:'meditasyon',tag:'Meditasyon',acc:'#a5b4fc', bg:'none'  },
   {id:'chimes',    em:'🎐', name:'Rüzgar Çanları',   desc:'Hafif esintide tınlayan çanlar',      cat:'meditasyon',tag:'Meditasyon',acc:'#67e8f9', bg:'none'  },
   {id:'crystal',   em:'💎', name:'Kristal Kase',      desc:'Yüksek frekanslı şifa tınısı',        cat:'meditasyon',tag:'Meditasyon',acc:'#c084fc', bg:'none'  },
   {id:'theta',     em:'🌀', name:'Theta Dalgaları',   desc:'4-8Hz meditasyon frekansı',            cat:'meditasyon',tag:'Meditasyon',acc:'#6366f1', bg:'none'  },
 
   // ─── UYKU (7 ses) ───────────────────────────────────────
-  {id:'sleep',     em:'💤', name:'Uyku Fısıltısı',    desc:'ASMR benzeri yumuşak fısıltı',        cat:'uyku',      tag:'Uyku',      acc:'#a5b4fc', bg:'none'  },
-  {id:'deepfreq',  em:'🌠', name:'Derin Uyku 432Hz',  desc:'432Hz harmonik uyku frekansı',        cat:'uyku',      tag:'Uyku',      acc:'#7c3aed', bg:'none'  },
-  {id:'delta',     em:'🧬', name:'Delta Dalgaları',   desc:'0.5-4Hz derin uyku frekansı',         cat:'uyku',      tag:'Uyku',      acc:'#4f46e5', bg:'none'  },
-  {id:'nightrain', em:'🌃', name:'Gece Yağmuru',      desc:'Cam arkasında hafif yağmur ve rüzgar',cat:'uyku',      tag:'Uyku',      acc:'#6d28d9', bg:'rain'  },
+  {id:'sleep', name_en:'Sleep Whisper', desc_en:'ASMR-like soft whisper', tag_en:'Sleep',     em:'💤', name:'Uyku Fısıltısı',    desc:'ASMR benzeri yumuşak fısıltı',        cat:'uyku',      tag:'Uyku',      acc:'#a5b4fc', bg:'none'  },
+  {id:'deepfreq', name_en:'Deep Sleep 432Hz', desc_en:'432Hz harmonic sleep frequency', tag_en:'Sleep',  em:'🌠', name:'Derin Uyku 432Hz',  desc:'432Hz harmonik uyku frekansı',        cat:'uyku',      tag:'Uyku',      acc:'#7c3aed', bg:'none'  },
+  {id:'delta', name_en:'Delta Waves', desc_en:'0.5-4Hz deep sleep frequency', tag_en:'Sleep',     em:'🧬', name:'Delta Dalgaları',   desc:'0.5-4Hz derin uyku frekansı',         cat:'uyku',      tag:'Uyku',      acc:'#4f46e5', bg:'none'  },
+  {id:'nightrain', name_en:'Night Rain', desc_en:'Gentle rain and wind behind glass', tag_en:'Sleep', em:'🌃', name:'Gece Yağmuru',      desc:'Cam arkasında hafif yağmur ve rüzgar',cat:'uyku',      tag:'Uyku',      acc:'#6d28d9', bg:'rain'  },
   {id:'softpiano', em:'🎹', name:'Yumuşak Piyano',   desc:'Sakin ve huzurlu piyano melodisi',     cat:'uyku',      tag:'Uyku',      acc:'#a78bfa', bg:'none'  },
   {id:'cloudbed',  em:'☁️', name:'Bulut Yatağı',      desc:'Çok katmanlı derin ambient',           cat:'uyku',      tag:'Uyku',      acc:'#c7d2fe', bg:'none'  },
   {id:'warmhum',   em:'🕯', name:'Sıcak Uğultu',     desc:'Derin ve sarmalayan bas uğultu',       cat:'uyku',      tag:'Uyku',      acc:'#f59e0b', bg:'none'  }
@@ -1635,10 +1652,10 @@ function updateBar() {
   if (prim) {
     document.getElementById('np-thumb').textContent = prim.em;
     document.getElementById('np-thumb').style.background = 'linear-gradient(135deg,' + prim.acc + ',#9b87f5)';
-    document.getElementById('np-name').textContent = ids.length > 1 ? ids.length + ' ses çalıyor' : prim.name;
+    document.getElementById('np-name').textContent = ids.length > 1 ? ids.length + t('np_playing') : getSoundName(prim);
     document.getElementById('np-meta').textContent = ids.length > 1
       ? ids.map(function(id){ var s=null; for(var i=0;i<SOUNDS.length;i++) if(SOUNDS[i].id===id){s=SOUNDS[i];break;} return s?s.em:''; }).join(' ')
-      : prim.tag + ' · Loop';
+      : getSoundTag(prim) + ' · ' + t('np_loop');
     document.getElementById('np-fav').textContent = favSet[prim.id] ? '♥' : '♡';
   }
 
@@ -1870,15 +1887,16 @@ function cardHtml(s, isMixView) {
     : '<button class="sc-fav ' + (isFav?'on':'') + '" data-id="' + s.id + '" onclick="event.stopPropagation();toggleFav(\'' + s.id + '\')">♥</button>';
   return '<div class="sc ein ' + (isOn?'on':'') + '" data-id="' + s.id + '" style="--ca:' + s.acc + ';--cg:' + s.acc + '18" onclick="' + click + '">' +
     '<div class="sc-badge"></div><span class="sc-em">' + s.em + '</span>' +
-    '<div class="sc-name">' + s.name + '</div><div class="sc-desc">' + s.desc + '</div>' +
-    '<div class="sc-foot"><span class="sc-tag">' + s.tag + '</span>' + foot + '</div></div>';
+    '<div class="sc-name">' + getSoundName(s) + '</div><div class="sc-desc">' + getSoundDesc(s) + '</div>' +
+    '<div class="sc-foot"><span class="sc-tag">' + getSoundTag(s) + '</span>' + foot + '</div></div>';
 }
 
 function renderGrid(filter) {
   var el = document.getElementById('home-grid'); if (!el) return;
   var html = '';
   for (var i=0; i<SOUNDS.length; i++) {
-    if (!filter || filter==='all' || SOUNDS[i].cat===filter) html += cardHtml(SOUNDS[i], false);
+    var catMap = {all:'all',tümü:'all',nature:'doga',doğa:'doga',baby:'bebek',bebek:'bebek',ambient:'ambient',meditation:'meditasyon',meditasyon:'meditasyon',sleep:'uyku',uyku:'uyku'}; var fc = (filter||'all').toLowerCase(); fc = catMap[fc] || fc;
+    if (!fc || fc==='all' || SOUNDS[i].cat===fc) html += cardHtml(SOUNDS[i], false);
   }
   el.innerHTML = html;
 }
@@ -1893,7 +1911,7 @@ function renderFavs() {
   var el = document.getElementById('fav-grid'); if (!el) return;
   var html = '', found = false;
   for (var i=0; i<SOUNDS.length; i++) if (favSet[SOUNDS[i].id]) { html += cardHtml(SOUNDS[i], false); found = true; }
-  el.innerHTML = found ? html : '<p style="color:var(--txt2);padding:16px 0">Henüz favori eklemediniz. ♥ ile kaydedin.</p>';
+  el.innerHTML = found ? html : '<p style="color:var(--txt2);padding:16px 0">' + t('fav_empty') + '</p>';
 }
 
 function renderMixGrid() {
@@ -1912,7 +1930,7 @@ function toggleMix(id) {
 function renderMixChips() {
   var el = document.getElementById('mix-chips'); if (!el) return;
   var ids = Object.keys(mixSet);
-  if (!ids.length) { el.innerHTML = '<span class="mix-empty">Aşağıdan ses ekle...</span>'; return; }
+  if (!ids.length) { el.innerHTML = '<span class="mix-empty">' + t('mix_add_hint') + '</span>'; return; }
   var html = '';
   for (var i=0; i<ids.length; i++) {
     var s = null;
@@ -1946,6 +1964,174 @@ function moodRec(mood, el) {
   }
   document.getElementById('ai-res').innerHTML = html;
 }
+
+
+// ─── INTERNATIONALIZATION (i18n) ────────────────────────
+var LANG_CURRENT = localStorage.getItem('uykucu_lang') || 'tr';
+
+var I18N = {
+  // Navigation
+  nav_home: {tr:'Ana Sayfa', en:'Home'},
+  nav_player: {tr:'Oynatıcı', en:'Player'},
+  nav_mix: {tr:'Mix Stüdyo', en:'Mix Studio'},
+  nav_favs: {tr:'Favoriler', en:'Favorites'},
+  nav_about: {tr:'Hakkımızda', en:'About'},
+  nav_contact: {tr:'İletişim', en:'Contact'},
+  // Hero
+  hero_eyebrow: {tr:'Huzurlu Uyku Deneyimi', en:'Peaceful Sleep Experience'},
+  hero_title_1: {tr:'Gecenin ', en:"Embrace the "},
+  hero_title_em: {tr:'sessizliğini', en:'silence'},
+  hero_title_2: {tr:'içine al', en:'of the night'},
+  hero_desc: {tr:'Doğanın ritmiyle nefes al. Beyin dalgalarını yavaşlat, zihnini boşalt.', en:'Breathe with nature\'s rhythm. Slow your brainwaves, clear your mind.'},
+  hero_cta: {tr:'🌙 Hemen Başla', en:'🌙 Start Now'},
+  hero_mix: {tr:'🎛 Mix Oluştur', en:'🎛 Create Mix'},
+  // Stats
+  stats_title: {tr:'📊 Uyku Raporun', en:'📊 Sleep Report'},
+  stats_today: {tr:'Bugünkü Dakika', en:"Today's Minutes"},
+  stats_total_hours: {tr:'Toplam Saat', en:'Total Hours'},
+  stats_streak: {tr:'Gün Serisi', en:'Day Streak'},
+  stats_fav: {tr:'En Çok Dinlenen', en:'Most Played'},
+  stats_sessions: {tr:'Toplam Oturum', en:'Total Sessions'},
+  stat_today_min: {tr:'Bugünkü Dakika', en:"Today's Minutes"},
+  stat_total_plays: {tr:'Toplam Oynatma', en:'Total Plays'},
+  stat_favs: {tr:'Favoriler', en:'Favorites'},
+  stat_streak2: {tr:'Gün Serisi', en:'Day Streak'},
+  // Sections
+  sec_sounds: {tr:'Sesler', en:'Sounds'},
+  // AI
+  ai_title: {tr:'AI Öneri Motoru', en:'AI Recommendation Engine'},
+  ai_sub: {tr:'Ruh haline göre öneriler', en:'Mood-based suggestions'},
+  ai_q: {tr:'Şu an nasıl hissediyorsun?', en:'How are you feeling right now?'},
+  mood_stress: {tr:'😰 Stresli', en:'😰 Stressed'},
+  mood_sleepless: {tr:'😴 Uykusuzluk', en:'😴 Sleepless'},
+  mood_baby: {tr:'👶 Bebek İçin', en:'👶 For Baby'},
+  mood_focus: {tr:'🎯 Odaklanma', en:'🎯 Focus'},
+  mood_meditation: {tr:'🧘 Meditasyon', en:'🧘 Meditation'},
+  // Categories
+  cat_all: {tr:'✦ Tümü', en:'✦ All'},
+  cat_nature: {tr:'🌿 Doğa', en:'🌿 Nature'},
+  cat_baby: {tr:'👶 Bebek', en:'👶 Baby'},
+  cat_ambient: {tr:'🌌 Ambient', en:'🌌 Ambient'},
+  cat_meditation: {tr:'🧘 Meditasyon', en:'🧘 Meditation'},
+  cat_sleep: {tr:'💤 Uyku', en:'💤 Sleep'},
+  // Player
+  player_none: {tr:'Ses Seçilmedi', en:'No Sound Selected'},
+  player_hint: {tr:'Ana sayfadan bir ses seçin', en:'Select a sound from the home page'},
+  player_timer: {tr:'Zamanlayıcı:', en:'Timer:'},
+  // Mix
+  mix_title: {tr:'🎛 Mix Stüdyo', en:'🎛 Mix Studio'},
+  mix_desc: {tr:'Birden fazla sesi katmanlayarak kendi benzersiz ortamını yarat.', en:'Layer multiple sounds to create your unique ambience.'},
+  mix_active: {tr:'Aktif Sesler', en:'Active Sounds'},
+  mix_vol: {tr:'🔊 Genel Ses', en:'🔊 Master Volume'},
+  mix_fade: {tr:'🌙 Fade Süresi', en:'🌙 Fade Duration'},
+  mix_play: {tr:"▶ Mix'i Oynat", en:'▶ Play Mix'},
+  mix_clear: {tr:'🗑 Temizle', en:'🗑 Clear'},
+  mix_add: {tr:'Sesleri Ekle', en:'Add Sounds'},
+  mix_add_hint: {tr:'Aşağıdan ses ekle...', en:'Add sounds below...'},
+  // Favs
+  fav_title: {tr:'♡ Favorilerim', en:'♡ My Favorites'},
+  fav_desc: {tr:'Sık dinlediğin sesler.', en:'Your frequently played sounds.'},
+  fav_empty: {tr:'Henüz favori eklemediniz. ♥ ile kaydedin.', en:'No favorites yet. Save with ♥.'},
+  // Timer
+  timer_title: {tr:'⏱ Uyku Zamanlayıcısı', en:'⏱ Sleep Timer'},
+  timer_desc: {tr:'Seçilen süre sonunda ses yavaşça kapanır.', en:'Sound fades out after the selected time.'},
+  timer_cancel: {tr:'İptal', en:'Cancel'},
+  timer_start: {tr:'Başlat', en:'Start'},
+  // Sleep
+  sleep_title: {tr:'İyi Geceler', en:'Good Night'},
+  sleep_desc: {tr:'Gözlerini kapat, nefes al, bırak...', en:'Close your eyes, breathe in, let go...'},
+  sleep_exit: {tr:'Uyku Modundan Çık', en:'Exit Sleep Mode'},
+  // Breathing
+  breath_ready: {tr:'Hazır mısın?', en:'Are you ready?'},
+  breath_count: {tr:'4-7-8', en:'4-7-8'},
+  breath_inhale: {tr:'Nefes Al...', en:'Breathe In...'},
+  breath_hold: {tr:'Tut...', en:'Hold...'},
+  breath_exhale: {tr:'Nefes Ver...', en:'Breathe Out...'},
+  breath_done: {tr:'Tebrikler! 🌟', en:'Well done! 🌟'},
+  // Cookie
+  cookie_title: {tr:'🍪 Çerez Kullanımı', en:'🍪 Cookie Usage'},
+  cookie_accept: {tr:'Kabul Et', en:'Accept'},
+  cookie_reject: {tr:'Reddet', en:'Reject'},
+  cookie_detail: {tr:'Detaylar', en:'Details'},
+  cookie_desc: {tr:'Deneyimini iyileştirmek için çerezleri kullanıyoruz. Analitik ve reklam çerezleri yalnızca senin onayınla etkinleştirilir.', en:'We use cookies to improve your experience. Analytics and advertising cookies are only activated with your consent.'},
+  // Side menu
+  sm_app: {tr:'Uygulama', en:'App'},
+  sm_features: {tr:'Özellikler', en:'Features'},
+  sm_info: {tr:'Bilgi', en:'Info'},
+  sm_legal: {tr:'Yasal', en:'Legal'},
+  sm_language: {tr:'Dil / Language', en:'Language'},
+  sm_sleep_mode: {tr:'Uyku Modu', en:'Sleep Mode'},
+  sm_breathing: {tr:'Nefes Egzersizi', en:'Breathing Exercise'},
+  sm_privacy: {tr:'Gizlilik Politikası', en:'Privacy Policy'},
+  sm_terms: {tr:'Kullanım Koşulları', en:'Terms of Use'},
+  sm_cookies: {tr:'Çerez Politikası', en:'Cookie Policy'},
+  sm_cookie_settings: {tr:'Çerez Ayarları', en:'Cookie Settings'},
+  // Buttons
+  btn_breath: {tr:'Nefes', en:'Breathe'},
+  btn_sleep: {tr:'Uyku Modu', en:'Sleep Mode'},
+  // Now playing
+  np_playing: {tr:' ses çalıyor', en:' sounds playing'},
+  np_not_playing: {tr:'Çalmıyor', en:'Not playing'},
+  np_loop: {tr:'Loop', en:'Loop'},
+  // Onboarding
+  ob_title1: {tr:"Uykucu'ya Hoş Geldin", en:'Welcome to Sleeper'},
+  ob_desc1: {tr:'Doğanın sesleriyle huzurlu bir uyku deneyimi seni bekliyor. İşte seni neler bekliyor:', en:'A peaceful sleep experience with nature sounds awaits you. Here\'s what to expect:'},
+  ob_s1a: {tr:'37+ Doğal Ses', en:'37+ Natural Sounds'}, ob_s1b: {tr:'Mix Stüdyo', en:'Mix Studio'}, ob_s1c: {tr:'AI Öneriler', en:'AI Suggestions'},
+  ob_title2: {tr:'Sesleri Keşfet', en:'Discover Sounds'},
+  ob_desc2: {tr:'Yağmurdan şömine ateşine, beyaz gürültüden Tibet kasesine kadar birçok ses seni bekliyor. Birden fazla sesi aynı anda çalabilirsin!', en:'From rain to fireplace, white noise to Tibetan bowls — many sounds await. Play multiple sounds at once!'},
+  ob_s2a: {tr:'Favorile', en:'Favorite'}, ob_s2b: {tr:'Ses Ayarı', en:'Volume'}, ob_s2c: {tr:'Zamanlayıcı', en:'Timer'},
+  ob_title3: {tr:'Hazırsın!', en:'You\'re Ready!'},
+  ob_desc3: {tr:'Keyifli bir uyku deneyimi dileriz. İyi geceler!', en:'We wish you a restful sleep experience. Good night!'},
+  ob_s3a: {tr:'Uyku Modu', en:'Sleep Mode'}, ob_s3b: {tr:'Nefes Egzersizi', en:'Breathing'}, ob_s3c: {tr:'Uyku Raporu', en:'Sleep Report'},
+  // Toast / misc
+  toast_fav_add: {tr:'♥ Favorilere eklendi', en:'♥ Added to favorites'},
+  toast_fav_remove: {tr:'♡ Favorilerden çıkarıldı', en:'♡ Removed from favorites'},
+  toast_timer: {tr:'⏱ Zamanlayıcı: ', en:'⏱ Timer: '},
+  toast_timer_min: {tr:' dakika', en:' minutes'},
+  toast_breath_done: {tr:'🫁 Nefes egzersizi tamamlandı!', en:'🫁 Breathing exercise completed!'},
+  toast_welcome: {tr:'🌙 Hoş geldin! Bir ses seç ve rahatla.', en:'🌙 Welcome! Pick a sound and relax.'},
+  playing: {tr:'çalınıyor', en:'playing'},
+  stopped: {tr:'Ses durduruldu', en:'Sound stopped'},
+};
+
+function t(key) {
+  var entry = I18N[key];
+  if (!entry) return key;
+  return entry[LANG_CURRENT] || entry['tr'] || key;
+}
+
+function getSoundName(s) { return LANG_CURRENT === 'en' && s.name_en ? s.name_en : s.name; }
+function getSoundDesc(s) { return LANG_CURRENT === 'en' && s.desc_en ? s.desc_en : s.desc; }
+function getSoundTag(s) { return LANG_CURRENT === 'en' && s.tag_en ? s.tag_en : s.tag; }
+
+function setLang(lang) {
+  LANG_CURRENT = lang;
+  localStorage.setItem('uykucu_lang', lang);
+  document.documentElement.setAttribute('lang', lang);
+  // Update toggle buttons
+  document.getElementById('lang-tr').classList.toggle('active', lang === 'tr');
+  document.getElementById('lang-en').classList.toggle('active', lang === 'en');
+  // Update all data-i18n elements
+  var els = document.querySelectorAll('[data-i18n]');
+  for (var i = 0; i < els.length; i++) {
+    var key = els[i].getAttribute('data-i18n');
+    var val = t(key);
+    if (val !== key) els[i].textContent = val;
+  }
+  // Re-render dynamic content
+  renderGrid(document.querySelector('.cp.on') ? document.querySelector('.cp.on').textContent.trim().split(' ').pop().toLowerCase() : 'all');
+  if (document.getElementById('v-favs').classList.contains('on')) renderFavs();
+  if (document.getElementById('v-mix').classList.contains('on')) renderMixGrid();
+  updateBar();
+  updateSleepStatsUI();
+  // Update page title
+  document.title = lang === 'en' ? 'Sleeper — Sleep & Serenity' : 'Uykucu — Uyku & Huzur';
+}
+
+// Apply saved language on load
+document.addEventListener('DOMContentLoaded', function() {
+  if (LANG_CURRENT !== 'tr') setLang(LANG_CURRENT);
+});
 
 // ─── INIT ────────────────────────────────────────────────
 document.getElementById('st-favs').textContent  = Object.keys(favSet).length;
@@ -2035,9 +2221,9 @@ playSound = function(id) {
     checkStreak();
     saveSleepStats();
     updateSleepStatsUI();
-    announce(snd ? snd.name + ' çalınıyor' : 'Ses çalınıyor');
+    announce(snd ? getSoundName(snd) + ' ' + t('playing') : t('playing'));
   } else {
-    announce('Ses durduruldu');
+    announce(t('stopped'));
   }
 };
 
@@ -2047,7 +2233,7 @@ toggleFav = function(id) {
   var wasFav = !!favSet[id];
   _origToggleFav(id);
   trackFavorite(id, !wasFav);
-  showToast(!wasFav ? '♥ Favorilere eklendi' : '♡ Favorilerden çıkarıldı');
+  showToast(!wasFav ? t('toast_fav_add') : t('toast_fav_remove'));
 };
 
 // Override activateTimer to add analytics
@@ -2055,7 +2241,7 @@ var _origActivateTimer = activateTimer;
 activateTimer = function(m) {
   _origActivateTimer(m);
   trackTimerSet(m);
-  showToast('⏱ Zamanlayıcı: ' + m + ' dakika');
+  showToast(t('toast_timer') + m + t('toast_timer_min'));
 };
 
 // Update session minutes in stats periodically
@@ -2145,16 +2331,16 @@ function runBreathPhase() {
 
   if (breathPhase === 0) {
     // Inhale 4s
-    phaseEl.textContent = 'Nefes Al...';
+    phaseEl.textContent = t('breath_inhale');
     ring.className = 'breath-ring inhale';
     breathCount = 4;
   } else if (breathPhase === 1) {
     // Hold 7s
-    phaseEl.textContent = 'Tut...';
+    phaseEl.textContent = t('breath_hold');
     breathCount = 7;
   } else if (breathPhase === 2) {
     // Exhale 8s
-    phaseEl.textContent = 'Nefes Ver...';
+    phaseEl.textContent = t('breath_exhale');
     ring.className = 'breath-ring exhale';
     breathCount = 8;
   }
@@ -2170,11 +2356,11 @@ function runBreathPhase() {
         breathPhase = 0;
         breathCycle++;
         if (breathCycle >= 4) {
-          phaseEl.textContent = 'Tebrikler! 🌟';
+          phaseEl.textContent = t('breath_done');
           countEl.textContent = '✓';
           ring.className = 'breath-ring';
           trackBreathing(breathCycle);
-          showToast('🫁 Nefes egzersizi tamamlandı!');
+          showToast(t('toast_breath_done'));
           setTimeout(closeBreathing, 2500);
           return;
         }
@@ -2187,9 +2373,9 @@ function runBreathPhase() {
 // ─── ONBOARDING (UX) ────────────────────────────────────
 var obStep = 0;
 var obData = [
-  { icon: '🌙', title: 'Uykucu\'ya Hoş Geldin', desc: 'Doğanın sesleriyle huzurlu bir uyku deneyimi seni bekliyor. İşte seni neler bekliyor:', steps: [{em:'🎵',txt:'26+ Doğal Ses'},{em:'🎛',txt:'Mix Stüdyo'},{em:'🧠',txt:'AI Öneriler'}] },
-  { icon: '🎧', title: 'Sesleri Keşfet', desc: 'Yağmurdan şömine ateşine, beyaz gürültüden Tibet kasesine kadar birçok ses seni bekliyor. Birden fazla sesi aynı anda çalabilirsin!', steps: [{em:'♥',txt:'Favorile'},{em:'🔊',txt:'Ses Ayarı'},{em:'⏱',txt:'Zamanlayıcı'}] },
-  { icon: '✨', title: 'Hazırsın!', desc: 'Keyifli bir uyku deneyimi dileriz. İyi geceler!', steps: [{em:'🌙',txt:'Uyku Modu'},{em:'🫁',txt:'Nefes Egzersizi'},{em:'📊',txt:'Uyku Raporu'}] }
+  { icon: '🌙', title: t('ob_title1'), desc: t('ob_desc1'), steps: [{em:'🎵',txt:t('ob_s1a')},{em:'🎛',txt:t('ob_s1b')},{em:'🧠',txt:t('ob_s1c')}] },
+  { icon: '🎧', title: t('ob_title2'), desc: t('ob_desc2'), steps: [{em:'♥',txt:t('ob_s2a')},{em:'🔊',txt:t('ob_s2b')},{em:'⏱',txt:t('ob_s2c')}] },
+  { icon: '✨', title: t('ob_title3'), desc: t('ob_desc3'), steps: [{em:'🌙',txt:t('ob_s3a')},{em:'🫁',txt:t('ob_s3b')},{em:'📊',txt:t('ob_s3c')}] }
 ];
 
 function showOnboard() {
@@ -2227,7 +2413,7 @@ function closeOnboard() {
   document.getElementById('onboard').classList.remove('on');
   localStorage.setItem('uykucu_onboard', 'done');
   trackEvent('onboarding_completed', { step_reached: obStep + 1 });
-  showToast('🌙 Hoş geldin! Bir ses seç ve rahatla.');
+  showToast(t('toast_welcome'));
 }
 
 // ─── ENHANCED CARD HTML (a11y) ──────────────────────────
