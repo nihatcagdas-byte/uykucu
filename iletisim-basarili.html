@@ -8,32 +8,29 @@
 <meta name="robots" content="noindex">
 <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@200;300;400;500&family=Playfair+Display:ital,wght@0,300;0,400;1,300;1,400&display=swap" rel="stylesheet">
 <style>
-:root{--bg:#07090f;--bg1:#0b0f1a;--surf:rgba(255,255,255,.045);--bdr:rgba(255,255,255,.07);--bdr2:rgba(255,255,255,.13);--txt:#dde6f5;--txt2:rgba(221,230,245,.52);--txt3:rgba(221,230,245,.26);--acc:#6aacf0;--acc2:#9b87f5;--acc3:#5ef0d4;--ar:106,172,240;--rp:100px}
+:root{--bg:#07090f;--acc:#6aacf0;--acc2:#9b87f5;--ar:106,172,240;--txt:#dde6f5;--txt2:rgba(221,230,245,.52);--txt3:rgba(221,230,245,.26);--rp:100px}
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 body{font-family:'Nunito',sans-serif;font-weight:300;background:var(--bg);color:var(--txt);min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:32px}
 .icon{font-size:4.5rem;margin-bottom:24px;display:block;animation:pop .6s cubic-bezier(.34,1.56,.64,1)}
 @keyframes pop{from{transform:scale(0);opacity:0}to{transform:scale(1);opacity:1}}
 h1{font-family:'Playfair Display',serif;font-size:2.2rem;font-weight:300;margin-bottom:12px}
 p{color:var(--txt2);font-size:.95rem;line-height:1.7;max-width:440px;margin-bottom:28px}
-.btn{display:inline-flex;align-items:center;gap:8px;padding:13px 28px;border-radius:var(--rp);background:linear-gradient(135deg,var(--acc),var(--acc2));color:#fff;font-size:.88rem;font-weight:500;text-decoration:none;transition:.3s;border:none;cursor:pointer;font-family:inherit}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:13px 28px;border-radius:var(--rp);background:linear-gradient(135deg,var(--acc),var(--acc2));color:#fff;font-size:.88rem;font-weight:500;text-decoration:none;transition:.3s}
 .btn:hover{transform:translateY(-3px);box-shadow:0 8px 32px rgba(var(--ar),.4);text-decoration:none}
 .timer{color:var(--txt3);font-size:.78rem;margin-top:16px}
 </style>
 </head>
 <body>
 <span class="icon">✅</span>
-<h1>Mesajınız Gönderildi!</h1>
-<p>Teşekkür ederiz. Mesajınız bize başarıyla ulaştı. En kısa sürede size geri dönüş yapacağız.</p>
-<a class="btn" href="index.html">🌙 Ana Sayfaya Dön</a>
+<h1 data-i18n="success_title">Mesajınız Gönderildi!</h1>
+<p data-i18n="success_p">Teşekkür ederiz. Mesajınız bize başarıyla ulaştı. En kısa sürede size geri dönüş yapacağız.</p>
+<a class="btn" href="index.html" data-i18n="success_btn">🌙 Ana Sayfaya Dön</a>
 <div class="timer" id="timer">5 saniye içinde yönlendirileceksiniz...</div>
+<script src="lang.js"></script>
 <script>
-var sec = 5;
-var el = document.getElementById('timer');
-var iv = setInterval(function() {
-  sec--;
-  if (sec <= 0) { clearInterval(iv); window.location.href = 'index.html'; }
-  else el.textContent = sec + ' saniye içinde yönlendirileceksiniz...';
-}, 1000);
+var sec=5,el=document.getElementById('timer');
+var suffix=(localStorage.getItem('uykucu_lang')==='en')?' seconds until redirect...'  :' saniye içinde yönlendirileceksiniz...';
+var iv=setInterval(function(){sec--;if(sec<=0){clearInterval(iv);window.location.href='index.html';}else el.textContent=sec+suffix;},1000);
 </script>
 </body>
 </html>
