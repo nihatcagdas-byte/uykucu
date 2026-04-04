@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="tr" dir="ltr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bağış — Uykucu</title>
+<meta name="description" content="Uykucu'yu destekleyin. Bağışlarınız ile bu projeyi ayakta tutmamıza yardımcı olun.">
+<meta name="theme-color" content="#07090f">
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@200;300;400;500&family=Playfair+Display:ital,wght@0,300;0,400;1,300;1,400&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#07090f;--bg1:#0b0f1a;--surf:rgba(255,255,255,.045);--surf2:rgba(255,255,255,.08);--bdr:rgba(255,255,255,.07);--bdr2:rgba(255,255,255,.13);--txt:#dde6f5;--txt2:rgba(221,230,245,.52);--txt3:rgba(221,230,245,.26);--acc:#6aacf0;--acc2:#9b87f5;--acc3:#5ef0d4;--ar:106,172,240;--rc:18px;--rp:100px}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Nunito',sans-serif;font-weight:300;background:var(--bg);color:var(--txt);min-height:100vh;line-height:1.7}
+a{color:var(--acc);text-decoration:none}a:hover{text-decoration:underline}
+.topbar{position:sticky;top:0;z-index:90;display:flex;align-items:center;justify-content:space-between;padding:16px 36px;background:rgba(7,9,15,.8);backdrop-filter:blur(24px);border-bottom:1px solid var(--bdr)}
+.logo{display:flex;align-items:center;gap:10px;font-family:'Playfair Display',serif;font-size:1.45rem;font-weight:300;color:var(--txt);text-decoration:none}
+.logo-orb{width:26px;height:26px;border-radius:50%;background:conic-gradient(from 0deg,var(--acc),var(--acc2),var(--acc3),var(--acc));animation:spin 8s linear infinite;box-shadow:0 0 16px rgba(var(--ar),.4)}
+@keyframes spin{to{transform:rotate(360deg)}}
+.back-btn{display:flex;align-items:center;gap:6px;padding:7px 15px;border-radius:var(--rp);font-size:.82rem;color:var(--txt2);border:1px solid var(--bdr);background:var(--surf);text-decoration:none;transition:.3s}.back-btn:hover{color:var(--txt);border-color:rgba(var(--ar),.3);text-decoration:none}
+.page{max-width:740px;margin:0 auto;padding:52px 36px 60px}
+.page h1{font-family:'Playfair Display',serif;font-size:2.2rem;font-weight:300;margin-bottom:8px}
+.page .subtitle{color:var(--txt2);font-size:.88rem;margin-bottom:36px}
+.page h2{font-family:'Playfair Display',serif;font-size:1.35rem;font-weight:300;margin:32px 0 12px;color:var(--acc)}
+.page p{margin-bottom:14px;font-size:.92rem;color:var(--txt2);line-height:1.8}
+
+/* Hero donation banner */
+.donate-hero{text-align:center;padding:40px 24px;background:linear-gradient(135deg,rgba(var(--ar),.06),rgba(155,135,245,.06));border:1px solid rgba(var(--ar),.14);border-radius:22px;margin-bottom:36px}
+.donate-hero-icon{font-size:3.5rem;margin-bottom:16px;display:block;animation:heartbeat 2s ease-in-out infinite}
+@keyframes heartbeat{0%,100%{transform:scale(1)}14%{transform:scale(1.15)}28%{transform:scale(1)}42%{transform:scale(1.1)}56%{transform:scale(1)}}
+.donate-hero h2{font-family:'Playfair Display',serif;font-size:1.8rem;font-weight:300;margin:0 0 10px;color:var(--txt)}
+.donate-hero p{max-width:520px;margin:0 auto;color:var(--txt2);font-size:.92rem;line-height:1.8}
+
+/* QR Card */
+.qr-card{background:var(--surf);border:1px solid var(--bdr);border-radius:22px;padding:32px;text-align:center;margin:28px auto;max-width:400px}
+.qr-card img{width:100%;max-width:280px;border-radius:14px;margin-bottom:18px;border:1px solid var(--bdr2)}
+.qr-label{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:300;margin-bottom:6px}
+.qr-sub{font-size:.78rem;color:var(--txt2)}
+
+/* Feature cards */
+.why-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:14px;margin:24px 0}
+.why-card{background:var(--surf);border:1px solid var(--bdr);border-radius:var(--rc);padding:22px 18px;text-align:center;transition:.3s}
+.why-card:hover{border-color:rgba(var(--ar),.3);transform:translateY(-3px)}
+.why-card .em{font-size:1.8rem;margin-bottom:10px;display:block}
+.why-card .title{font-weight:500;font-size:.88rem;margin-bottom:4px}
+.why-card .desc{font-size:.74rem;color:var(--txt2);line-height:1.6}
+
+/* Thank you note */
+.thanks-box{background:rgba(94,240,212,.04);border:1px solid rgba(94,240,212,.12);border-radius:16px;padding:24px;text-align:center;margin:32px 0}
+.thanks-box .em{font-size:2rem;margin-bottom:10px;display:block}
+.thanks-box p{color:var(--txt2);font-size:.88rem;margin:0;line-height:1.7}
+
+footer{border-top:1px solid var(--bdr);padding:26px 36px;display:flex;align-items:center;justify-content:space-between;color:var(--txt3);font-size:.7rem;flex-wrap:wrap;gap:8px}
+footer a{color:var(--txt3);text-decoration:none}footer a:hover{color:var(--txt2)}
+@media(max-width:640px){.topbar{padding:13px 17px}.page{padding:32px 17px 40px}.page h1{font-size:1.7rem}.donate-hero{padding:28px 18px}.donate-hero h2{font-size:1.4rem}.qr-card{padding:22px}footer{flex-direction:column;text-align:center;padding:20px 17px}}
+</style>
+</head>
+<body>
+<header class="topbar">
+  <a class="logo" href="index.html"><div class="logo-orb"></div>UYKUCU</a>
+  <a class="back-btn" href="index.html">← Ana Sayfa</a>
+</header>
+
+<main class="page">
+  <h1>Bağış</h1>
+  <p class="subtitle">Bir fincan kahve kadar küçük, bir gece uykusu kadar değerli.</p>
+
+  <div class="donate-hero">
+    <span class="donate-hero-icon">💜</span>
+    <h2>Uykucu'yu Ayakta Tutan Sensin</h2>
+    <p>Uykucu, ilk günden beri tamamen ücretsiz ve reklamsız olarak hizmet veriyor. Amacımız basit: herkesin huzurlu bir uyku hak ettiğine inanıyoruz. Ancak bir projeyi sevgiyle yapmak, onu sürdürebilmek için yeterli olmuyor — sunucu maliyetleri, alan adı, geliştirme saatleri ve yeni özellikler ekleme süreci hep devam ediyor.</p>
+  </div>
+
+  <p>Eğer Uykucu sana veya bebeğine huzurlu bir gece yaşattıysa, eğer zor bir günün sonunda seni rahatlattıysa, bunu bilmek bile bizim için çok değerli. Ama bir adım daha ileri gitmek istersen, küçük bir bağışla bu projenin devam etmesine katkıda bulunabilirsin.</p>
+
+  <p>Her bağış, ne kadar küçük olursa olsun, bize şunu söylüyor: <em>"Devam et, bu proje birileri için bir şey ifade ediyor."</em> Ve bu motivasyon, dünyadaki en güçlü yakıt.</p>
+
+  <h2>QR Kod ile Bağış Yap</h2>
+  <p>Aşağıdaki QR kodu banka uygulamanızla tarayarak doğrudan bağış yapabilirsiniz:</p>
+
+  <div class="qr-card">
+    <img src="qr.jpg" alt="Garanti BBVA - Nihat Çağdaş IBAN QR Kodu" loading="lazy">
+    <div class="qr-label">Nihat Çağdaş</div>
+    <div class="qr-sub">Garanti BBVA · Banka uygulamanızla QR kodu tarayın</div>
+  </div>
+
+  <h2>Bağışınız Nereye Gidiyor?</h2>
+  <div class="why-grid">
+    <div class="why-card"><span class="em">🖥</span><div class="title">Sunucu & Hosting</div><div class="desc">Sitenin 7/24 kesintisiz çalışması için</div></div>
+    <div class="why-card"><span class="em">🎵</span><div class="title">Yeni Sesler</div><div class="desc">Daha fazla doğal ses ve müzik eklenmesi</div></div>
+    <div class="why-card"><span class="em">📱</span><div class="title">Mobil Uygulama</div><div class="desc">iOS ve Android uygulama geliştirme</div></div>
+    <div class="why-card"><span class="em">🌍</span><div class="title">Daha Fazla Dil</div><div class="desc">Uygulamanın daha fazla dile çevrilmesi</div></div>
+  </div>
+
+  <div class="thanks-box">
+    <span class="em">🌙</span>
+    <p>Bağış yapsan da yapmasan da, Uykucu her zaman ücretsiz kalacak.<br>Seni burada görmek bile bizi mutlu ediyor.<br><strong>İyi geceler ve huzurlu uykular dileriz.</strong></p>
+  </div>
+
+  <h2>Diğer Destekleme Yolları</h2>
+  <p>Maddi bağış dışında da bize destek olabilirsin:</p>
+  <p>Uykucu'yu arkadaşlarınla paylaş, sosyal medyada bahset, veya <a href="iletisim.html">iletişim sayfamızdan</a> önerilerini ve geri bildirimlerini ilet. Her türlü destek bizi ileri taşıyor.</p>
+
+</main>
+
+<footer>
+  <div>© 2025 Uykucu</div>
+  <div><a href="hakkimizda.html">Hakkımızda</a> · <a href="iletisim.html">İletişim</a> · <a href="bagis.html">Bağış</a></div>
+  <div><a href="gizlilik.html">Gizlilik</a> · <a href="kosullar.html">Koşullar</a> · <a href="cerez-politikasi.html">Çerez Politikası</a></div>
+</footer>
+</body>
+</html>
