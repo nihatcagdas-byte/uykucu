@@ -497,7 +497,7 @@ button:focus-visible,a:focus-visible{outline:2px solid var(--acc);outline-offset
   </nav>
   <div style="display:flex;gap:8px;align-items:center">
     <nav class="desk-links" aria-label="Bilgi sayfaları">
-      <a href="hakkimizda.html">Hakkımızda</a>
+      <a href="hakkimizda.html" data-i18n="nav_about">Hakkımızda</a>
       <a href="iletisim.html" data-i18n="nav_contact">İletişim</a>
       <a href="bagis.html" data-i18n="nav_donate" style="color:#d8b4fe">💜 Bağış</a>
     </nav>
@@ -559,7 +559,7 @@ button:focus-visible,a:focus-visible{outline:2px solid var(--acc);outline-offset
 <!-- HOME -->
 <div class="view on" id="v-home" id="main-content">
   <div class="hero" role="banner">
-    <div class="eyebrow" aria-label="Uygulama durumu"><div class="eyebrow-dot" aria-hidden="true"></div data-i18n="hero_eyebrow">Huzurlu Uyku Deneyimi</div>
+    <div class="eyebrow" aria-label="Uygulama durumu"><div class="eyebrow-dot" aria-hidden="true"></div><span data-i18n="hero_eyebrow">Huzurlu Uyku Deneyimi</span></div>
     <h1><span data-i18n="hero_title_1">Gecenin </span><em data-i18n="hero_title_em">sessizliğini</em><br><span data-i18n="hero_title_2">içine al</span></h1>
     <p data-i18n="hero_desc">Doğanın ritmiyle nefes al. Beyin dalgalarını yavaşlat, zihnini boşalt.</p>
     <div class="actions" role="group" aria-label="Hızlı başlangıç">
@@ -620,15 +620,15 @@ button:focus-visible,a:focus-visible{outline:2px solid var(--acc);outline-offset
   <footer role="contentinfo">
     <div>© 2025 Uykucu</div>
     <div>
-      <a href="hakkimizda.html" style="color:var(--txt3);text-decoration:none">Hakkımızda</a> · 
-      <a href="iletisim.html" style="color:var(--txt3);text-decoration:none">İletişim</a> · 
-      <a href="bagis.html" style="color:#d8b4fe;text-decoration:none">💜 Bağış</a>
+      <a href="hakkimizda.html" style="color:var(--txt3);text-decoration:none" data-i18n="nav_about">Hakkımızda</a> · 
+      <a href="iletisim.html" style="color:var(--txt3);text-decoration:none" data-i18n="nav_contact">İletişim</a> · 
+      <a href="bagis.html" style="color:#d8b4fe;text-decoration:none" data-i18n="nav_donate">💜 Bağış</a>
     </div>
     <div>
-      <a href="gizlilik.html" style="color:var(--txt3);text-decoration:none">Gizlilik</a> · 
-      <a href="kosullar.html" style="color:var(--txt3);text-decoration:none">Koşullar</a> · 
-      <a href="cerez-politikasi.html" style="color:var(--txt3);text-decoration:none">Çerez Politikası</a> · 
-      <button onclick="openCookieSettings()" style="color:var(--txt3);font-size:.7rem;background:none;border:none;cursor:pointer;text-decoration:underline;font-family:inherit" aria-label="Çerez ayarlarını aç">Çerez Ayarları</button>
+      <a href="gizlilik.html" style="color:var(--txt3);text-decoration:none" data-i18n="nav_privacy">Gizlilik</a> · 
+      <a href="kosullar.html" style="color:var(--txt3);text-decoration:none" data-i18n="nav_terms">Koşullar</a> · 
+      <a href="cerez-politikasi.html" style="color:var(--txt3);text-decoration:none" data-i18n="nav_cookies">Çerez Politikası</a> · 
+      <button onclick="openCookieSettings()" style="color:var(--txt3);font-size:.7rem;background:none;border:none;cursor:pointer;text-decoration:underline;font-family:inherit" aria-label="Çerez ayarlarını aç" data-i18n="sm_cookie_settings">Çerez Ayarları</button>
     </div>
   </footer>
 </div>
@@ -772,7 +772,7 @@ button:focus-visible,a:focus-visible{outline:2px solid var(--acc);outline-offset
   <div class="cb-text">
     <div class="cb-title" data-i18n="cookie_title">🍪 Çerez Kullanımı</div>
     <div class="cb-desc">
-      Deneyimini iyileştirmek için çerezleri kullanıyoruz. Analitik ve reklam çerezleri yalnızca senin onayınla etkinleştirilir.
+      <span data-i18n="cookie_desc">Deneyimini iyileştirmek için çerezleri kullanıyoruz. Analitik ve reklam çerezleri yalnızca senin onayınla etkinleştirilir.</span>
       <a href="cerez-politikasi.html" aria-label="Çerez politikası sayfasına git">Çerez Politikası</a> ·
       <a href="gizlilik.html" aria-label="Gizlilik politikası sayfasına git">Gizlilik Politikası</a>
     </div>
@@ -1981,6 +1981,9 @@ var I18N = {
   nav_about: {tr:'Hakkımızda', en:'About'},
   nav_contact: {tr:'İletişim', en:'Contact'},
   nav_donate: {tr:'💜 Bağış', en:'💜 Donate'},
+  nav_privacy: {tr:'Gizlilik', en:'Privacy'},
+  nav_terms: {tr:'Koşullar', en:'Terms'},
+  nav_cookies: {tr:'Çerez Politikası', en:'Cookie Policy'},
   // Hero
   hero_eyebrow: {tr:'Huzurlu Uyku Deneyimi', en:'Peaceful Sleep Experience'},
   hero_title_1: {tr:'Gecenin ', en:"Embrace the "},
