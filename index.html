@@ -612,6 +612,8 @@ button:focus-visible,a:focus-visible{outline:2px solid var(--acc);outline-offset
     <button class="cp" onclick="filterCat(&#39;ambient&#39;,this)" data-i18n="cat_ambient">🌌 Ambient</button>
     <button class="cp" onclick="filterCat(&#39;meditasyon&#39;,this)" data-i18n="mood_meditation" data-i18n="cat_meditation">🧘 Meditasyon</button>
     <button class="cp" onclick="filterCat(&#39;uyku&#39;,this)" data-i18n="cat_sleep">💤 Uyku</button>
+    <button class="cp" onclick="filterCat(&#39;odak&#39;,this)" data-i18n="cat_focus">🎯 Odak</button>
+    <button class="cp" onclick="filterCat(&#39;asmr&#39;,this)" data-i18n="cat_asmr">🎙 ASMR</button>
   </div>
   <div class="sec">
     <div class="sec-h"><div class="sec-t" data-i18n="sec_sounds">Sesler</div></div>
@@ -857,6 +859,75 @@ var SOUNDS = [
   {id:'sleep', name_en:'Sleep Whisper', desc_en:'ASMR-like soft whisper', tag_en:'Sleep',     em:'💤', name:'Uyku Fısıltısı',    desc:'ASMR benzeri yumuşak fısıltı',        cat:'uyku',      tag:'Uyku',      acc:'#a5b4fc', bg:'none'  },
   {id:'deepfreq', name_en:'Deep Sleep 432Hz', desc_en:'432Hz harmonic sleep frequency', tag_en:'Sleep',  em:'🌠', name:'Derin Uyku 432Hz',  desc:'432Hz harmonik uyku frekansı',        cat:'uyku',      tag:'Uyku',      acc:'#7c3aed', bg:'none'  },
   {id:'delta', name_en:'Delta Waves', desc_en:'0.5-4Hz deep sleep frequency', tag_en:'Sleep',     em:'🧬', name:'Delta Dalgaları',   desc:'0.5-4Hz derin uyku frekansı',         cat:'uyku',      tag:'Uyku',      acc:'#4f46e5', bg:'none'  },
+
+  // ─── DOĞA EK (+9 = 20) ─────────────────────────────────
+  {id:'frog',      em:'🐸', name:'Kurbağa',           name_en:'Frogs',             desc:'Gece gölünde kurbağa sesleri',     desc_en:'Frogs at a night pond',              cat:'doga',      tag:'Doğa',      tag_en:'Nature',     acc:'#4ade80', bg:'none'  },
+  {id:'jungle',    em:'🦜', name:'Tropikal Orman',    name_en:'Tropical Jungle',   desc:'Egzotik kuşlar ve böcekler',       desc_en:'Exotic birds and insects',           cat:'doga',      tag:'Doğa',      tag_en:'Nature',     acc:'#22c55e', bg:'forest'},
+  {id:'desert',    em:'🏜', name:'Çöl Rüzgarı',       name_en:'Desert Wind',       desc:'Sıcak ve kuru esen rüzgar',        desc_en:'Hot dry blowing wind',               cat:'doga',      tag:'Doğa',      tag_en:'Nature',     acc:'#fbbf24', bg:'none'  },
+  {id:'lake',      em:'🏞', name:'Göl Kenarı',        name_en:'Lakeside',          desc:'Sakin göl suyu ve kuşlar',         desc_en:'Calm lake water and birds',          cat:'doga',      tag:'Doğa',      tag_en:'Nature',     acc:'#06b6d4', bg:'ocean' },
+  {id:'cave',      em:'🕳', name:'Mağara Damlaları',  name_en:'Cave Drips',        desc:'Karanlık mağarada su damlaları',   desc_en:'Water drops in a dark cave',         cat:'doga',      tag:'Doğa',      tag_en:'Nature',     acc:'#6b7280', bg:'none'  },
+  {id:'autumn',    em:'🍂', name:'Sonbahar Yaprakları',name_en:'Autumn Leaves',    desc:'Rüzgarda hışırdayan yapraklar',    desc_en:'Leaves rustling in the wind',        cat:'doga',      tag:'Doğa',      tag_en:'Nature',     acc:'#f59e0b', bg:'none'  },
+  {id:'storm',     em:'🌪', name:'Fırtına',            name_en:'Storm',            desc:'Şiddetli rüzgar ve yağmur',        desc_en:'Heavy wind and rain',                cat:'doga',      tag:'Doğa',      tag_en:'Nature',     acc:'#475569', bg:'rain'  },
+  {id:'river',     em:'🏔', name:'Nehir',              name_en:'River',            desc:'Hızlı akan dağ nehri',             desc_en:'Fast flowing mountain river',        cat:'doga',      tag:'Doğa',      tag_en:'Nature',     acc:'#0ea5e9', bg:'ocean' },
+  {id:'seagulls',  em:'🕊', name:'Martı Sesleri',     name_en:'Seagulls',          desc:'Deniz kenarında martılar',         desc_en:'Seagulls by the seaside',            cat:'doga',      tag:'Doğa',      tag_en:'Nature',     acc:'#e0f2fe', bg:'ocean' },
+
+  // ─── AMBİENT EK (+10 = 18) ─────────────────────────────
+  {id:'airplane',  em:'✈', name:'Uçak Kabini',        name_en:'Airplane Cabin',    desc:'Uçuş sırasında motor uğultusu',    desc_en:'Engine hum during flight',           cat:'ambient',   tag:'Ambient',   tag_en:'Ambient',    acc:'#64748b', bg:'none'  },
+  {id:'clock',     em:'🕐', name:'Saat Tıkırtısı',    name_en:'Clock Ticking',     desc:'Ritmik saat tik-tak sesi',         desc_en:'Rhythmic clock tick-tock',            cat:'ambient',   tag:'Ambient',   tag_en:'Ambient',    acc:'#a8a29e', bg:'none'  },
+  {id:'typing',    em:'⌨', name:'Klavye Sesi',        name_en:'Keyboard Typing',   desc:'Mekanik klavye tıkırtıları',       desc_en:'Mechanical keyboard clicks',          cat:'ambient',   tag:'Ambient',   tag_en:'Ambient',    acc:'#737373', bg:'none'  },
+  {id:'city',      em:'🏙', name:'Şehir Ambiyansı',   name_en:'City Ambience',     desc:'Uzak trafik ve şehir sesleri',     desc_en:'Distant traffic and city sounds',     cat:'ambient',   tag:'Ambient',   tag_en:'Ambient',    acc:'#6366f1', bg:'none'  },
+  {id:'subway',    em:'🚇', name:'Metro',              name_en:'Subway',            desc:'Yeraltı tren sesi ve rüzgar',      desc_en:'Underground train and wind',          cat:'ambient',   tag:'Ambient',   tag_en:'Ambient',    acc:'#475569', bg:'none'  },
+  {id:'library',   em:'📚', name:'Kütüphane',          name_en:'Library',           desc:'Sessiz kütüphane ambiyansı',       desc_en:'Quiet library ambience',              cat:'ambient',   tag:'Ambient',   tag_en:'Ambient',    acc:'#92400e', bg:'none'  },
+  {id:'rainwindow',em:'🪟', name:'Pencerede Yağmur',  name_en:'Rain on Window',    desc:'Cama vuran yağmur damlaları',      desc_en:'Rain drops hitting the window',       cat:'ambient',   tag:'Ambient',   tag_en:'Ambient',    acc:'#7dd3fc', bg:'rain'  },
+  {id:'ac',        em:'❄', name:'Klima',               name_en:'Air Conditioner',   desc:'Sabit klima hava sesi',            desc_en:'Steady AC airflow sound',             cat:'ambient',   tag:'Ambient',   tag_en:'Ambient',    acc:'#bae6fd', bg:'none'  },
+  {id:'boat',      em:'⛵', name:'Tekne Sesi',         name_en:'Boat Rocking',      desc:'Denizde sallanan tekne',           desc_en:'Boat gently rocking at sea',          cat:'ambient',   tag:'Ambient',   tag_en:'Ambient',    acc:'#0284c7', bg:'ocean' },
+  {id:'campfire',  em:'🏕', name:'Kamp Ateşi',        name_en:'Campfire',          desc:'Açık havada çıtırdayan ateş',      desc_en:'Outdoor crackling campfire',           cat:'ambient',   tag:'Ambient',   tag_en:'Ambient',    acc:'#ea580c', bg:'fire'  },
+
+  // ─── BEBEK EK (+5 = 20) ─────────────────────────────────
+  {id:'bath',      em:'🛁', name:'Banyo Suyu',        name_en:'Bath Water',        desc:'Sıcak akan banyo suyu sesi',       desc_en:'Warm running bath water',             cat:'bebek',     tag:'Bebek',     tag_en:'Baby',       acc:'#7dd3fc', bg:'baby'  },
+  {id:'dryer',     em:'👕', name:'Kurutma Makinesi',  name_en:'Clothes Dryer',     desc:'Dönen kurutma makinesi sesi',      desc_en:'Spinning clothes dryer',              cat:'bebek',     tag:'Bebek',     tag_en:'Baby',       acc:'#d4d4d8', bg:'baby'  },
+  {id:'rocking',   em:'🪑', name:'Sallanan Sandalye', name_en:'Rocking Chair',     desc:'Ahşap salıncak gıcırtısı',        desc_en:'Wooden rocking chair creak',          cat:'bebek',     tag:'Bebek',     tag_en:'Baby',       acc:'#d6b38a', bg:'baby'  },
+  {id:'humming',   em:'🎤', name:'Mırıldanma',        name_en:'Humming',           desc:'Yumuşak anne mırıldanması',        desc_en:'Soft mother humming',                 cat:'bebek',     tag:'Bebek',     tag_en:'Baby',       acc:'#e9d5ff', bg:'baby'  },
+  {id:'babypiano', em:'🎹', name:'Bebek Piyanosu',    name_en:'Baby Piano',        desc:'Nazik ve basit piyano melodisi',   desc_en:'Gentle simple piano melody',          cat:'bebek',     tag:'Bebek',     tag_en:'Baby',       acc:'#c084fc', bg:'baby'  },
+
+  // ─── MEDİTASYON EK (+5 = 12) ───────────────────────────
+  {id:'gong',      em:'🔔', name:'Gong',               name_en:'Gong',             desc:'Derin rezonans gong sesi',         desc_en:'Deep resonating gong sound',          cat:'meditasyon',tag:'Meditasyon',tag_en:'Meditation', acc:'#eab308', bg:'none'  },
+  {id:'solfeggio', em:'🎼', name:'Solfeggio 528Hz',   name_en:'Solfeggio 528Hz',   desc:'Onarım ve şifa frekansı',         desc_en:'Healing and repair frequency',        cat:'meditasyon',tag:'Meditasyon',tag_en:'Meditation', acc:'#a855f7', bg:'none'  },
+  {id:'zenwater',  em:'⛲', name:'Zen Çeşme',         name_en:'Zen Fountain',      desc:'Japon bahçesi su sesi',            desc_en:'Japanese garden water sound',          cat:'meditasyon',tag:'Meditasyon',tag_en:'Meditation', acc:'#2dd4bf', bg:'none'  },
+  {id:'singing',   em:'🎵', name:'Harmonik Şarkı',    name_en:'Harmonic Singing',  desc:'Overtone ve harmonik vokal',       desc_en:'Overtone and harmonic vocals',         cat:'meditasyon',tag:'Meditasyon',tag_en:'Meditation', acc:'#c084fc', bg:'none'  },
+  {id:'mantra',    em:'📿', name:'Mantra Tekrarı',    name_en:'Mantra Chant',      desc:'Ritmik tekrarlanan mantra',        desc_en:'Rhythmic repeating mantra',            cat:'meditasyon',tag:'Meditasyon',tag_en:'Meditation', acc:'#f97316', bg:'none'  },
+
+  // ─── UYKU EK (+5 = 12) ─────────────────────────────────
+  {id:'underwater',em:'🫧', name:'Su Altı',            name_en:'Underwater',        desc:'Derin deniz su altı sesleri',      desc_en:'Deep sea underwater sounds',           cat:'uyku',      tag:'Uyku',      tag_en:'Sleep',      acc:'#0891b2', bg:'ocean' },
+  {id:'cocoon',    em:'🦋', name:'Koza',               name_en:'Cocoon',            desc:'Sarmalayıcı derin ses kaplama',    desc_en:'Enveloping deep sound wrap',           cat:'uyku',      tag:'Uyku',      tag_en:'Sleep',      acc:'#6d28d9', bg:'none'  },
+  {id:'midnight',  em:'🌑', name:'Gece Yarısı',       name_en:'Midnight',          desc:'Tam sessizliğin sesi',             desc_en:'The sound of complete silence',        cat:'uyku',      tag:'Uyku',      tag_en:'Sleep',      acc:'#1e1b4b', bg:'none'  },
+  {id:'dreamy',    em:'💭', name:'Rüya Manzarası',    name_en:'Dreamscape',        desc:'Eterik ve rüya gibi ses katmanı',  desc_en:'Ethereal dreamlike sound layers',      cat:'uyku',      tag:'Uyku',      tag_en:'Sleep',      acc:'#8b5cf6', bg:'none'  },
+  {id:'isochronic',em:'〰', name:'İzokronik Tonlar',  name_en:'Isochronic Tones',  desc:'Ritmik tek kanallı beyin uyarımı', desc_en:'Rhythmic single-channel brain stim',   cat:'uyku',      tag:'Uyku',      tag_en:'Sleep',      acc:'#4338ca', bg:'none'  },
+
+  // ─── ODAK (YENİ KATEGORİ — 10 ses) ─────────────────────
+  {id:'coffeeshop',em:'☕', name:'Kahve Dükkanı',     name_en:'Coffee Shop',       desc:'Sohbet ve bardak sesleri',         desc_en:'Chatter and cup sounds',               cat:'odak',      tag:'Odak',      tag_en:'Focus',      acc:'#78350f', bg:'none'  },
+  {id:'rainstudy', em:'📖', name:'Çalışma Yağmuru',   name_en:'Study Rain',        desc:'Hafif yağmur ve kalem sesi',       desc_en:'Light rain with pen scratching',       cat:'odak',      tag:'Odak',      tag_en:'Focus',      acc:'#3b82f6', bg:'rain'  },
+  {id:'lofi',      em:'🎧', name:'Lo-Fi Beats',       name_en:'Lo-Fi Beats',       desc:'Sakin lo-fi ritim ve melodi',       desc_en:'Calm lo-fi rhythm and melody',         cat:'odak',      tag:'Odak',      tag_en:'Focus',      acc:'#ec4899', bg:'none'  },
+  {id:'deepfocus', em:'🎯', name:'Derin Odak',        name_en:'Deep Focus',        desc:'Konsantrasyon için düşük frekans', desc_en:'Low frequency for concentration',      cat:'odak',      tag:'Odak',      tag_en:'Focus',      acc:'#1d4ed8', bg:'none'  },
+  {id:'campus',    em:'🎓', name:'Kampüs',             name_en:'Campus',            desc:'Üniversite bahçesi ambiyansı',     desc_en:'University garden ambience',            cat:'odak',      tag:'Odak',      tag_en:'Focus',      acc:'#059669', bg:'none'  },
+  {id:'workshop',  em:'🔨', name:'Atölye',             name_en:'Workshop',          desc:'Yaratıcı çalışma ortamı sesleri',  desc_en:'Creative workspace sounds',            cat:'odak',      tag:'Odak',      tag_en:'Focus',      acc:'#b45309', bg:'none'  },
+  {id:'focusdrone',em:'🔊', name:'Odak Drone',        name_en:'Focus Drone',       desc:'Sürekli tek ton odak sesi',        desc_en:'Continuous single tone focus',          cat:'odak',      tag:'Odak',      tag_en:'Focus',      acc:'#7c3aed', bg:'none'  },
+  {id:'gamma',     em:'⚡', name:'Gama Dalgaları',    name_en:'Gamma Waves',       desc:'40Hz yüksek konsantrasyon',        desc_en:'40Hz high concentration',              cat:'odak',      tag:'Odak',      tag_en:'Focus',      acc:'#eab308', bg:'none'  },
+  {id:'alpha',     em:'🧠', name:'Alfa Ritmik',       name_en:'Alpha Rhythmic',    desc:'10Hz rahat uyanıklık',             desc_en:'10Hz relaxed alertness',               cat:'odak',      tag:'Odak',      tag_en:'Focus',      acc:'#2563eb', bg:'none'  },
+  {id:'pomodoro',  em:'🍅', name:'Pomodoro Ortamı',   name_en:'Pomodoro Ambience', desc:'25 dk odak + 5 dk mola döngüsü',  desc_en:'25min focus + 5min break cycle',       cat:'odak',      tag:'Odak',      tag_en:'Focus',      acc:'#dc2626', bg:'none'  },
+
+  // ─── ASMR (YENİ KATEGORİ — 10 ses) ────────────────────
+  {id:'whisper',   em:'🤫', name:'Fısıltı',            name_en:'Whisper',           desc:'Sakin ve yavaş fısıldama',         desc_en:'Calm and slow whispering',             cat:'asmr',      tag:'ASMR',      tag_en:'ASMR',       acc:'#e879f9', bg:'none'  },
+  {id:'tapping',   em:'👆', name:'Tıkırtı',            name_en:'Tapping',           desc:'Ahşap üzerinde parmak tıkırtısı',  desc_en:'Finger tapping on wood',               cat:'asmr',      tag:'ASMR',      tag_en:'ASMR',       acc:'#a3a3a3', bg:'none'  },
+  {id:'brushing',  em:'🖌', name:'Fırçalama',          name_en:'Brushing',          desc:'Yumuşak fırça sesi',               desc_en:'Soft brushing sound',                  cat:'asmr',      tag:'ASMR',      tag_en:'ASMR',       acc:'#c4b5fd', bg:'none'  },
+  {id:'crinkling', em:'📜', name:'Hışırtı',            name_en:'Crinkling',         desc:'Kağıt ve ambalaj hışırtısı',       desc_en:'Paper and wrapping crinkle',           cat:'asmr',      tag:'ASMR',      tag_en:'ASMR',       acc:'#fde68a', bg:'none'  },
+  {id:'scratching',em:'✋', name:'Kaşıma',             name_en:'Scratching',        desc:'Kumaş ve yüzey kaşıma',           desc_en:'Fabric and surface scratching',        cat:'asmr',      tag:'ASMR',      tag_en:'ASMR',       acc:'#d6d3d1', bg:'none'  },
+  {id:'rainasmr',  em:'💧', name:'Yağmur ASMR',       name_en:'Rain ASMR',         desc:'Yakın mesafe yağmur damlaları',    desc_en:'Close-up rain drops',                  cat:'asmr',      tag:'ASMR',      tag_en:'ASMR',       acc:'#60a5fa', bg:'rain'  },
+  {id:'pages',     em:'📖', name:'Sayfa Çevirme',     name_en:'Page Turning',      desc:'Kitap sayfa çevirme sesi',         desc_en:'Book page turning sounds',             cat:'asmr',      tag:'ASMR',      tag_en:'ASMR',       acc:'#a16207', bg:'none'  },
+  {id:'sand',      em:'⏳', name:'Kum Sesi',           name_en:'Sand Sounds',       desc:'Akan kum ve çakıl sesi',           desc_en:'Flowing sand and pebbles',             cat:'asmr',      tag:'ASMR',      tag_en:'ASMR',       acc:'#d4a373', bg:'none'  },
+  {id:'bubbles',   em:'🫧', name:'Kabarcıklar',       name_en:'Bubbles',           desc:'Su kabarcıkları patlama sesi',     desc_en:'Water bubbles popping',                cat:'asmr',      tag:'ASMR',      tag_en:'ASMR',       acc:'#67e8f9', bg:'none'  },
+  {id:'vinyl',     em:'💿', name:'Plak Sesi',         name_en:'Vinyl Crackle',     desc:'Eski plak çıtırtısı ve sıcaklığı', desc_en:'Old vinyl crackle and warmth',         cat:'asmr',      tag:'ASMR',      tag_en:'ASMR',       acc:'#44403c', bg:'none'  },
+
   {id:'nightrain', name_en:'Night Rain', desc_en:'Gentle rain and wind behind glass', tag_en:'Sleep', em:'🌃', name:'Gece Yağmuru',      desc:'Cam arkasında hafif yağmur ve rüzgar',cat:'uyku',      tag:'Uyku',      acc:'#6d28d9', bg:'rain'  },
   {id:'softpiano', em:'🎹', name:'Yumuşak Piyano',   desc:'Sakin ve huzurlu piyano melodisi',     cat:'uyku',      tag:'Uyku',      acc:'#a78bfa', bg:'none'  },
   {id:'cloudbed',  em:'☁️', name:'Bulut Yatağı',      desc:'Çok katmanlı derin ambient',           cat:'uyku',      tag:'Uyku',      acc:'#c7d2fe', bg:'none'  },
@@ -1293,6 +1364,128 @@ function buildSynth(id) {
     sn.connect(snl); snl.connect(sng); sng.connect(g);
     o1.start(); o2.start(); o3.start(); lfo.start(); sn.start();
     ns.push(o1,o2,o3,g1,g2x,g3,lfo,lg,sn,snl,sng); fadeIn(g,.85);
+
+  // ─── NEW NATURE SOUNDS ─────────────────────────────────
+  } else if (id === 'frog') {
+    var s = noiseSrc(6), lp = bpf('lowpass',400); s.connect(lp); lp.connect(g); s.start(); ns.push(s,lp);
+    function ribbit(){if(!alive.v||!AX)return;var f=180+Math.random()*120,now=AX.currentTime;var o=AX.createOscillator();o.type='sine';o.frequency.value=f;o.frequency.setValueAtTime(f,now);o.frequency.linearRampToValueAtTime(f*1.3,now+.04);o.frequency.linearRampToValueAtTime(f*.7,now+.12);var gx=AX.createGain();gx.gain.setValueAtTime(0,now);gx.gain.linearRampToValueAtTime(.25,now+.02);gx.gain.linearRampToValueAtTime(0,now+.15);o.connect(gx);gx.connect(g);o.start(now);o.stop(now+.2);ns.push(o,gx);setTimeout(ribbit,300+Math.random()*2500);}setTimeout(ribbit,500);fadeIn(g,.70);
+  } else if (id === 'jungle') {
+    var s=noiseSrc(6),hp=bpf('highpass',800),lp=bpf('lowpass',5000);s.connect(hp);hp.connect(lp);lp.connect(g);s.start();ns.push(s,hp,lp);scheduleBirds(ax,g,ns,alive,true);fadeIn(g,.78);
+  } else if (id === 'desert') {
+    var s=noiseSrc(8),bp=bpf('bandpass',300,.2);var lfo=osc('sine',.04),lg=gainNode(.25);lfo.connect(lg);lg.connect(g.gain);s.connect(bp);bp.connect(g);s.start();lfo.start();ns.push(s,bp,lfo,lg);fadeIn(g,.65);
+  } else if (id === 'lake') {
+    var s=noiseSrc(8),lp=bpf('lowpass',500),lp2=bpf('lowpass',300);var lfo=osc('sine',.08),lg=gainNode(.20);lfo.connect(lg);lg.connect(g.gain);s.connect(lp);lp.connect(lp2);lp2.connect(g);s.start();lfo.start();ns.push(s,lp,lp2,lfo,lg);scheduleBirds(ax,g,ns,alive,false);fadeIn(g,.72);
+  } else if (id === 'cave') {
+    var s=noiseSrc(4),lp=bpf('lowpass',600);s.connect(lp);lp.connect(g);s.start();ns.push(s,lp);
+    function drip(){if(!alive.v||!AX)return;var f=2000+Math.random()*2000,now=AX.currentTime;var o=AX.createOscillator();o.type='sine';o.frequency.value=f;var gx=AX.createGain();gx.gain.setValueAtTime(.20,now);gx.gain.exponentialRampToValueAtTime(.001,now+.4);o.connect(gx);gx.connect(g);o.start(now);o.stop(now+.5);ns.push(o,gx);setTimeout(drip,800+Math.random()*4000);}setTimeout(drip,600);fadeIn(g,.68);
+  } else if (id === 'autumn') {
+    var s=noiseSrc(6),bp=bpf('bandpass',1800,1.2),hp=bpf('highpass',600);var lfo=osc('sine',.15),lg=gainNode(.30);lfo.connect(lg);lg.connect(g.gain);s.connect(bp);bp.connect(hp);hp.connect(g);s.start();lfo.start();ns.push(s,bp,hp,lfo,lg);fadeIn(g,.70);
+  } else if (id === 'storm') {
+    var s1=noiseSrc(6),lp=bpf('lowpass',4000);var s2=noiseSrc(8),rl=bpf('lowpass',150),rg=gainNode(.55);var lfo=osc('sine',.06),lg=gainNode(.35);lfo.connect(lg);lg.connect(g.gain);s1.connect(lp);lp.connect(g);s1.start();s2.connect(rl);rl.connect(rg);rg.connect(g);s2.start();lfo.start();ns.push(s1,lp,s2,rl,rg,lfo,lg);fadeIn(g,.88);
+  } else if (id === 'river') {
+    var s=noiseSrc(6),bp=bpf('bandpass',1500,.7),hp=bpf('highpass',300);var s2=noiseSrc(4),lp2=bpf('lowpass',500),g2=gainNode(.30);s.connect(bp);bp.connect(hp);hp.connect(g);s2.connect(lp2);lp2.connect(g2);g2.connect(g);s.start();s2.start();ns.push(s,bp,hp,s2,lp2,g2);fadeIn(g,.80);
+  } else if (id === 'seagulls') {
+    var s=noiseSrc(8),lp=bpf('lowpass',600);s.connect(lp);lp.connect(g);s.start();ns.push(s,lp);
+    function gull(){if(!alive.v||!AX)return;var f=1800+Math.random()*800,now=AX.currentTime;var o=AX.createOscillator();o.type='sine';o.frequency.value=f;o.frequency.linearRampToValueAtTime(f*1.4,now+.15);o.frequency.linearRampToValueAtTime(f*.8,now+.4);var gx=AX.createGain();gx.gain.setValueAtTime(0,now);gx.gain.linearRampToValueAtTime(.15,now+.05);gx.gain.linearRampToValueAtTime(0,now+.5);o.connect(gx);gx.connect(g);o.start(now);o.stop(now+.55);ns.push(o,gx);setTimeout(gull,2000+Math.random()*5000);}setTimeout(gull,1000);fadeIn(g,.68);
+  // ─── NEW AMBIENT SOUNDS ────────────────────────────────
+  } else if (id === 'airplane') {
+    var s=noiseSrc(6),lp=bpf('lowpass',1200),hp=bpf('highpass',50);var o1=osc('sine',85),g1=gainNode(.20);o1.connect(g1);g1.connect(g);s.connect(lp);lp.connect(hp);hp.connect(g);s.start();o1.start();ns.push(s,lp,hp,o1,g1);fadeIn(g,.78);
+  } else if (id === 'clock') {
+    var now=AX.currentTime;function tick(){if(!alive.v||!AX)return;var n=AX.currentTime;var b=AX.createBuffer(1,Math.floor(AX.sampleRate*.02),AX.sampleRate);var d=b.getChannelData(0);for(var i=0;i<d.length;i++)d[i]=(Math.random()*2-1)*Math.exp(-i/(d.length*.1));var s=AX.createBufferSource();s.buffer=b;var gx=AX.createGain();gx.gain.value=.30;var hp=AX.createBiquadFilter();hp.type='highpass';hp.frequency.value=2000;s.connect(hp);hp.connect(gx);gx.connect(g);s.start();ns.push(s,gx,hp);setTimeout(tick,1000);}tick();fadeIn(g,.72);
+  } else if (id === 'typing') {
+    function typeClick(){if(!alive.v||!AX)return;var b=AX.createBuffer(1,Math.floor(AX.sampleRate*.015),AX.sampleRate);var d=b.getChannelData(0);for(var i=0;i<d.length;i++)d[i]=(Math.random()*2-1)*Math.exp(-i/(d.length*.08));var s=AX.createBufferSource();s.buffer=b;var gx=AX.createGain();gx.gain.value=.15+Math.random()*.12;var bp=AX.createBiquadFilter();bp.type='bandpass';bp.frequency.value=3000+Math.random()*2000;s.connect(bp);bp.connect(gx);gx.connect(g);s.start();ns.push(s,gx,bp);setTimeout(typeClick,60+Math.random()*200);}typeClick();fadeIn(g,.65);
+  } else if (id === 'city') {
+    var s=noiseSrc(8),lp=bpf('lowpass',2000),hp=bpf('highpass',80);var s2=noiseSrc(4),bp=bpf('bandpass',400,.3),g2=gainNode(.25);s.connect(lp);lp.connect(hp);hp.connect(g);s2.connect(bp);bp.connect(g2);g2.connect(g);s.start();s2.start();ns.push(s,lp,hp,s2,bp,g2);fadeIn(g,.62);
+  } else if (id === 'subway') {
+    var s=noiseSrc(6),lp=bpf('lowpass',1500),hp=bpf('highpass',40);var o1=osc('sine',55),g1=gainNode(.25);var lfo=osc('sine',3.5),lg=gainNode(.18);lfo.connect(lg);lg.connect(g.gain);o1.connect(g1);g1.connect(g);s.connect(lp);lp.connect(hp);hp.connect(g);s.start();o1.start();lfo.start();ns.push(s,lp,hp,o1,g1,lfo,lg);fadeIn(g,.75);
+  } else if (id === 'library') {
+    var s=noiseSrc(8),lp=bpf('lowpass',400);s.connect(lp);lp.connect(g);s.start();ns.push(s,lp);fadeIn(g,.35);
+  } else if (id === 'rainwindow') {
+    var s=noiseSrc(6),bp=bpf('bandpass',1400,.8),lp=bpf('lowpass',4000);var s2=noiseSrc(4),lp2=bpf('lowpass',250),g2=gainNode(.20);s.connect(bp);bp.connect(lp);lp.connect(g);s2.connect(lp2);lp2.connect(g2);g2.connect(g);s.start();s2.start();ns.push(s,bp,lp,s2,lp2,g2);fadeIn(g,.80);
+  } else if (id === 'ac') {
+    var s=noiseSrc(6),lp=bpf('lowpass',2500),hp=bpf('highpass',200);s.connect(lp);lp.connect(hp);hp.connect(g);s.start();ns.push(s,lp,hp);fadeIn(g,.72);
+  } else if (id === 'boat') {
+    var s=noiseSrc(8),lp=bpf('lowpass',400);var lfo=osc('sine',.12),lg=gainNode(.30);lfo.connect(lg);lg.connect(g.gain);s.connect(lp);lp.connect(g);s.start();lfo.start();var o1=osc('sine',30),g1=gainNode(.15);o1.connect(g1);g1.connect(g);o1.start();ns.push(s,lp,lfo,lg,o1,g1);fadeIn(g,.68);
+  } else if (id === 'campfire') {
+    var s=noiseSrc(4),lp=bpf('lowpass',1200),hp=bpf('highpass',60);s.connect(lp);lp.connect(hp);hp.connect(g);s.start();ns.push(s,lp,hp);scheduleCrackle(ax,g,ns,alive);fadeIn(g,.75);
+  // ─── NEW BABY SOUNDS ──────────────────────────────────
+  } else if (id === 'bath') {
+    var s=noiseSrc(6),bp=bpf('bandpass',1600,.6),lp=bpf('lowpass',3000);var lfo=osc('sine',.25),lg=gainNode(.22);lfo.connect(lg);lg.connect(g.gain);s.connect(bp);bp.connect(lp);lp.connect(g);s.start();lfo.start();ns.push(s,bp,lp,lfo,lg);fadeIn(g,.82);
+  } else if (id === 'dryer') {
+    var s=noiseSrc(6),lp=bpf('lowpass',2000),hp=bpf('highpass',100);var lfo=osc('sine',1.2),lg=gainNode(.12);lfo.connect(lg);lg.connect(g.gain);s.connect(lp);lp.connect(hp);hp.connect(g);s.start();lfo.start();ns.push(s,lp,hp,lfo,lg);fadeIn(g,.85);
+  } else if (id === 'rocking') {
+    scheduleCradle(ax,g,ns,alive);var bs=noiseSrc(4),bl=bpf('lowpass',350),bg=gainNode(.15);bs.connect(bl);bl.connect(bg);bg.connect(g);bs.start();ns.push(bs,bl,bg);fadeIn(g,.88);
+  } else if (id === 'humming') {
+    var o1=osc('sine',220),o2=osc('sine',440),o3=osc('sine',660);var g1=gainNode(.20),g2=gainNode(.08),g3=gainNode(.03);var lfo=osc('sine',.3),lg=gainNode(.08);lfo.connect(lg);lg.connect(g1.gain);o1.connect(g1);g1.connect(g);o2.connect(g2);g2.connect(g);o3.connect(g3);g3.connect(g);var ns2=noiseSrc(4),nl=bpf('lowpass',300),ng=gainNode(.06);ns2.connect(nl);nl.connect(ng);ng.connect(g);o1.start();o2.start();o3.start();lfo.start();ns2.start();ns.push(o1,o2,o3,g1,g2,g3,lfo,lg,ns2,nl,ng);fadeIn(g,.85);
+  } else if (id === 'babypiano') {
+    var scale=[261.63,293.66,329.63,392,440,523.25];var mel=[0,2,4,2,0,4,5,4,2,0,2,4,5,4,2,0];var idx=0;
+    function pianoNote(){if(!alive.v||!AX)return;var f=scale[mel[idx%mel.length]];idx++;var now=AX.currentTime;var o=AX.createOscillator();o.type='sine';o.frequency.value=f;var gx=AX.createGain();gx.gain.setValueAtTime(0,now);gx.gain.linearRampToValueAtTime(.25,now+.02);gx.gain.exponentialRampToValueAtTime(.001,now+1.5);o.connect(gx);gx.connect(g);o.start(now);o.stop(now+1.6);ns.push(o,gx);setTimeout(pianoNote,700+Math.random()*300);}setTimeout(pianoNote,300);fadeIn(g,.90);
+  // ─── NEW MEDITATION SOUNDS ────────────────────────────
+  } else if (id === 'gong') {
+    function gongHit(){if(!alive.v||!AX)return;var harms=[65,130,195,260,390];for(var i=0;i<harms.length;i++){(function(f,i){var o=AX.createOscillator();o.type='sine';o.frequency.value=f;var gx=AX.createGain();var now=AX.currentTime,vol=.22/(i+1);gx.gain.setValueAtTime(0,now);gx.gain.linearRampToValueAtTime(vol,now+.05);gx.gain.exponentialRampToValueAtTime(.001,now+8);o.connect(gx);gx.connect(g);o.start(now);o.stop(now+8.5);ns.push(o,gx);})(harms[i],i);}setTimeout(gongHit,9000+Math.random()*3000);}gongHit();fadeIn(g,.75);
+  } else if (id === 'solfeggio') {
+    var o1=osc('sine',528),o2=osc('sine',264),o3=osc('sine',792);var g1=gainNode(.30),g2=gainNode(.15),g3=gainNode(.06);var lfo=osc('sine',.04),lg=gainNode(.10);lfo.connect(lg);lg.connect(g1.gain);o1.connect(g1);g1.connect(g);o2.connect(g2);g2.connect(g);o3.connect(g3);g3.connect(g);o1.start();o2.start();o3.start();lfo.start();ns.push(o1,o2,o3,g1,g2,g3,lfo,lg);fadeIn(g,.72);
+  } else if (id === 'zenwater') {
+    var s=noiseSrc(6),bp=bpf('bandpass',2500,1.5),lp=bpf('lowpass',4000);var lfo=osc('sine',.4),lg=gainNode(.28);lfo.connect(lg);lg.connect(g.gain);s.connect(bp);bp.connect(lp);lp.connect(g);s.start();lfo.start();ns.push(s,bp,lp,lfo,lg);fadeIn(g,.70);
+  } else if (id === 'singing') {
+    var fqs=[220,330,440,550,660,880];for(var i=0;i<fqs.length;i++){var o=osc('sine',fqs[i]),gx=gainNode(.10/(i*.4+1));var lfo2=osc('sine',.05+i*.01),lg2=gainNode(.04);lfo2.connect(lg2);lg2.connect(gx.gain);o.connect(gx);gx.connect(g);o.start();lfo2.start();ns.push(o,gx,lfo2,lg2);}fadeIn(g,.68);
+  } else if (id === 'mantra') {
+    var o1=osc('sine',136.1),o2=osc('sine',272.2);var g1=gainNode(.25),g2=gainNode(.10);var lfo=osc('sine',.22),lg=gainNode(.18);lfo.connect(lg);lg.connect(g1.gain);o1.connect(g1);g1.connect(g);o2.connect(g2);g2.connect(g);var ns2=noiseSrc(4),nl=bpf('lowpass',250),ng=gainNode(.08);ns2.connect(nl);nl.connect(ng);ng.connect(g);o1.start();o2.start();lfo.start();ns2.start();ns.push(o1,o2,g1,g2,lfo,lg,ns2,nl,ng);fadeIn(g,.70);
+  // ─── NEW SLEEP SOUNDS ─────────────────────────────────
+  } else if (id === 'underwater') {
+    var s=noiseSrc(8),lp=bpf('lowpass',350),lp2=bpf('lowpass',200);var lfo=osc('sine',.06),lg=gainNode(.25);lfo.connect(lg);lg.connect(g.gain);s.connect(lp);lp.connect(lp2);lp2.connect(g);s.start();lfo.start();function bubble(){if(!alive.v||!AX)return;var f=600+Math.random()*1200,now=AX.currentTime;var o=AX.createOscillator();o.type='sine';o.frequency.value=f;var gx=AX.createGain();gx.gain.setValueAtTime(.08,now);gx.gain.exponentialRampToValueAtTime(.001,now+.2);o.connect(gx);gx.connect(g);o.start(now);o.stop(now+.25);ns.push(o,gx);setTimeout(bubble,500+Math.random()*3000);}setTimeout(bubble,800);ns.push(s,lp,lp2,lfo,lg);fadeIn(g,.72);
+  } else if (id === 'cocoon') {
+    var o1=osc('sine',40),o2=osc('sine',80);var g1=gainNode(.40),g2=gainNode(.18);var s=noiseSrc(6),lp=bpf('lowpass',120),ng=gainNode(.25);s.connect(lp);lp.connect(ng);ng.connect(g);o1.connect(g1);g1.connect(g);o2.connect(g2);g2.connect(g);var lfo=osc('sine',.03),lg=gainNode(.12);lfo.connect(lg);lg.connect(g1.gain);o1.start();o2.start();s.start();lfo.start();ns.push(o1,o2,g1,g2,s,lp,ng,lfo,lg);fadeIn(g,.78);
+  } else if (id === 'midnight') {
+    var s=noiseSrc(8),lp=bpf('lowpass',120);s.connect(lp);lp.connect(g);s.start();ns.push(s,lp);fadeIn(g,.45);
+  } else if (id === 'dreamy') {
+    var fqs=[196,261.63,329.63,392,523.25];for(var i=0;i<fqs.length;i++){var o=osc('sine',fqs[i]),gx=gainNode(.08);var lfo2=osc('sine',.02+i*.008),lg2=gainNode(.05);lfo2.connect(lg2);lg2.connect(gx.gain);o.connect(gx);gx.connect(g);o.start();lfo2.start();ns.push(o,gx,lfo2,lg2);}var ns2=noiseSrc(6),nl=bpf('lowpass',200),ng=gainNode(.10);ns2.connect(nl);nl.connect(ng);ng.connect(g);ns2.start();ns.push(ns2,nl,ng);fadeIn(g,.65);
+  } else if (id === 'isochronic') {
+    var o1=osc('sine',200),g1=gainNode(.30);var lfo=osc('square',6),lg=gainNode(.30);lfo.connect(lg);lg.connect(g1.gain);o1.connect(g1);g1.connect(g);o1.start();lfo.start();ns.push(o1,g1,lfo,lg);fadeIn(g,.60);
+  // ─── FOCUS SOUNDS ─────────────────────────────────────
+  } else if (id === 'coffeeshop') {
+    var s=noiseSrc(8),bp=bpf('bandpass',1500,1.8),lp=bpf('lowpass',4500);s.connect(bp);bp.connect(lp);lp.connect(g);s.start();ns.push(s,bp,lp);fadeIn(g,.58);
+  } else if (id === 'rainstudy') {
+    var s=noiseSrc(6),bp=bpf('bandpass',900,.6),lp=bpf('lowpass',3500);s.connect(bp);bp.connect(lp);lp.connect(g);s.start();ns.push(s,bp,lp);fadeIn(g,.72);
+  } else if (id === 'lofi') {
+    var scale=[261.63,293.66,329.63,349.23,392,440];var idx=0;
+    function lofiNote(){if(!alive.v||!AX)return;var f=scale[Math.floor(Math.random()*scale.length)];var now=AX.currentTime;var o=AX.createOscillator();o.type='triangle';o.frequency.value=f;var gx=AX.createGain();gx.gain.setValueAtTime(0,now);gx.gain.linearRampToValueAtTime(.15,now+.05);gx.gain.linearRampToValueAtTime(0,now+.8);o.connect(gx);gx.connect(g);o.start(now);o.stop(now+.9);ns.push(o,gx);setTimeout(lofiNote,400+Math.random()*400);}lofiNote();
+    var kick=osc('sine',50),kg=gainNode(.15);var kickLfo=osc('square',1.8),klg=gainNode(.15);kickLfo.connect(klg);klg.connect(kg.gain);kick.connect(kg);kg.connect(g);kick.start();kickLfo.start();ns.push(kick,kg,kickLfo,klg);fadeIn(g,.70);
+  } else if (id === 'deepfocus') {
+    var o1=osc('sine',100),o2=osc('sine',200);var g1=gainNode(.30),g2=gainNode(.12);var lfo=osc('sine',.03),lg=gainNode(.08);lfo.connect(lg);lg.connect(g1.gain);o1.connect(g1);g1.connect(g);o2.connect(g2);g2.connect(g);o1.start();o2.start();lfo.start();ns.push(o1,o2,g1,g2,lfo,lg);fadeIn(g,.72);
+  } else if (id === 'campus') {
+    var s=noiseSrc(8),lp=bpf('lowpass',2500),hp=bpf('highpass',100);s.connect(lp);lp.connect(hp);hp.connect(g);s.start();ns.push(s,lp,hp);scheduleBirds(ax,g,ns,alive,false);fadeIn(g,.55);
+  } else if (id === 'workshop') {
+    var s=noiseSrc(6),bp=bpf('bandpass',800,.5);s.connect(bp);bp.connect(g);s.start();ns.push(s,bp);fadeIn(g,.50);
+  } else if (id === 'focusdrone') {
+    var o1=osc('sine',110),g1=gainNode(.28);var lfo=osc('sine',.02),lg=gainNode(.06);lfo.connect(lg);lg.connect(g1.gain);o1.connect(g1);g1.connect(g);o1.start();lfo.start();ns.push(o1,g1,lfo,lg);fadeIn(g,.68);
+  } else if (id === 'gamma') {
+    var l=osc('sine',200),r=osc('sine',240);var m=ax.createChannelMerger(2),lg=gainNode(.28),rg=gainNode(.28);l.connect(lg);lg.connect(m,0,0);r.connect(rg);rg.connect(m,0,1);m.connect(g);l.start();r.start();ns.push(l,r,m,lg,rg);fadeIn(g,.60);
+  } else if (id === 'alpha') {
+    var l=osc('sine',200),r=osc('sine',210);var m=ax.createChannelMerger(2),lg=gainNode(.30),rg=gainNode(.30);l.connect(lg);lg.connect(m,0,0);r.connect(rg);rg.connect(m,0,1);m.connect(g);l.start();r.start();ns.push(l,r,m,lg,rg);fadeIn(g,.62);
+  } else if (id === 'pomodoro') {
+    var s=noiseSrc(6),lp=bpf('lowpass',400);s.connect(lp);lp.connect(g);s.start();var o1=osc('sine',80),g1=gainNode(.10);o1.connect(g1);g1.connect(g);o1.start();ns.push(s,lp,o1,g1);fadeIn(g,.55);
+  // ─── ASMR SOUNDS ──────────────────────────────────────
+  } else if (id === 'whisper') {
+    var s=noiseSrc(4),bp=bpf('bandpass',2800,2.0);var lfo=osc('sine',.35),lg=gainNode(.35);lfo.connect(lg);lg.connect(g.gain);s.connect(bp);bp.connect(g);s.start();lfo.start();ns.push(s,bp,lfo,lg);fadeIn(g,.72);
+  } else if (id === 'tapping') {
+    function tap(){if(!alive.v||!AX)return;var b=AX.createBuffer(1,Math.floor(AX.sampleRate*.01),AX.sampleRate);var d=b.getChannelData(0);for(var i=0;i<d.length;i++)d[i]=(Math.random()*2-1)*Math.exp(-i/(d.length*.06));var s=AX.createBufferSource();s.buffer=b;var gx=AX.createGain();gx.gain.value=.22+Math.random()*.15;var bp=AX.createBiquadFilter();bp.type='bandpass';bp.frequency.value=1500+Math.random()*1000;bp.Q.value=3;s.connect(bp);bp.connect(gx);gx.connect(g);s.start();ns.push(s,gx,bp);setTimeout(tap,200+Math.random()*600);}tap();fadeIn(g,.65);
+  } else if (id === 'brushing') {
+    var s=noiseSrc(4),bp=bpf('bandpass',4000,1.5);var lfo=osc('sine',1.2),lg=gainNode(.35);lfo.connect(lg);lg.connect(g.gain);s.connect(bp);bp.connect(g);s.start();lfo.start();ns.push(s,bp,lfo,lg);fadeIn(g,.60);
+  } else if (id === 'crinkling') {
+    function crinkle(){if(!alive.v||!AX)return;var b=AX.createBuffer(1,Math.floor(AX.sampleRate*.06),AX.sampleRate);var d=b.getChannelData(0);for(var i=0;i<d.length;i++)d[i]=(Math.random()*2-1)*Math.exp(-i/(d.length*.2));var s=AX.createBufferSource();s.buffer=b;var gx=AX.createGain();gx.gain.value=.18+Math.random()*.15;var hp=AX.createBiquadFilter();hp.type='highpass';hp.frequency.value=1200;s.connect(hp);hp.connect(gx);gx.connect(g);s.start();ns.push(s,gx,hp);setTimeout(crinkle,100+Math.random()*500);}crinkle();fadeIn(g,.62);
+  } else if (id === 'scratching') {
+    var s=noiseSrc(4),bp=bpf('bandpass',3500,2);var lfo=osc('sine',.8),lg=gainNode(.32);lfo.connect(lg);lg.connect(g.gain);s.connect(bp);bp.connect(g);s.start();lfo.start();ns.push(s,bp,lfo,lg);fadeIn(g,.58);
+  } else if (id === 'rainasmr') {
+    var s=noiseSrc(6),bp=bpf('bandpass',2000,.8),lp=bpf('lowpass',5000);s.connect(bp);bp.connect(lp);lp.connect(g);s.start();ns.push(s,bp,lp);fadeIn(g,.78);
+  } else if (id === 'pages') {
+    function pageFlip(){if(!alive.v||!AX)return;var b=AX.createBuffer(1,Math.floor(AX.sampleRate*.15),AX.sampleRate);var d=b.getChannelData(0);for(var i=0;i<d.length;i++)d[i]=(Math.random()*2-1)*Math.exp(-i/(d.length*.25));var s=AX.createBufferSource();s.buffer=b;var gx=AX.createGain();gx.gain.value=.15;var bp=AX.createBiquadFilter();bp.type='bandpass';bp.frequency.value=2500;s.connect(bp);bp.connect(gx);gx.connect(g);s.start();ns.push(s,gx,bp);setTimeout(pageFlip,3000+Math.random()*5000);}pageFlip();var sn=noiseSrc(8),lp=bpf('lowpass',200);sn.connect(lp);lp.connect(g);sn.start();ns.push(sn,lp);fadeIn(g,.55);
+  } else if (id === 'sand') {
+    var s=noiseSrc(6),bp=bpf('bandpass',3000,1),hp=bpf('highpass',1000);var lfo=osc('sine',.18),lg=gainNode(.25);lfo.connect(lg);lg.connect(g.gain);s.connect(bp);bp.connect(hp);hp.connect(g);s.start();lfo.start();ns.push(s,bp,hp,lfo,lg);fadeIn(g,.60);
+  } else if (id === 'bubbles') {
+    var s=noiseSrc(6),lp=bpf('lowpass',300);s.connect(lp);lp.connect(g);s.start();ns.push(s,lp);function bub(){if(!alive.v||!AX)return;var f=400+Math.random()*800,now=AX.currentTime;var o=AX.createOscillator();o.type='sine';o.frequency.value=f;o.frequency.linearRampToValueAtTime(f*1.5,now+.08);var gx=AX.createGain();gx.gain.setValueAtTime(.12,now);gx.gain.exponentialRampToValueAtTime(.001,now+.15);o.connect(gx);gx.connect(g);o.start(now);o.stop(now+.2);ns.push(o,gx);setTimeout(bub,200+Math.random()*1500);}bub();fadeIn(g,.65);
+  } else if (id === 'vinyl') {
+    var s=noiseSrc(4),lp=bpf('lowpass',3000);s.connect(lp);lp.connect(g);s.start();function pop(){if(!alive.v||!AX)return;var b=AX.createBuffer(1,Math.floor(AX.sampleRate*.003),AX.sampleRate);var d=b.getChannelData(0);for(var i=0;i<d.length;i++)d[i]=(Math.random()*2-1);var bs=AX.createBufferSource();bs.buffer=b;var gx=AX.createGain();gx.gain.value=.20;bs.connect(gx);gx.connect(g);bs.start();ns.push(bs,gx);setTimeout(pop,50+Math.random()*400);}pop();ns.push(s,lp);fadeIn(g,.55);
   } else {
     var s = noiseSrc(4); s.connect(g); s.start(); ns.push(s); fadeIn(g,.75);
   }
@@ -1915,7 +2108,7 @@ function renderGrid(filter) {
   var el = document.getElementById('home-grid'); if (!el) return;
   var html = '';
   for (var i=0; i<SOUNDS.length; i++) {
-    var catMap = {all:'all',tümü:'all',nature:'doga',doğa:'doga',baby:'bebek',bebek:'bebek',ambient:'ambient',meditation:'meditasyon',meditasyon:'meditasyon',sleep:'uyku',uyku:'uyku'}; var fc = (filter||'all').toLowerCase(); fc = catMap[fc] || fc;
+    var catMap = {all:'all',tümü:'all',nature:'doga',doğa:'doga',baby:'bebek',bebek:'bebek',ambient:'ambient',meditation:'meditasyon',meditasyon:'meditasyon',sleep:'uyku',uyku:'uyku',focus:'odak',odak:'odak',asmr:'asmr'}; var fc = (filter||'all').toLowerCase(); fc = catMap[fc] || fc;
     if (!fc || fc==='all' || SOUNDS[i].cat===fc) html += cardHtml(SOUNDS[i], false);
   }
   el.innerHTML = html;
@@ -2038,6 +2231,8 @@ var I18N = {
   cat_ambient: {tr:'🌌 Ambient', en:'🌌 Ambient'},
   cat_meditation: {tr:'🧘 Meditasyon', en:'🧘 Meditation'},
   cat_sleep: {tr:'💤 Uyku', en:'💤 Sleep'},
+  cat_focus: {tr:'🎯 Odak', en:'🎯 Focus'},
+  cat_asmr: {tr:'🎙 ASMR', en:'🎙 ASMR'},
   // Player
   player_none: {tr:'Ses Seçilmedi', en:'No Sound Selected'},
   player_hint: {tr:'Ana sayfadan bir ses seçin', en:'Select a sound from the home page'},
